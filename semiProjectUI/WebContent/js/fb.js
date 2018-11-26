@@ -30,7 +30,7 @@ let fbgogo = function(fb){
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=416848035516774&autoLogAppEvents=1';
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId={앱아이디}&autoLogAppEvents=1';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 fb();};
@@ -40,7 +40,7 @@ fb();};
         });
   }
   
-  fbgogo(fbstate);
+ Promise.resolve().then(fbgogo(fbstate));
 
       function statusChangeCallback(response){
 		  if(response.status==='connected'){
@@ -57,7 +57,17 @@ fb();};
 		}
 	
 
-
+		var naverLogin = new naver.LoginWithNaverId(
+				{
+					clientId: "클라이언트 아이디",
+					callbackUrl: "http://localhost:8787/ojoproject/api/member/naver.jsp",
+					isPopup: false, /* 팝업을 통한 연동처리 여부 */
+					loginButton: {color: "green", type: 3, height: 60} /* 로그인 버튼의 타입을 지정 */
+				}
+			);
+			
+			/* 설정정보를 초기화하고 연동을 준비 */
+			naverLogin.init();
 /**
  * 
  */
