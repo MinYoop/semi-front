@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+		
+	<typeAliases>
+		<typeAlias type = "dto.api.NaverMember" alias="NaverMember"/>
+	</typeAliases>
+	
+	<!-- db 접속 설정. 알아서 고쳐쓰도록.  -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+				<dataSource type="POOLED">
+        			<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+        			<property name="url" value="jdbc:oracle:thin:@localhost:59161:xe"/>
+        			<property name="username" value="ojo"/>
+        			<property name="password" value="iu"/>
+      			</dataSource>
+    	</environment>
+  	</environments>
+	
+	<!-- Mapper 경로 -->
+	<mappers>
+    	<mapper resource="db/Mapper.xml"/>
+  	</mappers>
+</configuration>
