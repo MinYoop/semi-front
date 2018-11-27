@@ -45,7 +45,9 @@ fb();};
       function statusChangeCallback(response){
 		  if(response.status==='connected'){
 			  console.log('Logged in and authenticated');
-		  } else {
+			  setTimeout(function(){$("#subscriptionModal").modal('hide');},3000);
+			  regchk();
+		  } else if(response.status===''){
 			  console.log('Not authenticated');
 		  }
 	  }
@@ -68,6 +70,10 @@ fb();};
 			
 			/* 설정정보를 초기화하고 연동을 준비 */
 			naverLogin.init();
+			
+			
+	
+
 /**
  * 
  */

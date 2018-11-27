@@ -17,9 +17,6 @@ public class Message {
  // 받는사람 
  private int receiver;
 
- // 보내는사람조회여부 
- private int senderChk;
-
  // 받는사람조회여부 
  private int recieverChk;
 
@@ -64,14 +61,6 @@ public class Message {
      this.receiver = receiver;
  }
 
- public int getSenderChk() {
-     return senderChk;
- }
-
- public void setSenderChk(int senderChk) {
-     this.senderChk = senderChk;
- }
-
  public int getRecieverChk() {
      return recieverChk;
  }
@@ -111,7 +100,6 @@ public class Message {
      this.msgContent = param.getMsgContent();
      this.sender = param.getSender();
      this.receiver = param.getReceiver();
-     this.senderChk = param.getSenderChk();
      this.recieverChk = param.getRecieverChk();
      this.senderDelChk = param.getSenderDelChk();
      this.receiverDelChk = param.getReceiverDelChk();
