@@ -59,7 +59,7 @@ fb();};
 
 		var naverLogin = new naver.LoginWithNaverId(
 				{
-					clientId: "클라이언트 아이디",
+					clientId: "7d54a380d44fc4335738259b6e2dc63c",
 					callbackUrl: "http://localhost:8787/ojoproject/api/member/naver.jsp",
 					isPopup: false, /* 팝업을 통한 연동처리 여부 */
 					loginButton: {color: "green", type: 3, height: 60} /* 로그인 버튼의 타입을 지정 */
