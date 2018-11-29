@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+<head>
+<meta charset="utf-8">
+<title>IUTRADE</title>
+
+<!-- mobile responsive meta -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<!--Favicon-->
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+<link rel="icon" href="images/favicon.png" type="image/x-icon">
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript"
+	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
+	charset="utf-8"></script>
+	
+<script type="text/javascript">
+$(document).ready( function() {
+	$("#header").load("header.html");
+});
+
+$(document).ready( function() {
+	$("#footer").load("footer.html");
+});
+</script>
+
+</head>
+
+<!-- preloader start -->
+<body>
+
+
+<div id="header"></div>
+
+	<div class="preloader">
+		<img src="images/preloader.gif" alt="preloader">
+	</div>
+	<!-- preloader end -->
+
+	<!-- main wrapper -->
+
+<!-- main wrapper -->
+<div class="main-wrapper">
+
+<!-- breadcrumb -->
+<nav class="bg-gray py-3">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Shipping Information</li>
+    </ol>
+  </div>
+</nav>
+<!-- /breadcrumb -->
+
+<!-- ORDER-REVIEW -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="inner-wrapper border-box">
+                    <!-- navbar -->
+                    <div class="justify-content-between nav mb-5">
+                        <a href="shipping.html" class="text-center d-inline-block nav-item">
+                            <i class="ti-truck d-block mb-2"></i>
+                            <span class="d-block h4">Shipping Method</span>
+                        </a>
+                        <a href="payment.html" class="text-center d-inline-block nav-item">
+                            <i class="ti-wallet d-block mb-2"></i>
+                            <span class="d-block h4">Payment Method</span>
+                        </a>
+                        <a href="review.html" class="text-center d-inline-block nav-item active">
+                            <i class="ti-eye d-block mb-2"></i>
+                            <span class="d-block h4">Review</span>
+                        </a>
+                    </div>
+                    <!-- /navbar -->
+
+                    <!-- review -->
+                    <h3>Order Review</h3>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td></td>
+                                    <td>Product Name</td>
+                                    <td>Quantity</td>
+                                    <td>Sub Total</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="align-middle"><img class="img-fluid" src="images/cart/product-1.jpg" alt="product-img" /></td>
+                                    <td class="align-middle">Tops</td>
+                                    <td class="align-middle">1</td>
+                                    <td class="align-middle">$220.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle"><img class="img-fluid" src="images/cart/product-2.jpg" alt="product-img" /></td>
+                                    <td class="align-middle">Jacket</td>
+                                    <td class="align-middle">1</td>
+                                    <td class="align-middle">$520.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle"><img class="img-fluid" src="images/cart/product-1.jpg" alt="product-img" /></td>
+                                    <td class="align-middle">Tops</td>
+                                    <td class="align-middle">1</td>
+                                    <td class="align-middle">$220.00</td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle"><img class="img-fluid" src="images/cart/product-2.jpg" alt="product-img" /></td>
+                                    <td class="align-middle">Jacket</td>
+                                    <td class="align-middle">1</td>
+                                    <td class="align-middle">$520.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /review -->
+
+                    <!-- shipping-information -->
+                    <h3 class="mb-5 border-bottom pb-2">Shipping Information</h3>
+                    <div class="row mb-5">
+                        <div class="col-md-4">
+                            <h4 class="mb-3">Shipping Address</h4>
+                            <ul class="list-unstyled">
+                                <li>Somrat</li>
+                                <li>Mohammadpur, Dhaka 120, Bangladesh </li>
+                                <li>248-321-5879 </li>
+                                <li>example.site@email.com</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h4 class="mb-3">Shipping Method</h4>
+                            <ul class="list-unstyled">
+                                <li>Standard Ground (USPS) - $9.50 </li>
+                                <li>Delivered in 8-10 business days. </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h4 class="mb-3">Payment Method</h4>
+                            <ul class="list-unstyled">
+                                <li>Credit Card: </li>
+                                <li>**** **** **** 2637</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- buttons -->
+                    <div class="p-4 bg-gray d-flex justify-content-between">
+                            <a href="payment.html" class="btn btn-dark">Back</a>
+                        <a href="confirmation.html" class="btn btn-primary">Continue</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="border-box p-4">
+                    <h4>Order Summery</h4>
+                    <p>Excepteur sint occaecat cupidat non proi dent sunt.officia.</p>
+                    <ul class="list-unstyled">
+                        <li class="d-flex justify-content-between">
+                            <span>Subtotal</span>
+                            <span>$237.00</span>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                            <span>Shipping & Handling</span>
+                            <span>$15.00</span>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                            <span>Estimated Tax</span>
+                            <span>$0.00</span>
+                        </li>
+                    </ul>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <span>Total</span>
+                        <strong>USD $253.00</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /ORDER-REVIEW -->
+
+<!-- footer -->
+<footer class="bg-light">
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-6 mb-5 mb-md-0 text-center text-sm-left">
+          <h3 class="mb-4">Contact</h3>
+          <p>20464 Hirthe Curve Suite, Emardton, CT 12471-4107</p>
+          <p>+5(305) 785-0437</p>
+          <p>info@example.com</p>
+          <ul class="list-inline social-icons">
+            <li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="ti-twitter-alt"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="ti-vimeo-alt"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="ti-google"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-5 mb-md-0 text-center text-sm-left">
+          <h3 class="mb-4">Category</h3>
+          <ul class="pl-0 list-unstyled">
+            <li class="mb-2"><a class="text-color" href="shop.html">Men</a></li>
+            <li class="mb-2"><a class="text-color" href="shop.html">Women</a></li>
+            <li class="mb-2"><a class="text-color" href="shop.html">Kids</a></li>
+            <li class="mb-2"><a class="text-color" href="shop.html">Accessories</a></li>
+            <li class="mb-2"><a class="text-color" href="shop.html">Shoe</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-5 mb-md-0 text-center text-sm-left">
+          <h3 class="mb-4">Useful Link</h3>
+          <ul class="pl-0 list-unstyled">
+            <li class="mb-2"><a class="text-color" href="about.html">News & Tips</a></li>
+            <li class="mb-2"><a class="text-color" href="about.html">About Us</a></li>
+            <li class="mb-2"><a class="text-color" href="address.html">Support</a></li>
+            <li class="mb-2"><a class="text-color" href="shop.html">Our Shop</a></li>
+            <li class="mb-2"><a class="text-color" href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 text-center text-sm-left">
+          <h3 class="mb-4">Our Policies</h3>
+          <ul class="pl-0 list-unstyled">
+            <li class="mb-2"><a class="text-color" href="404.html">Privacy Policy</a></li>
+            <li class="mb-2"><a class="text-color" href="404.html">Terms & Conditions</a></li>
+            <li class="mb-2"><a class="text-color" href="404.html">Cookie Policy</a></li>
+            <li class="mb-2"><a class="text-color" href="404.html">Terms of Sale</a></li>
+            <li class="mb-2"><a class="text-color" href="dashboard.html">Free Shipping & Returns</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-dark py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 text-center text-md-left mb-4 mb-md-0 align-self-center">
+          <p class="text-white mb-0">Logo &copy; 2018 all right reserved</p>
+        </div>
+        <div class="col-md-2 text-center text-md-left mb-4 mb-md-0">
+          <img src="images/logo-alt.png" alt="logo">
+        </div>
+        <div class="col-md-5 text-center text-md-right mb-4 mb-md-0">
+          <ul class="list-inline">
+            <li class="list-inline-item"><img src="images/payment-card/card-1.jpg" alt="card"></li>
+            <li class="list-inline-item"><img src="images/payment-card/card-2.jpg" alt="card"></li>
+            <li class="list-inline-item"><img src="images/payment-card/card-3.jpg" alt="card"></li>
+            <li class="list-inline-item"><img src="images/payment-card/card-4.jpg" alt="card"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- /footer -->
+
+</div>
+<!-- /main wrapper -->
+
+<!-- jQuery -->
+<script src="plugins/jQuery/jquery.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="plugins/bootstrap/bootstrap.min.js"></script>
+<script src="plugins/slick/slick.min.js"></script>
+<script src="plugins/venobox/venobox.min.js"></script>
+<script src="plugins/aos/aos.js"></script>
+<script src="plugins/syotimer/jquery.syotimer.js"></script>
+<script src="plugins/instafeed/instafeed.min.js"></script>
+<script src="plugins/zoom-master/jquery.zoom.min.js"></script>
+<script src="plugins/bootstrap-touchspin-master/jquery.bootstrap-touchspin.min.js"></script>
+<script src="plugins/nice-select/jquery.nice-select.min.js"></script>
+<script src="plugins/bootstrap-slider/bootstrap-slider.min.js"></script>
+<!-- google map -->
+<script src="../../../maps.googleapis.com/maps/api/js7402?key=AIzaSyBI14J_PNWVd-m0gnUBkjmhoQyNyd7nllA"></script>
+<script src="plugins/google-map/gmap.js"></script>
+<!-- Main Script -->
+<script src="js/script.js"></script>
+</body>
+
+<!-- Mirrored from demo.themefisher.com/themefisher/elite-shop/review.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 Nov 2018 12:10:32 GMT -->
+</html>

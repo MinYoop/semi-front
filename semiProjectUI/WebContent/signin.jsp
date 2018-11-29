@@ -1,0 +1,194 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+<%
+	response.setContentType("text/html; charset=UTF-8");
+%>
+
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+<head>
+<meta charset="utf-8">
+<title>Elite Shop</title>
+
+<!-- mobile responsive meta -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- ** Plugins Needed for the Project ** -->
+<!-- Bootstrap -->
+<link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="plugins/themify-icons/themify-icons.css">
+<link rel="stylesheet" href="plugins/slick/slick.css">
+<link rel="stylesheet" href="plugins/venobox/venobox.css">
+<link rel="stylesheet" href="plugins/animate/animate.css">
+<link rel="stylesheet" href="plugins/aos/aos.css">
+<link rel="stylesheet"
+	href="plugins/bootstrap-touchspin-master/jquery.bootstrap-touchspin.min.css">
+<link rel="stylesheet" href="plugins/nice-select/nice-select.css">
+<link rel="stylesheet"
+	href="plugins/bootstrap-slider/bootstrap-slider.min.css">
+
+<!-- Main Stylesheet -->
+<link href="css/style.css" rel="stylesheet">
+
+<!--Favicon-->
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+<link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+</head>
+
+<body>
+
+	<!-- preloader start -->
+	<div class="preloader">
+		<img src="images/preloader.gif" alt="preloader">
+	</div>
+	<!-- preloader end -->
+	<section class="signin-page account">
+		<div class="container" id="legogogo">
+			<div class="row" id="legogogo2">
+				<div class="col-md-6 mx-auto">
+					<div class="block text-center">
+						<a class="logo" href="index.html"> <img src="images/logo.png"
+							alt="logo" width="100" height="50">
+						</a>
+						<h2 class="text-center">We wanna know little more about you...!</h2>
+						<form class="text-left clearfix" method="get" action="usr.do?command=signin">
+							<div class="form-group">
+								<input type="text" class="form-control" name="nickname"
+									placeholder="NickName">
+							</div>
+							<div class="form-group">
+								<input type="email" class="form-control" name="email"
+									placeholder="Email">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="address1" id="address1"
+									placeholder="Address" readonly="readonly" onclick="goPopup()" value="">
+							<b> 우편번호 </b><input style="align-item:center;color:grey" id="zipNo" name="zipno" class="mt-2" type="text" size="10" readonly="readonly"></div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="address2" id="addrDetail"
+									placeholder="Address detail">
+							</div>
+
+							<div class="form-group">
+								<input type="hidden" class="form-control" name="snsid"
+									value=${param.snsid }>
+							</div>
+							<div class="text-center">
+								<button type="submit" class="btn btn-primary">Sign In</button>
+							</div>
+							<div id="reggogo1"></div>
+							<div id="reggogo2"></div>
+							<input type="hidden" name="homeLat" id="homeLat" value=""> 
+							<input type="hidden" name="homeLon" id="homeLon" value=""> 
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	</div>
+	<!-- /main wrapper -->
+
+	<!-- jQuery -->
+	<script src="plugins/jQuery/jquery.min.js"></script>
+	
+	<!-- Bootstrap JS -->
+	<script src="plugins/bootstrap/bootstrap.min.js"></script>
+	<script src="plugins/slick/slick.min.js"></script>
+	<script src="plugins/venobox/venobox.min.js"></script>
+	<script src="plugins/aos/aos.js"></script>
+	<script src="plugins/syotimer/jquery.syotimer.js"></script>
+	<script src="plugins/instafeed/instafeed.min.js"></script>
+	<script src="plugins/zoom-master/jquery.zoom.min.js"></script>
+	<script
+		src="plugins/bootstrap-touchspin-master/jquery.bootstrap-touchspin.min.js"></script>
+	<script src="plugins/nice-select/jquery.nice-select.min.js"></script>
+	<script src="plugins/bootstrap-slider/bootstrap-slider.min.js"></script>
+	<!-- google map -->
+	<script src="plugins/google-map/gmap.js"></script>
+	<!-- Main Script -->
+	<script src="js/script.js"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b649a06a2d0d11606e17caaae9dd77ed&libraries=services"></script>
+	
+	<script type="text/javascript">
+	
+		function goPopup(){
+		var pop = window.open("jusopopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes");
+		}
+		function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn , detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo){
+		$("#address1").val(roadAddrPart1); 
+		$("#addrDetail").val(addrDetail); 
+		$("#zipNo").val(zipNo);
+		
+		var geocoder = new daum.maps.services.Geocoder();
+		var callback = function(result, status) {
+		    if (status === daum.maps.services.Status.OK) {
+		    	console.log(result);
+		    	$("#homeLat").val(result[0].y);
+		    	$("#homeLon").val(result[0].x);
+
+		    } else{alert("에라...");}
+		}
+
+	setTimeout(geocoder.addressSearch($("#address1").val(), callback),0);
+		}
+		/*
+		<result property="usrSeq" column="USR_SEQ" />
+			<result property="nickname" column="NICKNAME" />
+			<result property="email" column="EMAIL" />
+			<result property="address1" column="ADDRESS1" />
+			<result property="address2" column="ADDRESS2" />
+			<result property="snsId" column="SNS_ID" />
+			<result property="homeLat" column="HOME_LAT" />
+			<result property="homeLon" column="HOME_LON" />
+		*/
+		var rego = function() {$.ajax({
+		      url : "Usr.do",
+		      
+		      method : "post",
+		      data : {"data" : JSON.stringify(
+		      { 
+		      	usrSeq : 0,
+		      	nickname : $("#nickname").val(),
+		     	email : $("#email").val(),
+		     	address1 : $("#address1").val(),
+		     	address2 : $("#addrDetail").val(),
+		     	homeLat : $("#homeLat").val(),
+		     	homeLon : $("#homeLon").val(),
+		     	zipCode : $("#zipNo").val()
+		      }) },
+		      success : function(data){
+		    	  $("#legogogo").append("<b>"+$("#nickname").val()+"님 환영합니다.</b><br/><br/>");
+		    	  $("#legogogo2").css("display","none");
+		    	  $(".nvform").css("display","block");//디자인 들어가도 좋을 듯... 
+		    	  
+		        
+		      },
+		      error : function(request,status, error){
+		        alert(request.status+" : " +error);
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		        alert("실패! 다음 기회에...") 
+		      }
+
+		    })}
+		
+		
+		
+		</script>
+	
+	
+	
+</body>
+
+</html>

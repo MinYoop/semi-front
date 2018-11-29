@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UsrSQL">
+
+	<!--sns id를 한 곳으로 모으되, 앞에 NV, FB, DK 식으로 약자 붙이기. -->
+	
+
+	<resultMap type="dto.SellBoard" id="SellBoardMap">
+		<result property="sellSeq" column="SELL_SEQ" />
+		<result property="seller" column="SELLER" />
+		<result property="title" column="TITLE" />
+		<result property="tradeLat" column="TRADE_LAT" />
+		<result property="tradeLon" column="TRADE_LON" />
+		<result property="sellContent" column="SELL_CONTENT" />
+		<result property="regDate" column="reg_date" />
+		<result property="status" column="STATUS" />
+	</resultMap>
+
+	<resultMap type="dto.Deal" id="DealMap">
+		<result property="dealSeq" column="DEAL_SEQ" />
+		<result property="sellNum" column="SELL_NUM" />
+		<result property="seller" column="SELLER" />
+		<result property="buyer" column="BUYER" />
+		<result property="startDate" column="START_DATE" />
+		<result property="endDate" column="END_DATE" />
+	</resultMap>
+
+	<resultMap type="dto.File" id="FileMap">
+		<result property="fileSeq" column="FILE_SEQ" />
+		<result property="sellNum" column="SELL_NUM" />
+		<result property="filePath" column="FILE_PATH" />
+		<result property="fileName" column="FILE_NAME" />
+	</resultMap>
+
+	<resultMap type="dto.SellBoardReply" id="SellBoard_ReplyMap">
+		<result property="sbReply_seq" column="SB_REPLY_SEQ" />
+		<result property="sbGroupnum" column="SB_GROUPNUM" />
+		<result property="sbGroupSeq" column="SB_GROUP_SEQ" />
+		<result property="sbTitletab" column="SB_TITLETAB" />
+		<result property="sbContent" column="SB_CONTENT" />
+		<result property="sbWriter" column="SB_WRITER" />
+		<result property="regDate" column="REG_DATE" />
+		<result property="sellNum" column="SELL_NUM" />
+	</resultMap>
+
+	<resultMap type="dto.FreeBoard" id="FreeBoardMap">
+		<result property="freeSeq" column="FREE_SEQ" />
+		<result property="writer" column="WRITER" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="saw" column="SAW" />
+		<result property="recomend" column="RECOMEND" />
+		<result property="groupNum" column="GROUP_NUM" />
+		<result property="groupOrdeNum" column="GROUP_ORDER_NUM" />
+		<result property="titleTab" column="TITLE_TAB" />
+		<result property="regDate" column="REG_DATE" />
+
+	</resultMap>
+
+	<resultMap type="dto.FreeBoardReply" id="FreeBoard_ReplyMap">
+		<result property="fbReplySeq" column="FB_REPLY_SEQ" />
+		<result property="fbWriter" column="FB_WRITER" />
+		<result property="fbContent" column="FB_CONTENT" />
+		<result property="fbGroupNum" column="FB_GROUP_NUM" />
+		<result property="fbGroupSeq" column="FB_GROUP_SEQ" />
+		<result property="fbTitleTab" column="FB_TITLE_TAB" />
+		<result property="regDate" column="REG_DATE" />
+		<result property="freeSeq" column="FREE_SEQ" />
+	</resultMap>
+
+	<resultMap type="dto.NoticeBoard" id="NoticeBoardMap">
+		<result property="noticeSeq" column="NOTICE_SEQ" />
+		<result property="adminId" column="ADMIN_ID" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="saw" column="SAW" />
+		<result property="regDate" column="REG_DATE" />
+	</resultMap>
+
+	<resultMap type="dto.Admin" id="AdminMap">
+		<result property="adminId" column="ADMIN_ID" />
+		<result property="adminPw" column="ADMIN_PW" />
+		<result property="sessionId" column="SESSION_ID" />
+		<result property="online" column="ONLINE" />
+	</resultMap>
+
+
+
+	
+
+
+	<select id="selectAll" resultMap="DealMap">
+		SELECT *
+		FROM DEAL_TB
+		ORDER BY DEAL_SEQ
+		DESC
+	</select>
+
+	<select id="selectOne" parameterType="int" resultType="Usr">
+		SELECT *
+		FROM USR
+		WHERE ID = #{id}
+	</select>
+
+	<insert id="insertUsr" parameterType="Usr">
+		insert into USR
+		values (
+		#{seq_id}, #{nickname}, #{email}, #{password}, #{address1},
+		#{address2},
+		#{home_latitude}, #{home_longitude}, #{sns_id},
+		#{session_id}, #{online} )
+	</insert>
+
+</mapper>

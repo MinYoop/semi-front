@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UsrSQL">
+
+
+	<resultMap type="dto.User" id="UsrMap">
+		<result property="usrSeq" column="USR_SEQ" />
+		<result property="nickname" column="NICKNAME" />
+		<result property="email" column="EMAIL" />
+		<result property="address1" column="ADDRESS1" />
+		<result property="address2" column="ADDRESS2" />
+		<result property="snsId" column="SNS_ID" />
+		<result property="homeLat" column="HOME_LAT" />
+		<result property="homeLon" column="HOME_LON" />
+		<result property="zipCode" column="ZIPCODE" />
+		
+	</resultMap>
+
+
+	<resultMap type="dto.UsrLocation" id="UsrLocationMap">
+		<result property="locSeq" column="LOC_SEQ" />
+		<result property="usrSeq" column="USR_SEQ" />
+		<result property="dealLat" column="DEAL_LAT" />
+		<result property="dealLon" column="DEAL_LON" />
+		<result property="locationName" column="LOCATION_NAME" />
+	</resultMap>
+
+
+	<resultMap type="dto.Message" id="MessageMap">
+		<result property="msgSeq" column="MSG_SEQ" />
+		<result property="msgContent" column="MSG_CONTENT" />
+		<result property="sender" column="SENDER" />
+		<result property="receiver" column="RECEIVER" />
+		<result property="senderChk" column="SENDER_CHK" />
+		<result property="receiverChk" column="RECEIVER_CHK" />
+		<result property="senderDelDhk" column="SENDER_DEL_CHK" />
+		<result property="receiverDelChk" column="RECEIVER_DEL_CHK" />
+		<result property="sendDate" column="SEND_DATE" />
+	</resultMap>
+
+
+
+	<select id="selectAll" resultMap="UsrMap">
+		SELECT *
+		FROM USR_TB
+		ORDER BY
+		USR_SEQ
+		DESC
+	</select>
+
+	<select id="selectOne" parameterType="int" resultType="Usr">
+		SELECT *
+		FROM USR_TB
+		WHERE USR_SEQ = #{usrSeq}
+	</select>
+
+	<insert id="insertUsr" parameterType="Usr">
+		insert into USR_TB
+		values (
+		#{usrSeq}, #{nickname}, #{email}, #{address1}, #{address2}, #{snsId},
+		#{homeLat}, #{homeLon} )
+	</insert>
+
+
+</mapper>

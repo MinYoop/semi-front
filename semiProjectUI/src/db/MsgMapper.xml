@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MsgSQL">
+
+
+	
+
+	<resultMap type="dto.Message" id="MessageMap">
+		<result property="msgSeq" column="MSG_SEQ" />
+		<result property="msgContent" column="MSG_CONTENT" />
+		<result property="sender" column="SENDER" />
+		<result property="receiver" column="RECEIVER" />
+		<result property="receiverChk" column="RECEIVER_CHK" />
+		<result property="senderDelDhk" column="SENDER_DEL_CHK" />
+		<result property="receiverDelChk" column="RECEIVER_DEL_CHK" />
+		<result property="sendDate" column="SEND_DATE" />
+	</resultMap>
+
+
+	<insert id="sendMsg" parameterType="Message">
+		insert into MESSAGE_TB
+		values (
+		#{msgSeq}, #{msgContent}, #{sender}, #{receiver}, #{senderChk}, 
+		#{senderDelDhk}, #{receiverDelChk}, #{sendDate} )
+	</insert>
+
+	<select id="selectsent" resultMap="MessageMap">
+		SELECT *
+		FROM MESSAGE_TB
+		WHERE SENDER = #{sender}
+		ORDER BY
+		SEND_DATE
+		DESC
+	</select>
+
+	<select id="selectreceived" resultMap="MessageMap">
+		SELECT *
+		FROM MESSAGE_TB
+		WHERE RECEIVER = #{receiver}
+		ORDER BY
+		SEND_DATE
+		DESC
+	</select>
+
+	<select id="selectOne" parameterType="int" resultType="Message">
+		SELECT *
+		FROM MESSAGE_TB
+		WHERE MSG_SEQ = #{msgSeq}
+	</select>
+
+	
+
+
+</mapper>

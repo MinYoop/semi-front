@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+		
+	<typeAliases>
+		<typeAlias type = "dto.User" alias="User"/>
+		<typeAlias type = "dto.UsrLocation" alias="UserLocation"/>
+		<typeAlias type = "dto.Message" alias="Message"/>
+		<typeAlias type = "dto.SellBoard" alias="SellBoard"/>
+		<typeAlias type = "dto.SellBoardReply" alias="SellBoardReply"/>
+		<typeAlias type = "dto.Deal" alias="Deal"/>
+		<typeAlias type = "dto.File" alias="File"/>
+		<typeAlias type = "dto.Admin" alias="Admin"/>
+		<typeAlias type = "dto.NoticeBoard" alias="NoticeBoard"/>
+		<typeAlias type = "dto.FreeBoard" alias="FreeBoard"/>
+		<typeAlias type = "dto.FreeBoardReply" alias="FreeBoardReply"/>
+	</typeAliases>
+	
+	<!-- db 접속 설정. 알아서 고쳐쓰도록.  -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+				<dataSource type="POOLED">
+        			<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+        			<property name="url" value="jdbc:oracle:thin:@localhost:59161:xe"/>
+        			<property name="username" value="ojo"/>
+        			<property name="password" value="iu"/>
+      			</dataSource>
+    	</environment>
+  	</environments>
+	
+	<!-- Mapper 경로 -->
+	<mappers>
+    	<mapper resource="db/Mapper.xml"/>
+    	<mapper resource="db/UsrMapper.xml"/>
+  	</mappers>
+</configuration>

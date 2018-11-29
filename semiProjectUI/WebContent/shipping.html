@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+<head>
+<meta charset="utf-8">
+<title>IUTRADE</title>
+
+<!-- mobile responsive meta -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<!--Favicon-->
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+<link rel="icon" href="images/favicon.png" type="image/x-icon">
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript"
+	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
+	charset="utf-8"></script>
+	
+<script type="text/javascript">
+$(document).ready( function() {
+	$("#header").load("header.html");
+});
+
+$(document).ready( function() {
+	$("#footer").load("footer.html");
+});
+</script>
+
+</head>
+
+<!-- preloader start -->
+<body>
+
+
+<div id="header"></div>
+
+	<div class="preloader">
+		<img src="images/preloader.gif" alt="preloader">
+	</div>
+	<!-- preloader end -->
+
+	<!-- main wrapper -->
+<div class="main-wrapper">
+
+<!-- breadcrumb -->
+<nav class="bg-gray py-3">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Shipping Information</li>
+    </ol>
+  </div>
+</nav>
+<!-- /breadcrumb -->
+
+<!-- shipping method -->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="inner-wrapper border-box">
+                    <!-- navbar -->
+                    <div class="justify-content-between nav mb-5">
+                        <a href="shipping.html" class="text-center d-inline-block active nav-item">
+                            <i class="ti-truck d-block mb-2"></i>
+                            <span class="d-block h4">Shipping Method</span>
+                        </a>
+                        <a href="payment.html" class="text-center d-inline-block nav-item">
+                            <i class="ti-wallet d-block mb-2"></i>
+                            <span class="d-block h4">Payment Method</span>
+                        </a>
+                        <a href="review.html" class="text-center d-inline-block nav-item">
+                            <i class="ti-eye d-block mb-2"></i>
+                            <span class="d-block h4">Review</span>
+                        </a>
+                    </div>
+                    <!-- /navbar -->
+
+                    <!-- shipping-address -->
+                    <h3 class="mb-5 border-bottom pb-2">Shipping Address</h3>
+                    <form action="#" class="row">
+                        <div class="col-sm-6">
+                            <label for="firstName">First Name</label>
+                            <input class="form-control" type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="lastName">Last Name</label>
+                            <input class="form-control" type="text" id="lastName" name="lastName" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="email">Email</label>
+                            <input class="form-control" type="email" id="email" name="email" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="company">Company</label>
+                            <input class="form-control" type="text" id="company" name="company" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="address">Address</label>
+                            <input class="form-control" type="text" id="address" name="address" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="phone">Phone</label>
+                            <input class="form-control" type="text" id="phone" name="phone" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="city">City</label>
+                            <select class="form-control" name="city">
+                                <option value="brown">Dhaka</option>
+                                <option value="gray">Newyork</option>
+                                <option value="black">Delhi</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="zip-code">Zip Code</label>
+                            <input class="form-control" type="text" id="zip-code" name="zip-code" required>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="country">Country</label>
+                            <select class="form-control" name="country">
+                                <option value="brown">Bangladesh</option>
+                                <option value="gray">Japan</option>
+                                <option value="black">Tokyo</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="fax">Fax</label>
+                            <input class="form-control" type="text" id="fax" name="fax" required>
+                        </div>
+
+                        <!-- select shipping method -->
+                        <div class="col-12">
+                            <h3 class="mb-5 border-bottom pb-2">Select A Shipping Method</h3>
+                        </div>
+                        <div class="col-sm-6 mb-4">
+                            <input id="checkbox1" type="radio" name="checkbox" value="1" checked="checked">
+                            <label for="checkbox1">Standard Ground (USPS) - $7.50</label>
+                            <small class="d-block ml-3">Delivered in 8-12 business days.</small>
+                        </div>
+                        <div class="col-sm-6 mb-4">
+                            <input id="checkbox2" type="radio" name="checkbox" value="2">
+                            <label for="checkbox2">Premium Ground (UPS) - $12.50</label>
+                            <small class="d-block ml-3">Delivered in 4-7 business days.</small>
+                        </div>
+                        <div class="col-sm-6 mb-4">
+                            <input id="checkbox3" type="radio" name="checkbox" value="3">
+                            <label for="checkbox3">UPS 2 Business Day - $15.00</label>
+                            <small class="d-block ml-3">Orders placed by 9:45AM PST will ship same day.</small>
+                        </div>
+                        <div class="col-sm-6 mb-4">
+                            <input id="checkbox4" type="radio" name="checkbox" value="4">
+                            <label for="checkbox4">UPS 1 Business Day - $35.00</label>
+                            <small class="d-block ml-3">Orders placed by 9:45AM PST will ship same day.</small>
+                        </div>
+                        <!-- /select shipping method -->
+                    </form>
+                    <!-- /shipping-address -->
+                    <div class="p-4 bg-gray text-right">
+                        <a href="payment.html" class="btn btn-primary">Continue</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="border-box p-4">
+                    <h4>Order Summery</h4>
+                    <p>Excepteur sint occaecat cupidat non proi dent sunt.officia.</p>
+                    <ul class="list-unstyled">
+                        <li class="d-flex justify-content-between">
+                            <span>Subtotal</span>
+                            <span>$237.00</span>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                            <span>Shipping & Handling</span>
+                            <span>$15.00</span>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                            <span>Estimated Tax</span>
+                            <span>$0.00</span>
+                        </li>
+                    </ul>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <span>Total</span>
+                        <strong>USD $253.00</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /shipping method -->
+
+<!-- footer -->
+<footer class="bg-light">
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-6 mb-5 mb-md-0 text-center text-sm-left">
+          <h3 class="mb-4">Contact</h3>
+          <p>20464 Hirthe Curve Suite, Emardton, CT 12471-4107</p>
+          <p>+5(305) 785-0437</p>
+          <p>info@example.com</p>
+          <ul class="list-inline social-icons">
+            <li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="ti-twitter-alt"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="ti-vimeo-alt"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="ti-google"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-5 mb-md-0 text-center text-sm-left">
+          <h3 class="mb-4">Category</h3>
+          <ul class="pl-0 list-unstyled">
+            <li class="mb-2"><a class="text-color" href="shop.html">Men</a></li>
+            <li class="mb-2"><a class="text-color" href="shop.html">Women</a></li>
+            <li class="mb-2"><a class="text-color" href="shop.html">Kids</a></li>
+            <li class="mb-2"><a class="text-color" href="shop.html">Accessories</a></li>
+            <li class="mb-2"><a class="text-color" href="shop.html">Shoe</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 mb-5 mb-md-0 text-center text-sm-left">
+          <h3 class="mb-4">Useful Link</h3>
+          <ul class="pl-0 list-unstyled">
+            <li class="mb-2"><a class="text-color" href="about.html">News & Tips</a></li>
+            <li class="mb-2"><a class="text-color" href="about.html">About Us</a></li>
+            <li class="mb-2"><a class="text-color" href="address.html">Support</a></li>
+            <li class="mb-2"><a class="text-color" href="shop.html">Our Shop</a></li>
+            <li class="mb-2"><a class="text-color" href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 text-center text-sm-left">
+          <h3 class="mb-4">Our Policies</h3>
+          <ul class="pl-0 list-unstyled">
+            <li class="mb-2"><a class="text-color" href="404.html">Privacy Policy</a></li>
+            <li class="mb-2"><a class="text-color" href="404.html">Terms & Conditions</a></li>
+            <li class="mb-2"><a class="text-color" href="404.html">Cookie Policy</a></li>
+            <li class="mb-2"><a class="text-color" href="404.html">Terms of Sale</a></li>
+            <li class="mb-2"><a class="text-color" href="dashboard.html">Free Shipping & Returns</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-dark py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 text-center text-md-left mb-4 mb-md-0 align-self-center">
+          <p class="text-white mb-0">Logo &copy; 2018 all right reserved</p>
+        </div>
+        <div class="col-md-2 text-center text-md-left mb-4 mb-md-0">
+          <img src="images/logo-alt.png" alt="logo">
+        </div>
+        <div class="col-md-5 text-center text-md-right mb-4 mb-md-0">
+          <ul class="list-inline">
+            <li class="list-inline-item"><img src="images/payment-card/card-1.jpg" alt="card"></li>
+            <li class="list-inline-item"><img src="images/payment-card/card-2.jpg" alt="card"></li>
+            <li class="list-inline-item"><img src="images/payment-card/card-3.jpg" alt="card"></li>
+            <li class="list-inline-item"><img src="images/payment-card/card-4.jpg" alt="card"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- /footer -->
+
+</div>
+<!-- /main wrapper -->
+
+<!-- jQuery -->
+<script src="plugins/jQuery/jquery.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="plugins/bootstrap/bootstrap.min.js"></script>
+<script src="plugins/slick/slick.min.js"></script>
+<script src="plugins/venobox/venobox.min.js"></script>
+<script src="plugins/aos/aos.js"></script>
+<script src="plugins/syotimer/jquery.syotimer.js"></script>
+<script src="plugins/instafeed/instafeed.min.js"></script>
+<script src="plugins/zoom-master/jquery.zoom.min.js"></script>
+<script src="plugins/bootstrap-touchspin-master/jquery.bootstrap-touchspin.min.js"></script>
+<script src="plugins/nice-select/jquery.nice-select.min.js"></script>
+<script src="plugins/bootstrap-slider/bootstrap-slider.min.js"></script>
+<!-- google map -->
+<script src="../../../maps.googleapis.com/maps/api/js7402?key=AIzaSyBI14J_PNWVd-m0gnUBkjmhoQyNyd7nllA"></script>
+<script src="plugins/google-map/gmap.js"></script>
+<!-- Main Script -->
+<script src="js/script.js"></script>
+</body>
+
+<!-- Mirrored from demo.themefisher.com/themefisher/elite-shop/shipping.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 Nov 2018 12:10:32 GMT -->
+</html>
