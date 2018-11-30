@@ -1,6 +1,13 @@
 (function ($) {
   'use strict';
 
+  $(document).ready( function() {
+		$("#header").load("header.html");
+	});
+
+	$(document).ready( function() {
+		$("#footer").load("footer.html");
+	});
   // Subscription Modal Show
   var show = function () {
     $('#subscriptionModal').modal('show');
@@ -12,8 +19,10 @@
     });
     var timer = window.setTimeout(show, 2000);
   });
+  /*
 
-  //  Search Form Open
+*/
+  setTimeout(function(){//  Search Form Open
   $('#searchOpen').on('click', function () {
     $('.search-wrapper').toggleClass('open');
     $('.search-btn').toggleClass('search-close');
@@ -26,6 +35,7 @@
   $('#cartClose').on('click', function () {
     $('.cart-wrapper').removeClass('open');
   });
+  },5000);
 
   //Hero Slider
   $('.hero-slider').slick({
