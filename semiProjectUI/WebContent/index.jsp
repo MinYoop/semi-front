@@ -1,3 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8"); %>
+<% response.setContentType("text/html; charset=UTF-8"); %>  
+
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -50,7 +59,7 @@
 								class="col-lg-6 align-self-center text-center text-md-left mb-4 mb-lg-0">
 								<h3 data-duration-in=".5" data-animation-in="fadeInLeft"
 									data-delay-in="0" data-animation-out="fadeOutLeft"
-									data-delay-out="5" data-duration-out=".3">For Men’s</h3>
+									data-delay-out="5" data-duration-out=".3">For Menâs</h3>
 								<!-- Start Title -->
 								<h1 data-duration-in=".5" data-animation-in="fadeInLeft"
 									data-delay-in=".2" data-animation-out="fadeOutLeft"
@@ -106,7 +115,7 @@
 								class="col-lg-6 align-self-center text-center text-md-left mb-4 mb-lg-0">
 								<h3 data-duration-in=".5" data-animation-in="fadeInDown"
 									data-delay-in="0" data-animation-out="fadeOutDown"
-									data-delay-out="5.8" data-duration-out=".3">For Women’s</h3>
+									data-delay-out="5.8" data-duration-out=".3">For Womenâs</h3>
 								<h1 data-duration-in=".5" data-animation-in="fadeInDown"
 									data-delay-in=".2" data-animation-out="fadeOutDown"
 									data-delay-out="5.4" data-duration-out=".3">High Quality
@@ -770,7 +779,7 @@
 		</section>
 		<!-- /newsletter -->
 
-		<!-- Newsletter Modal 아니고 이제부턴 로그인 모달 -->
+		<!-- Newsletter Modal ìëê³  ì´ì ë¶í´ ë¡ê·¸ì¸ ëª¨ë¬ -->
 		<div class="modal fade subscription-modal" id="subscriptionModal"
 			tabindex="-1">
 			<div class="modal-dialog modal-lg">
@@ -794,21 +803,22 @@
 							<div class="col-lg-6 align-self-center p-5">
 								<!-- Content start -->
 								<div class="text-center align-self-center">
-									<h3 class="mb-lg-5 mb-4">Lucky You!</h3>
-									<h4>Want an Instant</h4>
-									<h2 class="mb-lg-5 mb-4">10% OFF?</h2>
+									<h3 class="mb-lg-5 mb-4">Serendipity!</h3>
+									<h4>가장 가까운 곳의 가장 좋은 물건</h4>
+									<h2 class="mb-lg-5 mb-4">이 곳에 있습니다.</h2>
 									<!-- newsletter form -->
 									<div class="form">
-										<div id="naverIdLogin" class="my-3"></div>
-										<div id="fb-root"></div>
+									<form method="post" action="signin.jsp">
+									<button class="btn btn-primary w-100" type="submit">Join Us</button></form>
+										<div id="naverIdLogin" class="my-3"></div> 
 										<script type="text/javascript"
 											src="//connect.facebook.net/en_US/all.js#xfbml=1&appId=416848035516774"
 											id="facebook-jssdk"></script>
 										<script src="js/sns.js"></script>
-										<div class="fb-login-button" data-width="277"
+							 <div class="fb-login-button" data-width="277" 
 											data-max-rows="1" data-size="large"
 											data-button-type="login_with" data-show-faces="false"
-											data-auto-logout-link="true" data-use-continue-as="false"></div>
+											data-auto-logout-link="true" data-use-continue-as="false" ></div> 
 									</div>
 								</div>
 								<!-- Content end -->

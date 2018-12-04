@@ -61,9 +61,9 @@
 							alt="logo" width="100" height="50">
 						</a>
 						<h2 class="text-center">We wanna know little more about you...!</h2>
-						<form class="text-left clearfix" method="get" action="usr.do?command=signin">
+						<form class="text-left clearfix" method="post" action="usr.do?command=signin">
 							<div class="form-group">
-								<input type="text" class="form-control" name="nickname"
+								<input type="text" class="form-control" name="nickName"
 									placeholder="NickName">
 							</div>
 							<div class="form-group">
@@ -73,15 +73,19 @@
 							<div class="form-group">
 								<input type="text" class="form-control" name="address1" id="address1"
 									placeholder="Address" readonly="readonly" onclick="goPopup()" value="">
-							<b> 우편번호 </b><input style="align-item:center;color:grey" id="zipNo" name="zipno" class="mt-2" type="text" size="10" readonly="readonly"></div>
+							<b> 우편번호 </b><input style="align-item:center;color:grey" id="zipNo" name="zipNo" class="mt-2" type="text" size="10" readonly="readonly"></div>
 							<div class="form-group">
 								<input type="text" class="form-control" name="address2" id="addrDetail"
 									placeholder="Address detail">
 							</div>
 
 							<div class="form-group">
-								<input type="hidden" class="form-control" name="snsid"
-									value=${param.snsid }>
+								<input type="hidden" class="form-control" name="snsId"
+									value=${param.snsId }>
+							</div>
+							<div class="form-group">
+								<input type="hidden" class="form-control" name="sns"
+									value=${param.sns }>
 							</div>
 							<div class="text-center">
 								<button type="submit" class="btn btn-primary">Sign In</button>
@@ -144,17 +148,8 @@
 	setTimeout(geocoder.addressSearch($("#address1").val(), callback),0);
 		}
 		/*
-		<result property="usrSeq" column="USR_SEQ" />
-			<result property="nickname" column="NICKNAME" />
-			<result property="email" column="EMAIL" />
-			<result property="address1" column="ADDRESS1" />
-			<result property="address2" column="ADDRESS2" />
-			<result property="snsId" column="SNS_ID" />
-			<result property="homeLat" column="HOME_LAT" />
-			<result property="homeLon" column="HOME_LON" />
-		*/
 		var rego = function() {$.ajax({
-		      url : "Usr.do",
+		      url : "Usr.do?command=signin",
 		      
 		      method : "post",
 		      data : {"data" : JSON.stringify(
@@ -162,6 +157,8 @@
 		      	usrSeq : 0,
 		      	nickname : $("#nickname").val(),
 		     	email : $("#email").val(),
+		     	sns : $("#sns").val(),
+		     	snsId : $("#snsId").val(),
 		     	address1 : $("#address1").val(),
 		     	address2 : $("#addrDetail").val(),
 		     	homeLat : $("#homeLat").val(),
@@ -171,7 +168,6 @@
 		      success : function(data){
 		    	  $("#legogogo").append("<b>"+$("#nickname").val()+"님 환영합니다.</b><br/><br/>");
 		    	  $("#legogogo2").css("display","none");
-		    	  $(".nvform").css("display","block");//디자인 들어가도 좋을 듯... 
 		    	  
 		        
 		      },
@@ -183,7 +179,7 @@
 
 		    })}
 		
-		
+		*/
 		
 		</script>
 	

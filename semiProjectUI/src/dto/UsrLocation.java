@@ -4,7 +4,7 @@ package dto;
 public class UsrLocation {
 
  // 유저번호 
- private int usrSeq;
+ private Integer usrSeq;
 
  // 거래위도 
  private String dealLat;
@@ -17,11 +17,11 @@ public class UsrLocation {
 
  private String locSeq;
 
- public int getUsrSeq() {
+ public Integer getUsrSeq() {
      return usrSeq;
  }
 
- public void setUsrSeq(int usrSeq) {
+ public void setUsrSeq(Integer usrSeq) {
      this.usrSeq = usrSeq;
  }
 

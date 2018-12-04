@@ -5,17 +5,13 @@ import dto.NoticeBoard;
 public class NoticeBoardDao {
 
 	public int insertNotice() {			//관리자 고유권한 
-		
 	}
 	
-	public int updateNotice() {			//관리자 고유권한 
-		
-		
+	public int updateNotice() {			//관리자 고유권한 	
 	}
 	
 	
 	public int selectPageNotice() {	
-		
 	}
 	
 	public NoticeBoard selectOne(int noticeSeq) {	

@@ -6,7 +6,7 @@ import java.util.Date;
 public class FreeBoard {
 
  // 자유글번호 
- private int freeSeq;
+ private Integer freeSeq;
 
  // 제목 
  private String title;
@@ -15,31 +15,31 @@ public class FreeBoard {
  private String content;
 
  // 조회수 
- private int saw;
+ private Integer saw;
 
  // 추천 
- private int recommend;
+ private Integer recommend;
 
  // 글그룹번호 
- private int groupNum;
+ private Integer groupNum;
 
  // 글그룹별순서 
- private int groupOrderNum;
+ private Integer groupOrderNum;
 
  // 들여쓰기단계 
- private int titleTab;
+ private Integer titleTab;
 
  // 게시자 
- private int writer;
+ private Integer writer;
 
  // 등록일 
  private Date regDate;
 
- public int getFreeSeq() {
+ public Integer getFreeSeq() {
      return freeSeq;
  }
 
- public void setFreeSeq(int freeSeq) {
+ public void setFreeSeq(Integer freeSeq) {
      this.freeSeq = freeSeq;
  }
 
@@ -59,51 +59,51 @@ public class FreeBoard {
      this.content = content;
  }
 
- public int getSaw() {
+ public Integer getSaw() {
      return saw;
  }
 
- public void setSaw(int saw) {
+ public void setSaw(Integer saw) {
      this.saw = saw;
  }
 
- public int getRecommend() {
+ public Integer getRecommend() {
      return recommend;
  }
 
- public void setRecommend(int recommend) {
+ public void setRecommend(Integer recommend) {
      this.recommend = recommend;
  }
 
- public int getGroupNum() {
+ public Integer getGroupNum() {
      return groupNum;
  }
 
- public void setGroupNum(int groupNum) {
+ public void setGroupNum(Integer groupNum) {
      this.groupNum = groupNum;
  }
 
- public int getGroupOrderNum() {
+ public Integer getGroupOrderNum() {
      return groupOrderNum;
  }
 
- public void setGroupOrderNum(int groupOrderNum) {
+ public void setGroupOrderNum(Integer groupOrderNum) {
      this.groupOrderNum = groupOrderNum;
  }
 
- public int getTitleTab() {
+ public Integer getTitleTab() {
      return titleTab;
  }
 
- public void setTitleTab(int titleTab) {
+ public void setTitleTab(Integer titleTab) {
      this.titleTab = titleTab;
  }
 
- public int getWriter() {
+ public Integer getWriter() {
      return writer;
  }
 
- public void setWriter(int writer) {
+ public void setWriter(Integer writer) {
      this.writer = writer;
  }
 

@@ -1,3 +1,13 @@
+<%@page import="dto.Message"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8"); %>
+<% response.setContentType("text/html; charset=UTF-8"); %>  
+
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ 
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -34,89 +44,136 @@
 	<div class="preloader">
 		<img src="images/preloader.gif" alt="preloader">
 	</div>
-	<!-- preloader end -->
+	
+	
+	
+	
+	
+	
+	<!-- 메세지 리스트  -->
+	<script src="js/pasing.js"></script>
+		<script src="js/pasing2.js"></script>
+	
+	
+<div style="display:flex; align-items: center;
+  justify-content: center;" class="my-80">
+<div class="received mx-3 my-10"style ="width:300px;height:500px; margin:auto;">
+<div style="text-align:center"><h3>받은 쪽지</h3></div>
 
-	<!-- main wrapper -->
-
-<!-- main wrapper -->
-<div class="main-wrapper">
-
-<!-- breadcrumb -->
-<nav class="bg-gray py-3">
-  <div class="container">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">My Accounts</li>
-    </ol>
-  </div>
-</nav>
-<!-- /breadcrumb -->
-
-
-<section class="user-dashboard section">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<ul class="list-inline dashboard-menu text-center">
-					<li class="list-inline-item"><a class="active" href="dashboard.html">Dashboard</a></li>
-					<li class="list-inline-item"><a href="order.html">Orders</a></li>
-					<li class="list-inline-item"><a href="address.html">Address</a></li>
-					<li class="list-inline-item"><a href="profile-details.html">Profile Details</a></li>
-				</ul>
-				<div class="dashboard-wrapper user-dashboard">
-					<div class="media">
-						<div class="pull-left mr-3">
-							<img class="media-object user-img" src="images/avater.jpg" alt="Image">
-						</div>
-						<div class="media-body align-self-center">
-							<h2 class="media-heading">Welcome Adam Smith</h2>
-							<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, iure, est. Sit mollitia est maxime! Eos cupiditate tempore, tempora omnis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, nihil. </p>
-						</div>
-					</div>
-					<div class="total-order mt-4">
-						<h4>Total Orders</h4>
-						<div class="table-responsive">
-							<table class="table">
-								<thead>
-									<tr>
-										<th>Order ID</th>
-										<th>Date</th>
-										<th>Items</th>
-										<th>Total Price</th>
-										<th></th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><a href="#">#252125</a></td>
-										<td>Mar 25, 2016</td>
-										<td>2</td>
-										<td>$ 99.00</td>
-									</tr>
-									<tr>
-										<td><a href="#">#252125</a></td>
-										<td>Mar 25, 2016</td>
-										<td>2</td>
-										<td>$ 99.00</td>
-									</tr>
-									<tr>
-										<td><a href="#">#252125</a></td>
-										<td>Mar 25, 2016</td>
-										<td>2</td>
-										<td>$ 99.00</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+<table>
+		<col width="50">
+		<col width="100">
+		<col width="300">
+		<col width="100">
+		<col width="80">
+		
+		<tr>
+			<th>확인</th>
+			<th>보낸</th>
+			<th>내용</th>
+			<th>작성일</th>
+			<th>삭제</th>
+		</tr>	
+		
+		<c:choose>
+			<c:when test="${empty rclist }">
+				<tr>
+					<td colspan="5">----작성된 글이 존재하지 않습니다.------</td>
+				</tr>		
+			</c:when>
+			<c:otherwise>
+				<c:forEach var="dto" items="${rclist }">
+					<tr>
+						<td>${dto.receiverChk }</td>
+						<td>${dto.sender }</td>
+						<td>${dto.msgContent }</td>
+						<td>${dto.sendDate }</td>
+						<td><a href="controller.do?command=delete&msgSeq=${dto.msgSeq }">${dto.sendDate }</a></td>
+						
+					</tr>
+				</c:forEach>	
+			</c:otherwise>		
+		</c:choose>
+		
+		<tr>
+			<td colspan="5">
+			</td>
+		</tr>
+	</table>
+	<input type="hidden" id="totalCount" value="100">
+<input type="hidden" id="page" value="1">
+<input type="hidden" id="boardName" value="messageboard">
+<div id="pasing"></div>
+</div>
 
 
 
+
+
+<div class="sent mx-3 my-10"style ="width:300px;height:500px; margin:auto;">
+
+<div style="text-align:center"><h3>보낸 쪽지</h3></div>
+<table>
+		<col width="2%">
+		<col width="4%">
+		<col width="6%">
+		<col width="4%">
+		<col width="2%">
+		
+		<tr>
+			<th>확인</th>
+			<th>받은이</th>
+			<th>내용</th>
+			<th>작성일</th>
+			<th>삭제</th> 
+		</tr>	
+		
+		<c:choose>
+			<c:when test="${empty sdlist }">
+				<tr>
+					<td colspan="5">----작성된 글이 존재하지 않습니다.----</td>
+				</tr>		
+			</c:when>
+			<c:otherwise>
+				<c:forEach var="dto" items="${sdlist }">
+					<tr>
+						<td>${dto.msgSeq }</td>
+						<td>${dto.receiver }</td>
+						<td>${dto.msgContent }</td>
+						<td>${dto.sendDate }</td>
+						<td><a href="Messagecon.do?command=delete&seq=${dto.msgSeq }">삭제</a></td>
+					</tr>
+				</c:forEach>	
+			</c:otherwise>		
+		</c:choose>
+		
+		<tr>
+			<td colspan="5">
+				<input type="button" value="글쓰기" onclick="location.href = 'controller.do?command=insertform'">
+			</td>
+		</tr>
+	</table>
+	<input type="hidden" id="totalCount2" value="1000">
+<input type="hidden" id="page2" value="23">
+<input type="hidden" id="boardName2" value="messageboardreceived">
+<div id="pasing2"></div>
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+/*$.ajax({
+	url:"Message.do",
+	method:"post",
+	data: 
+})
+*/
+</script>
+
+</div>
 <!-- footer -->
 <footer class="bg-light">
   <div class="section">
@@ -213,5 +270,5 @@
 <script src="js/script.js"></script>
 </body>
 
-<!-- Mirrored from demo.themefisher.com/themefisher/elite-shop/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 Nov 2018 12:09:01 GMT -->
+<!-- Mirrored from demo.themefisher.com/themefisher/elite-shop/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 Nov 2018 12:11:31 GMT -->
 </html>

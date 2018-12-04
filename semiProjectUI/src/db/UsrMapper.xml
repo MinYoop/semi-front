@@ -2,23 +2,37 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="UsrSQL">
+<mapper namespace="UsrSql">
 
 
 	<resultMap type="dto.User" id="UsrMap">
 		<result property="usrSeq" column="USR_SEQ" />
-		<result property="nickname" column="NICKNAME" />
+		<result property="nickName" column="NICKNAME" />
 		<result property="email" column="EMAIL" />
+		<result property="sns" column="SNS" />
+		<result property="snsId" column="SNS_ID" />
 		<result property="address1" column="ADDRESS1" />
 		<result property="address2" column="ADDRESS2" />
-		<result property="snsId" column="SNS_ID" />
 		<result property="homeLat" column="HOME_LAT" />
 		<result property="homeLon" column="HOME_LON" />
 		<result property="zipCode" column="ZIPCODE" />
-		
 	</resultMap>
 
 
+	
+	<resultMap type="dto.Message" id="MessageMap">
+		<result property="msgSeq" column="MSG_SEQ" />
+		<result property="msgContent" column="MSG_CONTENT" />
+		<result property="sender" column="SENDER" />
+		<result property="receiver" column="RECEIVER" />
+		<result property="receiverChk" column="RECEIVER_CHK" />
+		<result property="senderDelDhk" column="SENDER_DEL_CHK" />
+		<result property="receiverDelChk" column="RECEIVER_DEL_CHK" />
+		<result property="sendDate" column="SEND_DATE" />
+	</resultMap>
+
+
+	
 	<resultMap type="dto.UsrLocation" id="UsrLocationMap">
 		<result property="locSeq" column="LOC_SEQ" />
 		<result property="usrSeq" column="USR_SEQ" />
@@ -28,39 +42,36 @@
 	</resultMap>
 
 
-	<resultMap type="dto.Message" id="MessageMap">
-		<result property="msgSeq" column="MSG_SEQ" />
-		<result property="msgContent" column="MSG_CONTENT" />
-		<result property="sender" column="SENDER" />
-		<result property="receiver" column="RECEIVER" />
-		<result property="senderChk" column="SENDER_CHK" />
-		<result property="receiverChk" column="RECEIVER_CHK" />
-		<result property="senderDelDhk" column="SENDER_DEL_CHK" />
-		<result property="receiverDelChk" column="RECEIVER_DEL_CHK" />
-		<result property="sendDate" column="SEND_DATE" />
-	</resultMap>
-
-
 
 	<select id="selectAll" resultMap="UsrMap">
-		SELECT *
-		FROM USR_TB
+		SELECT usr_seq, nickname, email, sns, sns_id, address1, address2, home_lat, home_lon
+		FROM USER_TB
 		ORDER BY
 		USR_SEQ
 		DESC
 	</select>
 
-	<select id="selectOne" parameterType="int" resultType="Usr">
-		SELECT *
-		FROM USR_TB
+	<select id="selectOneBySeq" parameterType="int" resultMap="UsrMap">
+		SELECT usr_seq, nickname, email, sns, sns_id, address1, address2, home_lat, home_lon
+		FROM USER_TB
 		WHERE USR_SEQ = #{usrSeq}
 	</select>
+	
+	<select id="selectOne" parameterType="User" resultMap="UsrMap">
+		SELECT usr_seq, nickname, email, sns, sns_id, address1, address2, home_lat, home_lon
+		FROM USER_TB
+		WHERE SNS = #{sns}
+		and SNS_ID = #{snsId}
+	</select>
 
-	<insert id="insertUsr" parameterType="Usr">
-		insert into USR_TB
+	<insert id="insertUsr" parameterType="User">
+	<selectKey keyProperty="usrSeq" resultType="int" order="BEFORE">
+	select USER_TB_SEQ.nextval from dual
+	</selectKey>
+		insert into USER_TB
 		values (
-		#{usrSeq}, #{nickname}, #{email}, #{address1}, #{address2}, #{snsId},
-		#{homeLat}, #{homeLon} )
+		#{usrSeq}, #{nickName}, #{email}, #{sns}, #{snsId}, #{address1}, #{address2},
+		#{homeLat}, #{homeLon}, #{zipCode})
 	</insert>
 
 

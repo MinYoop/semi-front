@@ -5,10 +5,10 @@ import java.util.Date;
 public class SellBoardForDistance {
 
     // 매물번호 
-    private int sellSeq;
+    private Integer sellSeq;
 
     // 판매자 
-    private int seller;
+    private Integer seller;
 
     // 매매위치위도 
     private String tradeLat;
@@ -32,19 +32,19 @@ public class SellBoardForDistance {
     private String distance; //거리 메소드 리턴값은 더블로 받음.
     
 
-    public int getSellSeq() {
+    public Integer getSellSeq() {
         return sellSeq;
     }
 
-    public void setSellSeq(int sellSeq) {
+    public void setSellSeq(Integer sellSeq) {
         this.sellSeq = sellSeq;
     }
 
-    public int getSeller() {
+    public Integer getSeller() {
         return seller;
     }
 
-    public void setSeller(int seller) {
+    public void setSeller(Integer seller) {
         this.seller = seller;
     }
 

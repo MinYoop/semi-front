@@ -6,34 +6,34 @@ import java.util.Date;
 public class Message {
 
  // 글번호 
- private int msgSeq;
+ private Integer msgSeq;
 
  // 내용 
  private String msgContent;
 
  // 보내는사람 
- private int sender;
+ private Integer sender;
 
  // 받는사람 
- private int receiver;
+ private Integer receiver;
 
  // 받는사람조회여부 
- private int recieverChk;
+ private Integer recieverChk;
 
  // 보내는사람삭제여부 
- private int senderDelChk;
+ private Integer senderDelChk;
 
  // 받는사람삭제여부 
- private int receiverDelChk;
+ private Integer receiverDelChk;
 
  // 작성날짜시간 
  private Date sendDate;
 
- public int getMsgSeq() {
+ public Integer getMsgSeq() {
      return msgSeq;
  }
 
- public void setMsgSeq(int msgSeq) {
+ public void setMsgSeq(Integer msgSeq) {
      this.msgSeq = msgSeq;
  }
 
@@ -45,43 +45,43 @@ public class Message {
      this.msgContent = msgContent;
  }
 
- public int getSender() {
+ public Integer getSender() {
      return sender;
  }
 
- public void setSender(int sender) {
+ public void setSender(Integer sender) {
      this.sender = sender;
  }
 
- public int getReceiver() {
+ public Integer getReceiver() {
      return receiver;
  }
 
- public void setReceiver(int receiver) {
+ public void setReceiver(Integer receiver) {
      this.receiver = receiver;
  }
 
- public int getRecieverChk() {
+ public Integer getRecieverChk() {
      return recieverChk;
  }
 
- public void setRecieverChk(int recieverChk) {
+ public void setRecieverChk(Integer recieverChk) {
      this.recieverChk = recieverChk;
  }
 
- public int getSenderDelChk() {
+ public Integer getSenderDelChk() {
      return senderDelChk;
  }
 
- public void setSenderDelChk(int senderDelChk) {
+ public void setSenderDelChk(Integer senderDelChk) {
      this.senderDelChk = senderDelChk;
  }
 
- public int getReceiverDelChk() {
+ public Integer getReceiverDelChk() {
      return receiverDelChk;
  }
 
- public void setReceiverDelChk(int receiverDelChk) {
+ public void setReceiverDelChk(Integer receiverDelChk) {
      this.receiverDelChk = receiverDelChk;
  }
 

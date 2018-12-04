@@ -6,16 +6,16 @@ import java.util.Date;
 public class Deal {
 
  // 거래번호 
- private int dealSeq;
+ private Integer dealSeq;
 
  // 매물번호 
- private int selnum;
+ private Integer selnum;
 
  // 판매자 
- private int seller;
+ private Integer seller;
 
  // 구매자 
- private int buyer;
+ private Integer buyer;
 
  // 거래시작일시 
  private Date startDate;
@@ -25,35 +25,35 @@ public class Deal {
  
  
 
- public int getDealSeq() {
+ public Integer getDealSeq() {
      return dealSeq;
  }
 
- public void setDealSeq(int dealSeq) {
+ public void setDealSeq(Integer dealSeq) {
      this.dealSeq = dealSeq;
  }
 
- public int getSelnum() {
+ public Integer getSelnum() {
      return selnum;
  }
 
- public void setSelnum(int selnum) {
+ public void setSelnum(Integer selnum) {
      this.selnum = selnum;
  }
 
- public int getSeller() {
+ public Integer getSeller() {
      return seller;
  }
 
- public void setSeller(int seller) {
+ public void setSeller(Integer seller) {
      this.seller = seller;
  }
 
- public int getBuyer() {
+ public Integer getBuyer() {
      return buyer;
  }
 
- public void setBuyer(int buyer) {
+ public void setBuyer(Integer buyer) {
      this.buyer = buyer;
  }
 

@@ -1,6 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,11 +15,12 @@ import com.google.gson.Gson;
 
 import dao.MessageDao;
 import dto.Message;
+import dto.User;
 
 /**
  * Servlet implementation class Message
  */
-@WebServlet("/Message")
+@WebServlet("/Message.do")
 public class Messagecon extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -60,7 +64,13 @@ public class Messagecon extends HttpServlet {
 			//프론트엔드에서 페이지 로딩시 셋타임아웃 등으로(마이크로테스크로 프로미스 예약하면 너무 빠를 수도... 시간 좀 넘겨서! unchkedMsg의 세션어트리뷰트 체크해야 함.
 		} else if(command=="msgListing") {
 			//쪽지 페이지. 받은 쪽지 보낸 쪽지 각각 리스팅. 개인정보 페이지에서 쪽지페이지로 이동시의 컨트롤 
-			
+			List<Message> rclist = new ArrayList<Message>();
+			rclist = dao.selectReceived(((User)session.getAttribute("usr")).getUsrSeq(),Integer.parseInt(request.getParameter("page")));
+			List<Message> sdlist = new ArrayList<Message>();
+			sdlist = dao.selectSent(((User)session.getAttribute("usr")).getUsrSeq(),Integer.parseInt(request.getParameter("page")));
+
+			request.setAttribute("rclist", rclist);
+			request.setAttribute("sdlist", sdlist);
 			
 		}
 				

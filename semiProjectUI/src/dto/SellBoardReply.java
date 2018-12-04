@@ -5,16 +5,16 @@ import java.util.Date;
 public class SellBoardReply {
 
     // 판매글 댓글번호 
-    private int sbReplySeq;
+    private Integer sbReplySeq;
 
     // 그룹넘버 
-    private int sbGroupnum;
+    private Integer sbGroupnum;
 
     // 그룹시퀀스 
-    private int sbGroupsq;
+    private Integer sbGroupsq;
 
     // 칸띄움 
-    private int sbTitletab;
+    private Integer sbTitletab;
 
     // 댓글내용 
     private String sbContent;
@@ -26,37 +26,37 @@ public class SellBoardReply {
     private Date regDate;
 
     // 매물번호 
-    private int sellNum;
+    private Integer sellNum;
 
-    public int getSbReplySeq() {
+    public Integer getSbReplySeq() {
         return sbReplySeq;
     }
 
-    public void setSbReplySeq(int sbReplySeq) {
+    public void setSbReplySeq(Integer sbReplySeq) {
         this.sbReplySeq = sbReplySeq;
     }
 
-    public int getSbGroupnum() {
+    public Integer getSbGroupnum() {
         return sbGroupnum;
     }
 
-    public void setSbGroupnum(int sbGroupnum) {
+    public void setSbGroupnum(Integer sbGroupnum) {
         this.sbGroupnum = sbGroupnum;
     }
 
-    public int getSbGroupsq() {
+    public Integer getSbGroupsq() {
         return sbGroupsq;
     }
 
-    public void setSbGroupsq(int sbGroupsq) {
+    public void setSbGroupsq(Integer sbGroupsq) {
         this.sbGroupsq = sbGroupsq;
     }
 
-    public int getSbTitletab() {
+    public Integer getSbTitletab() {
         return sbTitletab;
     }
 
-    public void setSbTitletab(int sbTitletab) {
+    public void setSbTitletab(Integer sbTitletab) {
         this.sbTitletab = sbTitletab;
     }
 
@@ -84,11 +84,11 @@ public class SellBoardReply {
         this.regDate = regDate;
     }
 
-    public int getSellNum() {
+    public Integer getSellNum() {
         return sellNum;
     }
 
-    public void setSellNum(int sellNum) {
+    public void setSellNum(Integer sellNum) {
         this.sellNum = sellNum;
     }
 

@@ -6,7 +6,7 @@ import java.util.Date;
 public class NoticeBoard {
 
  // 글번호 
- private int noticeSeq;
+ private Integer noticeSeq;
 
  // 작성자 
  private String adminId;
@@ -18,16 +18,16 @@ public class NoticeBoard {
  private String content;
 
  // 조회수 
- private int saw;
+ private Integer saw;
 
  // 등록일 
  private Date regDate;
 
- public int getNoticeSeq() {
+ public Integer getNoticeSeq() {
      return noticeSeq;
  }
 
- public void setNoticeSeq(int noticeSeq) {
+ public void setNoticeSeq(Integer noticeSeq) {
      this.noticeSeq = noticeSeq;
  }
 
@@ -55,11 +55,11 @@ public class NoticeBoard {
      this.content = content;
  }
 
- public int getSaw() {
+ public Integer getSaw() {
      return saw;
  }
 
- public void setSaw(int saw) {
+ public void setSaw(Integer saw) {
      this.saw = saw;
  }
 

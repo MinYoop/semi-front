@@ -16,6 +16,7 @@
 		<typeAlias type = "dto.NoticeBoard" alias="NoticeBoard"/>
 		<typeAlias type = "dto.FreeBoard" alias="FreeBoard"/>
 		<typeAlias type = "dto.FreeBoardReply" alias="FreeBoardReply"/>
+		<typeAlias type = "dto.PageSelector" alias="PageSelector"/>
 	</typeAliases>
 	
 	<!-- db 접속 설정. 알아서 고쳐쓰도록.  -->
@@ -35,5 +36,6 @@
 	<mappers>
     	<mapper resource="db/Mapper.xml"/>
     	<mapper resource="db/UsrMapper.xml"/>
+    	<mapper resource="db/MsgMapper.xml"/>
   	</mappers>
 </configuration>

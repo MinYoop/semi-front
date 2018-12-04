@@ -2,11 +2,10 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="UsrSQL">
+<mapper namespace="Board">
 
 	<!--sns id를 한 곳으로 모으되, 앞에 NV, FB, DK 식으로 약자 붙이기. -->
 	
-
 	<resultMap type="dto.SellBoard" id="SellBoardMap">
 		<result property="sellSeq" column="SELL_SEQ" />
 		<result property="seller" column="SELLER" />
@@ -91,26 +90,6 @@
 	
 
 
-	<select id="selectAll" resultMap="DealMap">
-		SELECT *
-		FROM DEAL_TB
-		ORDER BY DEAL_SEQ
-		DESC
-	</select>
-
-	<select id="selectOne" parameterType="int" resultType="Usr">
-		SELECT *
-		FROM USR
-		WHERE ID = #{id}
-	</select>
-
-	<insert id="insertUsr" parameterType="Usr">
-		insert into USR
-		values (
-		#{seq_id}, #{nickname}, #{email}, #{password}, #{address1},
-		#{address2},
-		#{home_latitude}, #{home_longitude}, #{sns_id},
-		#{session_id}, #{online} )
-	</insert>
+	
 
 </mapper>

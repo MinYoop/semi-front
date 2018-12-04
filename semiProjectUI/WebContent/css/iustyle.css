@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.fav {
+	width:130px;
+	height:130px;
+	background-color:blue; 
+	margin:auto;
+	display: flex;
+	flex-wrap:wrap; overflow:auto;
+}
+
+.favtitle{
+	width:125px;
+	font-size:0.5em;
+}
+

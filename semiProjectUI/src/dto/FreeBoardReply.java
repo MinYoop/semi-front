@@ -5,16 +5,16 @@ import java.util.Date;
 public class FreeBoardReply {
 
     // 자게댓글번호 
-    private int fbReplySeq;
+    private Integer fbReplySeq;
 
     // 그룹 
-    private int fbGroupNum;
+    private Integer fbGroupNum;
 
     // 그룹시퀀스 
-    private int fbGroupSeq;
+    private Integer fbGroupSeq;
 
     // 칸띄움 
-    private int fbTitleTab;
+    private Integer fbTitleTab;
 
     // 댓글내용 
     private String fbContent;
@@ -26,37 +26,37 @@ public class FreeBoardReply {
     private Date regDate;
 
     // 자유글번호 
-    private int freeSeq;
+    private Integer freeSeq;
 
-    public int getFbReplySeq() {
+    public Integer getFbReplySeq() {
         return fbReplySeq;
     }
 
-    public void setFbReplySeq(int fbReplySeq) {
+    public void setFbReplySeq(Integer fbReplySeq) {
         this.fbReplySeq = fbReplySeq;
     }
 
-    public int getFbGroupNum() {
+    public Integer getFbGroupNum() {
         return fbGroupNum;
     }
 
-    public void setFbGroupNum(int fbGroupNum) {
+    public void setFbGroupNum(Integer fbGroupNum) {
         this.fbGroupNum = fbGroupNum;
     }
 
-    public int getFbGroupSeq() {
+    public Integer getFbGroupSeq() {
         return fbGroupSeq;
     }
 
-    public void setFbGroupSeq(int fbGroupSeq) {
+    public void setFbGroupSeq(Integer fbGroupSeq) {
         this.fbGroupSeq = fbGroupSeq;
     }
 
-    public int getFbTitleTab() {
+    public Integer getFbTitleTab() {
         return fbTitleTab;
     }
 
-    public void setFbTitleTab(int fbTitleTab) {
+    public void setFbTitleTab(Integer fbTitleTab) {
         this.fbTitleTab = fbTitleTab;
     }
 
@@ -84,11 +84,11 @@ public class FreeBoardReply {
         this.regDate = regDate;
     }
 
-    public int getFreeSeq() {
+    public Integer getFreeSeq() {
         return freeSeq;
     }
 
-    public void setFreeSeq(int freeSeq) {
+    public void setFreeSeq(Integer freeSeq) {
         this.freeSeq = freeSeq;
     }
 

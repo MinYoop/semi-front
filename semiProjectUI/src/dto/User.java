@@ -4,13 +4,19 @@ package dto;
 public class User {
 
 	// 유저번호
-	private int usrSeq;
+	private Integer usrSeq;
 
 	// 유저닉네임
-	private String nickname;
+	private String nickName;
 
 	// 이메일
 	private String email;
+
+	// 유저의 sns
+	private String sns;
+
+	// 유저의 sns id
+	private String snsId;
 
 	// 상위주소
 	private String address1;
@@ -18,31 +24,29 @@ public class User {
 	// 하위주소
 	private String address2;
 
-	// 유저의 sns id
-	private String snsId;
-
-	// 집위도 
+	// 집위도
 	private String homeLat;
 
 	// 집경도
 	private String homeLon;
-	
-	private int zipCode;
 
-	public int getUsrSeq() {
+	//우편번호 
+	private Integer zipCode;
+
+	public Integer getUsrSeq() {
 		return usrSeq;
 	}
 
-	public void setUsrSeq(int usrSeq) {
+	public void setUsrSeq(Integer usrSeq) {
 		this.usrSeq = usrSeq;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getNickName() {
+		return nickName;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public String getEmail() {
@@ -51,6 +55,22 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getSns() {
+		return sns;
+	}
+
+	public void setSns(String sns) {
+		this.sns = sns;
+	}
+	
+	public String getSnsId() {
+		return snsId;
+	}
+
+	public void setSnsId(String snsId) {
+		this.snsId = snsId;
 	}
 
 	public String getAddress1() {
@@ -69,14 +89,6 @@ public class User {
 		this.address2 = address2;
 	}
 
-	public String getSnsId() {
-		return snsId;
-	}
-
-	public void setSnsId(String snsId) {
-		this.snsId = snsId;
-	}
-
 	public String getHomeLat() {
 		return homeLat;
 	}
@@ -93,22 +105,32 @@ public class User {
 		this.homeLon = homeLon;
 	}
 
-	public int getZipCode() {
+	public Integer getZipCode() {
 		return zipCode;
 	}
 
-	public void setZipCode(int zipCode) {
+	public void setZipCode(Integer zipCode) {
 		this.zipCode = zipCode;
 	}
 
-	// User 모델 복사
-	public void CopyData(User param) {
-		this.usrSeq = param.getUsrSeq();
-		this.email = param.getEmail();
-		this.address1 = param.getAddress1();
-		this.address2 = param.getAddress2();
-		this.snsId = param.getSnsId();
-		this.homeLat = param.getHomeLat();
-		this.homeLon = param.getHomeLon();
+	public User(Integer usrSeq, String nickName, String email, String sns, String snsId, String address1,
+			String address2, String homeLat, String homeLon, Integer zipCode) {
+		super();
+		this.usrSeq = usrSeq;
+		this.nickName = nickName;
+		this.email = email;
+		this.sns = sns;
+		this.snsId = snsId;
+		this.address1 = address1;
+		this.address2 = address2;
+		this.homeLat = homeLat;
+		this.homeLon = homeLon;
+		this.zipCode = zipCode;
 	}
+
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+
+	
 }

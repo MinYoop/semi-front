@@ -8,6 +8,7 @@
 	$(document).ready( function() {
 		$("#footer").load("footer.html");
 	});
+	
   // Subscription Modal Show
   var show = function () {
     $('#subscriptionModal').modal('show');
@@ -247,5 +248,7 @@
       mainWrapper.removeClass('main-wrapper-section');
     }
   });
+  
+ 
 
 })(jQuery);

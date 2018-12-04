@@ -11,7 +11,7 @@ public class DealDao {
 	
 	public int UpdateSellerDealNum(int sellSeq) {
 		return sellSeq;
-		//판매자의 판매횟수 +1 구매횟수와 동시에 올리면 판매 평가 없이 횟수가 올라가 평균점이 낮아지므로 따로 메소드 생
+		//판매자의 판매횟수 +1 구매횟수와 동시에 올리면 판매 평가 없이 횟수가 올라가 평균점이 낮아지므로 따로 메소드 생성 
 	}
 	
 	public String UpdateScore(int sellSeq) {

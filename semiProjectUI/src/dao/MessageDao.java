@@ -1,12 +1,14 @@
 package dao;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
 import dao.SqlMapConfig;
 import dto.Message;
+import dto.PageSelector;
 
 
 public class MessageDao extends SqlMapConfig {
@@ -17,7 +19,7 @@ public class MessageDao extends SqlMapConfig {
 		super();
 	}
 	
-	public int sendMessage(Message newMsg) {
+	public int sendMessage(Message newMsg) {				//-----작업완료 
 
 		
 		int res = 0;
@@ -26,23 +28,28 @@ public class MessageDao extends SqlMapConfig {
 		res = session.insert(namespace+"sendMsg",newMsg);
 		session.close();
 		return res;
+		
 	}
 	
-	public List<Message> selectSent(int usrSeq){		
-	 
+	public List<Message> selectSent(int usrSeq, int page){ //------작업완료 		
+		int listSize =10;
+		
+		int startNum = (page-1) * 10 + 1;
+		int endNum = startNum + listSize - 1;
+		PageSelector sent = new PageSelector(Integer.toString(usrSeq),startNum,endNum);
 		
 		List<Message> res = new ArrayList<Message>();
 		
 		SqlSession session = null;
 		session=getSqlSessionFactory().openSession(true);   //openSession(true) : autoCommit
-		res = session.selectList(namespace+"selectSent");
+		res = session.selectList(namespace+"selectSent",sent);
 		
 		session.close();
 		
 		return res;
 	}
 	
-	public List<Message> selectRecieved(int usrSeq){	
+	public List<Message> selectReceived(int usrSeq, int page){	
 	
 		
 		List<Message> res = new ArrayList<Message>();
@@ -103,7 +110,7 @@ SqlSession session = null;
 				
 				try {
 					session=getSqlSessionFactory().openSession(true);
-				res = session.delete(namespace+"deleteBySender",msgSeq);
+				res = session.delete(namespace+"deleteByReceiver",msgSeq);
 					
 				} catch(Exception e) {
 					

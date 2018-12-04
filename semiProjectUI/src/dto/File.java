@@ -4,10 +4,10 @@ package dto;
 public class File {
 
  // 파일번호 
- private int fileSeq;
+ private Integer fileSeq;
 
  // 매물번호 
- private int sellNum;
+ private Integer sellNum;
 
  // 파일위치 
  private String filePath;
@@ -15,19 +15,19 @@ public class File {
  // 파일이름 
  private String fileName;
 
- public int getFileSeq() {
+ public Integer getFileSeq() {
      return fileSeq;
  }
 
- public void setFileSeq(int fileSeq) {
+ public void setFileSeq(Integer fileSeq) {
      this.fileSeq = fileSeq;
  }
 
- public int getSellNum() {
+ public Integer getSellNum() {
      return sellNum;
  }
 
- public void setSellNum(int sellNum) {
+ public void setSellNum(Integer sellNum) {
      this.sellNum = sellNum;
  }
 

@@ -1,13 +1,13 @@
 /*!------------------------------------------------------------------
 [MAIN STYLESHEET]
 
-PROJECT:	Project Name
-VERSION:	Versoin Number
+PROJECT:	iu
+VERSION:	0.1
 -------------------------------------------------------------------*/
 /*------------------------------------------------------------------
 [TABLE OF CONTENTS]
 -------------------------------------------------------------------*/
-/* 1.1 typography */
+/* 0.1 typography */
 @font-face {
   font-family: 'futura_icgregular';
   src: url("../fonts/futuraicg-webfont.woff2") format("woff2"), url("../fonts/futuraicg-webfont.woff") format("woff");
@@ -15,6 +15,7 @@ VERSION:	Versoin Number
   font-style: normal;
 }
 
+th{text-align:center}
 body {
   line-height: 26px;
   font-family: "futura_icgregular";

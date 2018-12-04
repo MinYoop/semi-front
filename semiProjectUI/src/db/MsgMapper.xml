@@ -3,8 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MsgSQL">
-
-
+	
+	
 	
 
 	<resultMap type="dto.Message" id="MessageMap">
@@ -26,13 +26,26 @@
 		#{senderDelDhk}, #{receiverDelChk}, #{sendDate} )
 	</insert>
 
-	<select id="selectsent" resultMap="MessageMap">
-		SELECT *
-		FROM MESSAGE_TB
-		WHERE SENDER = #{sender}
+	<select id="selectSent" parameterType="PageSelector" resultMap="MessageMap" >
+		
+		<!-- [CDATA[ 
+		select B.rnum, B.msg_seq, B.msg_content, B.sender,
+		B.receiver,B.receiver_chk,B.sender_del_chk,
+		B.receiver_del_chk,B.send_date
+		FROM(
+		SELECT ROWNUM as rnum, A.msg_seq, A.msg_content, A.sender,
+		A.receiver, A.receiver_chk,
+		A.sender_del_chk,A.receiver_del_chk,A.send_date
+		FROM (
+		select msg_seq, msg_content,sender,receiver,receiver_chk,
+		sender_del_chk,receiver_del_chk,send_date 
+		from MESSAGE_TB
+		WHERE SENDER = #{sender} 
 		ORDER BY
-		SEND_DATE
-		DESC
+		SEND_DATE ) A
+		where ROWNUM
+		  <=  #{endNum} ) B
+		where B.rnum  >=  #{startNum} ]]-->
 	</select>
 
 	<select id="selectreceived" resultMap="MessageMap">
@@ -44,11 +57,7 @@
 		DESC
 	</select>
 
-	<select id="selectOne" parameterType="int" resultType="Message">
-		SELECT *
-		FROM MESSAGE_TB
-		WHERE MSG_SEQ = #{msgSeq}
-	</select>
+
 
 	
 
