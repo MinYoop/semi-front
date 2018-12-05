@@ -377,7 +377,7 @@
                   
                
                 <hr>
-                <a href="checkout.html" class="btn btn-primary float-right">결제</a>
+                <a href="coming-soon.html" class="btn btn-primary float-right">결제</a>
               </form>
             </div>
           </div>
