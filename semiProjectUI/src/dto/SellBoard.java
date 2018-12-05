@@ -1,14 +1,15 @@
 package dto;
 
+
 import java.util.Date;
 
 public class SellBoard {
 
     // 매물번호 
-    private Integer sellSeq;
+    private int sellSeq;
 
     // 판매자 
-    private Integer seller;
+    private int seller;
 
     // 매매위치위도 
     private String tradeLat;
@@ -28,19 +29,27 @@ public class SellBoard {
     // 등록시간 
     private Date regDate;
 
-    public Integer getSellSeq() {
+    // 카테고리 
+    private String category;
+
+    // 태그 
+    private String tag;
+    
+    private double distance;
+
+    public int getSellSeq() {
         return sellSeq;
     }
 
-    public void setSellSeq(Integer sellSeq) {
+    public void setSellSeq(int sellSeq) {
         this.sellSeq = sellSeq;
     }
 
-    public Integer getSeller() {
+    public int getSeller() {
         return seller;
     }
 
-    public void setSeller(Integer seller) {
+    public void setSeller(int seller) {
         this.seller = seller;
     }
 
@@ -92,16 +101,29 @@ public class SellBoard {
         this.regDate = regDate;
     }
 
-    // SellboardTb 모델 복사
-    public void CopyData(SellBoard param)
-    {
-        this.sellSeq = param.getSellSeq();
-        this.seller = param.getSeller();
-        this.tradeLat = param.getTradeLat();
-        this.tradeLon = param.getTradeLon();
-        this.sellContent = param.getSellContent();
-        this.status = param.getStatus();
-        this.title = param.getTitle();
-        this.regDate = param.getRegDate();
+    public String getCategory() {
+        return category;
     }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+	public double getDistance() {
+		return distance;
+	}
+
+	public void setDistance(double distance) {
+		this.distance = distance;
+	}
+    
+    
 }

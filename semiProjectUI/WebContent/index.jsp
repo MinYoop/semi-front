@@ -810,7 +810,8 @@
 									<div class="form">
 									<form method="post" action="signin.jsp">
 									<button class="btn btn-primary w-100" type="submit">Join Us</button></form>
-										<div id="naverIdLogin" class="my-3"></div> 
+										<div id="naverIdLogin" class="my-3"></div>
+										<div id="fb-root"></div> 
 										<script type="text/javascript"
 											src="//connect.facebook.net/en_US/all.js#xfbml=1&appId=416848035516774"
 											id="facebook-jssdk"></script>

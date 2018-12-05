@@ -46,6 +46,13 @@
 </head>
 
 <body>
+<div class="joinus"></div>	
+<style>
+
+#naverform{
+display:none;
+}
+</style>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript"
@@ -62,35 +69,12 @@
 	  // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
 	  function naverSignInCallback() {
 	   alert(naver_id_login.getProfileData('id')+naver_id_login.getProfileData('nickname')+naver_id_login.getProfileData('email')+naver_id_login.getProfileData('age'));
-	   $(".email").val(naver_id_login.getProfileData('email'));
+	   
+	   $(".wait").css("display","none");
+   	  $("#naverform").css("display","block");
+	   $(".sns").val("NV");
 	   $(".snsId").val(naver_id_login.getProfileData('id'));
-	   $.ajax({
-	      url : "../../nvlogin",
-	      
-	      method : "post",
-	      data : {"data" : JSON.stringify(
-	      { 
-	      	id : naver_id_login.getProfileData('id'),
-	      	nickname : naver_id_login.getProfileData('nickname'),
-	     	email : naver_id_login.getProfileData('email'),
-	     	age : naver_id_login.getProfileData('age')
-	      }) },
-	      success : function(data){
-	    	  $(".joinus").append("<b>"+naver_id_login.getProfileData('nickname')+"님 환영합니다.</b><br/><br/>"+
-	    			  "가입을 완료하시려면 추가 정보가 필요합니다.<br/>");
-	    	  
-	    	  $(".wait").css("display","none");
-	    	  $(".nvform").css("display","block");
-	    	  
-	        
-	      },
-	      error : function(request,status, error){
-	        alert(request.status+" : " +error);
-	        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	        alert("실패! 다음 기회에...") 
-	      }
-
-	    })
+	   
 	  }
 	  
 	  </script>
@@ -109,7 +93,7 @@
 							alt="logo" width="100" height="50">
 						</a>
 						<h2 class="text-center">We wanna know little more about you...!</h2>
-						<form class="text-left clearfix" method="post" action="usr.do?command=signin">
+						<form class="text-left clearfix" method="post" id="naverform" action="usr.do?command=signin">
 							<div class="form-group">
 								<input type="text" class="form-control" name="nickName"
 									placeholder="NickName">

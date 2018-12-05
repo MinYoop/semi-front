@@ -58,6 +58,7 @@
 	</select>
 	
 	<select id="selectOne" parameterType="User" resultMap="UsrMap">
+	<!-- resultmap이 아닌 resulttype 으로 (dto로)쓰면 list로 받아올 필요 없이 객체로 받을 수 있다. -->
 		SELECT usr_seq, nickname, email, sns, sns_id, address1, address2, home_lat, home_lon
 		FROM USER_TB
 		WHERE SNS = #{sns}

@@ -2,19 +2,21 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="Board">
+<mapper namespace="board">
 
-	<!--sns id를 한 곳으로 모으되, 앞에 NV, FB, DK 식으로 약자 붙이기. -->
+	
 	
 	<resultMap type="dto.SellBoard" id="SellBoardMap">
 		<result property="sellSeq" column="SELL_SEQ" />
 		<result property="seller" column="SELLER" />
-		<result property="title" column="TITLE" />
 		<result property="tradeLat" column="TRADE_LAT" />
 		<result property="tradeLon" column="TRADE_LON" />
 		<result property="sellContent" column="SELL_CONTENT" />
-		<result property="regDate" column="reg_date" />
 		<result property="status" column="STATUS" />
+		<result property="title" column="TITLE" />
+		<result property="regDate" column="REG_DATE" />
+		<result property="category" column="CATEGORY" />
+		<result property="tag" column="TAG" />		
 	</resultMap>
 
 	<resultMap type="dto.Deal" id="DealMap">
@@ -86,10 +88,64 @@
 	</resultMap>
 
 
+	
+	
+	
+	<select id="selectNoticePage" resultMap="NoticeBoardMap">
+		SELECT notice_seq, admin_id, title, content, saw, reg_date
+		FROM NOTICE_BOARD_TB
+		ORDER BY NOTICE_SEQ
+		DESC
+	</select>
 
+	<select id="selectOne" parameterType="int" resultType="User">
+		SELECT *
+		FROM USR
+		WHERE ID = #{id}
+	</select>
+
+	<insert id="insertUsr" parameterType="User">
+		insert into USR
+		values (
+		#{seq_id}, #{nickname}, #{email}, #{password}, #{address1},
+		#{address2},
+		#{home_latitude}, #{home_longitude}, #{sns_id},
+		#{session_id}, #{online} )
+	</insert>
+	
+	<select id="selectAll_admin" resultMap="DealMap">
+		SELECT *
+		FROM NOTICE
+		ORDER BY NOTICESEQ
+		DESC
+	</select>
+	
+	<insert id="insertAdmin" parameterType="admin">
+		insert into ADMIN_TB
+		values (
+		#{NOTICESEQ}, #{ADMINID}, #{TITLE}, #{CONTENT}, #{SAW},#{REGDATE})
+	</insert>
 	
 
 
-	
+<select id="selectAllSellBoard" resultMap="SellBoardMap">
+		SELECT SELL_SEQ, SELLER, TRADE_LAT, TRADE_LON, SELL_CONTENT, STATUS, TITLE, REG_DATE, CATEGORY, TAG
+		FROM SELL_BOARD_TB
+		ORDER BY SELL_SEQ DESC
+	</select>
+
+<!--<select id="selectOne" parameterType="int" resultType="Usr">
+		SELECT *
+		FROM USR
+		WHERE ID = #{id}
+	</select>
+	<insert id="insertUsr" parameterType="Usr">
+		insert into USR
+		values (
+		#{seq_id}, #{nickname}, #{email}, #{password}, #{address1},
+		#{address2},
+		#{home_latitude}, #{home_longitude}, #{sns_id},
+		#{session_id}, #{online} )
+	</insert> -->
 
 </mapper>

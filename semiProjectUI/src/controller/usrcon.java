@@ -172,7 +172,7 @@ public class usrcon extends HttpServlet {
 
 		} else if (command.equals( "logout")) { // 로그아웃
 			session.invalidate();
-			response.sendRedirect("index.html");
+			response.sendRedirect("index.jsp");
 
 		} else if (command.equals( "updateUsr")) { // 정보 수정
 			String updateObj = request.getParameter("updateObj");

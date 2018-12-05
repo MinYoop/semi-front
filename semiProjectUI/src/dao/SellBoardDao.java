@@ -3,14 +3,28 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
+
+
+
 import dto.SellBoard;
 
-public class SellBoardDao {
+public class SellBoardDao extends SqlMapConfig{
 	
+	private String namespace = "board.";
 	
-	public List<SellBoard> selectAll(){		//작업필요 
-		List<SellBoard> allboard = new ArrayList<SellBoard>();
-		return allboard;
+	public List<SellBoard> selectAll(){		
+		List<SellBoard> allBoard = new ArrayList<SellBoard>();
+		
+		SqlSession session = null;
+	      session = getSqlSessionFactory().openSession(true);   //openSession(true) : autoCommit
+	      //res = session.selectList("com.my.myboard.selectAll");
+	      allBoard = session.selectList(namespace+"selectAllSellBoard");
+	      
+	      session.close();
+		
+		return allBoard;
 	}
 	
 	
@@ -30,29 +44,6 @@ public class SellBoardDao {
 
         String sql = " INSERT INTO ANSWERBOARD VALUES(BOARDNOSQ.NEXTVAL,?,?,?,?,?,?,SYSDATE)  ";
 
-        try{
-            pstm = con.prepareStatement(sql);
-        pstm.setInt(1, dto.getGroupno());
-        pstm.setInt(2, dto.getGroupsq()+1);
-        pstm.setInt(3, dto.getTitletab()+1);
-        pstm.setString(4, dto.getTitle());
-        pstm.setString(5, dto.getContent());
-        pstm.setString(6, dto.getWriter());
-        System.out.println("03.query ready : " + sql);
-
-        res = pstm.executeUpdate();
-
-        if(res>0){
-            commit(con);
-        }
-    } catch (SQLException e) {
-		System.out.println("3/4단계 에러");
-		e.printStackTrace();
-	} finally {
-		close(pstm);
-		close(con);
-		System.out.println("05.db 종료\n");
-	}
        
         return res;
     }

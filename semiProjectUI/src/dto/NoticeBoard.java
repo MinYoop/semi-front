@@ -2,83 +2,76 @@ package dto;
 
 import java.util.Date;
 
-//공지게시판 
+//怨듭�寃뚯떆�뙋 
 public class NoticeBoard {
+	
+	 private int notice_seq;
+	 private String admin_id;
+	 private String title;
+	 private String content;
+	 private int saw;
+	 private Date reg_date;
 
- // 글번호 
- private Integer noticeSeq;
+	 public NoticeBoard(){
+		 
+	 }
 
- // 작성자 
- private String adminId;
+	public NoticeBoard(int notice_seq, String admin_id, String title, String content, int saw, Date reg_date) {
+		super();
+		this.notice_seq = notice_seq;
+		this.admin_id = admin_id;
+		this.title = title;
+		this.content = content;
+		this.saw = saw;
+		this.reg_date = reg_date;
+	}
 
- // 제목 
- private String title;
+	public int getNotice_seq() {
+		return notice_seq;
+	}
 
- // 내용 
- private String content;
+	public void setNotice_seq(int notice_seq) {
+		this.notice_seq = notice_seq;
+	}
 
- // 조회수 
- private Integer saw;
+	public String getAdmin_id() {
+		return admin_id;
+	}
 
- // 등록일 
- private Date regDate;
+	public void setAdmin_id(String admin_id) {
+		this.admin_id = admin_id;
+	}
 
- public Integer getNoticeSeq() {
-     return noticeSeq;
- }
+	public String getTitle() {
+		return title;
+	}
 
- public void setNoticeSeq(Integer noticeSeq) {
-     this.noticeSeq = noticeSeq;
- }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
- public String getAdminId() {
-     return adminId;
- }
+	public String getContent() {
+		return content;
+	}
 
- public void setAdminId(String adminId) {
-     this.adminId = adminId;
- }
+	public void setContent(String content) {
+		this.content = content;
+	}
 
- public String getTitle() {
-     return title;
- }
+	public int getSaw() {
+		return saw;
+	}
 
- public void setTitle(String title) {
-     this.title = title;
- }
+	public void setSaw(int saw) {
+		this.saw = saw;
+	}
 
- public String getContent() {
-     return content;
- }
+	public Date getReg_date() {
+		return reg_date;
+	}
 
- public void setContent(String content) {
-     this.content = content;
- }
-
- public Integer getSaw() {
-     return saw;
- }
-
- public void setSaw(Integer saw) {
-     this.saw = saw;
- }
-
- public Date getRegDate() {
-     return regDate;
- }
-
- public void setRegDate(Date regDate) {
-     this.regDate = regDate;
- }
-
- // NoticeBoardTb 모델 복사
- public void CopyData(NoticeBoard param)
- {
-     this.noticeSeq = param.getNoticeSeq();
-     this.adminId = param.getAdminId();
-     this.title = param.getTitle();
-     this.content = param.getContent();
-     this.saw = param.getSaw();
-     this.regDate = param.getRegDate();
- }
+	public void setReg_date(Date reg_date) {
+		this.reg_date = reg_date;
+	}
+	 
 }

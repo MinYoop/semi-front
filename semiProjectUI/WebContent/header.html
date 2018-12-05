@@ -26,8 +26,8 @@
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
 
+<script src="js/geolocation.js"></script>
 
-<script src="js/msgchk.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
@@ -43,8 +43,7 @@
 		<div class="top-header">
 			<div class="row">
 				<div class="col-lg-6 text-center text-lg-left">
-					<p class="text-white mb-lg-0 mb-1">Free shipping • Free 30 days
-						return • Express delivery</p>
+					<p class="text-white mb-lg-0 mb-1"><span id="output"></span></p>
 				</div>
 				<div class="col-lg-6 text-center text-lg-right">
 					<ul class="list-inline">
@@ -82,8 +81,26 @@
 		<div class="collapse navbar-collapse order-1 order-lg-2"
 			id="navbarSupportedContent">
 			<ul class="navbar-nav mx-auto">
-				<li class="nav-item"><a class="nav-link" href="index.html">home</a>
+				<li class="nav-item"><a class="nav-link" href="index.jsp">home</a>
 				</li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="shop.html" role="button"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						shop </a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="servlet.do?command=sellboardlist">Shop</a> <a
+							class="dropdown-item" href="shop-list.html">Shop List</a> <a
+							class="dropdown-item" href="product-single.html">Product
+							Single</a> <a class="dropdown-item" href="checkout.html">Checkout</a>
+						<a class="dropdown-item" href="cart.jsp">Cart</a> <a
+							class="dropdown-item" href="shipping.html">Shipping Method</a> <a
+							class="dropdown-item" href="payment.html">Payment Method</a> <a
+							class="dropdown-item" href="review.html">Review</a> <a
+							class="dropdown-item" href="confirmation.html">Confirmation</a><a
+							class="dropdown-item" href="noticelist.jsp">공지사항</a> <a
+							class="dropdown-item" href="message.jsp">메세지</a> 
+							
+					</div></li>
 				<li class="nav-item dropdown mega-dropdown"><a
 					class="nav-link dropdown-toggle" href="#" role="button"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

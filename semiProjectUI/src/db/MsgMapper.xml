@@ -48,13 +48,25 @@
 		where B.rnum  >=  #{startNum} ]]-->
 	</select>
 
-	<select id="selectreceived" resultMap="MessageMap">
-		SELECT *
-		FROM MESSAGE_TB
-		WHERE RECEIVER = #{receiver}
+	<select id="selectReceived" parameterType="PageSelector" resultMap="MessageMap">
+			<!-- [CDATA[ 
+		select B.rnum, B.msg_seq, B.msg_content, B.sender,
+		B.receiver,B.receiver_chk,B.sender_del_chk,
+		B.receiver_del_chk,B.send_date
+		FROM(
+		SELECT ROWNUM as rnum, A.msg_seq, A.msg_content, A.sender,
+		A.receiver, A.receiver_chk,
+		A.sender_del_chk,A.receiver_del_chk,A.send_date
+		FROM (
+		select msg_seq, msg_content,sender,receiver,receiver_chk,
+		sender_del_chk,receiver_del_chk,send_date 
+		from MESSAGE_TB
+		WHERE receiver = #{receiver} 
 		ORDER BY
-		SEND_DATE
-		DESC
+		SEND_DATE ) A
+		where ROWNUM
+		  <=  #{endNum} ) B
+		where B.rnum  >=  #{startNum} ]]-->
 	</select>
 
 

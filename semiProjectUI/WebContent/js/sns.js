@@ -85,15 +85,16 @@ const isSessionHasUsr = () =>{
 					}
 				});
 			}
-		})
-			
+		})     
 		}
+			
+		
 		
 		// 네이버
 		var naverLogin = new naver.LoginWithNaverId(
 				{
-					clientId: "7d54a380d44fc4335738259b6e2dc63c",
-					callbackUrl: "http://localhost:8787/ojoproject/api/member/naver.jsp",
+					clientId: "AIOJsfO8McQfNj7Mv65y",
+					callbackUrl: "http://localhost:8787/semiProjectUI/signin.jsp",
 					isPopup: false, /* 팝업을 통한 연동처리 여부 */
 					loginButton: {color: "green", type: 3, height: 60} /*
 																		 * 로그인

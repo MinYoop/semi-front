@@ -80,12 +80,12 @@ $(function(){
 	}
 	$("#pasing").append("<br>");
 	
-	$("#pasing").append(  "총 게시글 수 : " + totalCount +"<br>" +
+	/*$("#pasing").append(  "총 게시글 수 : " + totalCount +"<br>" +
 						"게시판에 보여줄 게시글 수 : "+listSize+" <br>" +
 						"게시판 총 페이지 : "+totalPage+" <br>" +
 						"시작페이지 : "+startPage+" <br>" +
 						"엔드페이지 : "+endPage+" <br>" +
-						"내가 보고있는 게시판 이름 : "+boardName+"<br>");
+						"내가 보고있는 게시판 이름 : "+boardName+"<br>");*/
 						
 })
 

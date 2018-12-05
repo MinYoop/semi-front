@@ -57,7 +57,7 @@
 	
 <div style="display:flex; align-items: center;
   justify-content: center;" class="my-80">
-<div class="received mx-3 my-10"style ="width:300px;height:500px; margin:auto;">
+<div class="received mx-3 my-10"style ="width:400px;height:500px; margin:auto;">
 <div style="text-align:center"><h3>받은 쪽지</h3></div>
 
 <table>
@@ -110,7 +110,7 @@
 
 
 
-<div class="sent mx-3 my-10"style ="width:300px;height:500px; margin:auto;">
+<div class="sent mx-3 my-10"style ="width:400px;height:500px; margin:auto;">
 
 <div style="text-align:center"><h3>보낸 쪽지</h3></div>
 <table>
