@@ -361,7 +361,7 @@
 								<nav>
 									<ul class="pagination justify-content-center">
 										
-										<li>더 많은 매물을 보려면 스크롤을 내려주세요</li>										
+										<li id="nomoreitem">더 많은 매물을 보려면 스크롤을 내려주세요</li>										
 										
 									</ul>
 								</nav>

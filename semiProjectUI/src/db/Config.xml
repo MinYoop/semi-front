@@ -25,9 +25,9 @@
 			<transactionManager type="JDBC"/>
 				<dataSource type="POOLED">
         			<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
-        			<property name="url" value="jdbc:oracle:thin:@localhost:59161:xe"/>
-        			<property name="username" value="ojo"/>
-        			<property name="password" value="iu"/>
+        			<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+        			<property name="username" value="SYSTEM"/>
+        			<property name="password" value="onlyroot"/>
       			</dataSource>
     	</environment>
   	</environments>

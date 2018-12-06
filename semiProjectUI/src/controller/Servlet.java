@@ -80,65 +80,75 @@ public class Servlet extends HttpServlet {
 			System.out.println("session에서 받은위도 경도 값 : " + session.getAttribute("latitude") + "/" + session.getAttribute("longitude"));
 		}else if(command.equals("sellboardlist")) {
 			
-			SellBoardDao dao = new SellBoardDao();
-			List<SellBoard> list = dao.selectAll();
 			
-			//내위치 KH정보교육원 // 웹에서는 세션에서 불러옴
-					
 			
-			for(int i=0; i<list.size(); i++){
-				System.out.println(list.get(i).getTitle()+"/"+list.get(i).getSellSeq());				
-			}
 			
-			MyUtil.getDistance(Double.parseDouble((String)session.getAttribute("latitude")),Double.parseDouble((String)session.getAttribute("longitude")),list);
-			
-			MyUtil.setSortList(list);	
-			
-			for(int i=0; i<list.size(); i++){
-				System.out.println(list.get(i).getTitle()+"/"+list.get(i).getSellSeq()+"/거리 : " + list.get(i).getDistance() +"meter");									
-			}
+			List<SellBoard> list = getAll(request).subList(0, 6);
 			
 			request.setAttribute("list", list);
 			dispatch("shopEx.jsp", request, response);
 			
 		}else if(command.equals("limit")) {
 			
-			String page = request.getParameter("page");
-			System.out.println(page);
+			int page = Integer.parseInt(request.getParameter("page"));
+			
 			
 			PrintWriter out = response.getWriter();			
-			out.println("<!-- product -->\r\n" + 
-					"          <div class=\"col-lg-4 col-sm-6 mb-4\">\r\n" + 
-					"              <div class=\"product text-center\">\r\n" + 
-					"                <div class=\"product-thumb\">\r\n" + 
-					"                  <div class=\"overflow-hidden position-relative\">\r\n" + 
-					"                    <a href=\"product-single.html\">\r\n" + 
-					"                      <img class=\"img-fluid w-100 mb-3 img-first\" src=\"images/collection/product-2.jpg\" alt=\"product-img\">\r\n" + 
-					"                      <img class=\"img-fluid w-100 mb-3 img-second\" src=\"images/collection/product-5.jpg\" alt=\"product-img\">\r\n" + 
-					"                    </a>\r\n" + 
-					"                    <div class=\"btn-cart\">\r\n" + 
-					"                        <a href=\"#\" class=\"btn btn-primary btn-sm\">Add To Cart</a>\r\n" + 
-					"                    </div>\r\n" + 
-					"                  </div>\r\n" + 
-					"                  <div class=\"product-hover-overlay\">\r\n" + 
-					"                    <a href=\"#\" class=\"product-icon favorite\" data-toggle=\"tooltip\" data-placement=\"left\" title=\"Wishlist\"><i\r\n" + 
-					"                        class=\"ti-heart\"></i></a>\r\n" + 
-					"                    <a href=\"#\" class=\"product-icon cart\" data-toggle=\"tooltip\" data-placement=\"left\" title=\"Compare\"><i\r\n" + 
-					"                        class=\"ti-direction-alt\"></i></a>\r\n" + 
-					"                    <a data-vbtype=\"inline\" href=\"#quickView\" class=\"product-icon view venobox\" data-toggle=\"tooltip\"\r\n" + 
-					"                      data-placement=\"left\" title=\"Quick View\"><i class=\"ti-search\"></i></a>\r\n" + 
-					"                  </div>\r\n" + 
-					"                </div>\r\n" + 
-					"                <div class=\"product-info\">\r\n" + 
-					"                  <h3 class=\"h5\"><a class=\"text-color\" href=\"product-single.html\">Box Leather Shoulder Bag</a></h3>\r\n" + 
-					"                  <span class=\"h5\">$520.79</span>\r\n" + 
-					"                </div>\r\n" + 
-					"              </div>\r\n" + 
-					"            </div>\r\n" + 
-					"            <!-- //end of product -->");	
+			List<SellBoard> list = getAll(request);			
+			
+			if(page < list.size()) {
+				
+				
+				SellBoard dto = list.get(page);
+				
+				out.println("<!-- product -->\r\n" + 
+						"          <div class=\"col-lg-4 col-sm-6 mb-4\">\r\n" + 
+						"              <div class=\"product text-center\">\r\n" + 
+						"                <div class=\"product-thumb\">\r\n" + 
+						"                  <div class=\"overflow-hidden position-relative\">\r\n" + 
+						"                    <a href=\"product-single.html\">\r\n" + 
+						"                      <img class=\"img-fluid w-100 mb-3 img-first\" src=\"images/collection/product-2.jpg\" alt=\"product-img\">\r\n" + 
+						"                      <img class=\"img-fluid w-100 mb-3 img-second\" src=\"images/collection/product-5.jpg\" alt=\"product-img\">\r\n" + 
+						"                    </a>\r\n" + 
+						"                    <div class=\"btn-cart\">\r\n" + 
+						"                        <a href=\"#\" class=\"btn btn-primary btn-sm\">Add To Cart</a>\r\n" + 
+						"                    </div>\r\n" + 
+						"                  </div>\r\n" + 
+						"                  <div class=\"product-hover-overlay\">\r\n" + 
+						"                    <a href=\"#\" class=\"product-icon favorite\" data-toggle=\"tooltip\" data-placement=\"left\" title=\"Wishlist\"><i\r\n" + 
+						"                        class=\"ti-heart\"></i></a>\r\n" + 
+						"                    <a href=\"#\" class=\"product-icon cart\" data-toggle=\"tooltip\" data-placement=\"left\" title=\"Compare\"><i\r\n" + 
+						"                        class=\"ti-direction-alt\"></i></a>\r\n" + 
+						"                    <a data-vbtype=\"inline\" href=\"#quickView\" class=\"product-icon view venobox\" data-toggle=\"tooltip\"\r\n" + 
+						"                      data-placement=\"left\" title=\"Quick View\"><i class=\"ti-search\"></i></a>\r\n" + 
+						"                  </div>\r\n" + 
+						"                </div>\r\n" + 
+						"                <div class=\"product-info\">\r\n" + 
+						"                  <h3 class=\"h5\"><a class=\"text-color\" href=\"product-single.html\">"+dto.getTitle()+"</a></h3>\r\n" + 
+						"                  <span class=\"h5\">"+((dto.getDistance()<1)?(dto.getDistance()*1000+"m"):(dto.getDistance()+"km"))+"</span>\r\n" + 
+						"                </div>\r\n" + 
+						"              </div>\r\n" + 
+						"            </div>\r\n" + 
+						"            <!-- //end of product -->");
+			}else {
+				out.println("nomoreitem");
+			}
+				
 			
 			
 		}			
+	}
+	
+	private List<SellBoard> getAll(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();///세션 얻기
+		SellBoardDao dao = new SellBoardDao();
+		List<SellBoard> list = dao.selectAll();
+		
+		MyUtil.getDistance(Double.parseDouble((String)session.getAttribute("latitude")),Double.parseDouble((String)session.getAttribute("longitude")),list);
+		MyUtil.setSortList(list);	
+		
+		return list;
 	}
 
 	
