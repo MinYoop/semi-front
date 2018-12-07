@@ -1,4 +1,27 @@
-   // 무한스크롤 인식
+window.onload = function(){
+	
+$.ajax({
+		
+		url: "servlet.do?command=settingItem",
+		cache: false,
+		async:false,
+		success: function(html){
+			
+			
+				
+				$('#limit').append(html);				
+		},
+		error:function(){
+			alert("초기매물받기 실패");
+			
+		}
+    })
+    return false;
+}   
+
+
+
+// 무한스크롤 인식
 
 var count = 5;
 $(document).ready(function () {

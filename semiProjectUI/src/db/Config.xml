@@ -35,7 +35,7 @@
 	<!-- Mapper 경로 -->
 	<mappers>
     	<mapper resource="db/Mapper.xml"/>
-    	<mapper resource="db/UsrMapper.xml"/>
-    	<mapper resource="db/MsgMapper.xml"/>
+    	<!-- <mapper resource="db/UsrMapper.xml"/>
+    	<mapper resource="db/MsgMapper.xml"/> -->
   	</mappers>
 </configuration>

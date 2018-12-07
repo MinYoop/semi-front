@@ -126,13 +126,34 @@
 		#{NOTICESEQ}, #{ADMINID}, #{TITLE}, #{CONTENT}, #{SAW},#{REGDATE})
 	</insert>
 	
+<!-- 민엽 -->
 
-
-<select id="selectAllSellBoard" resultMap="SellBoardMap">
+	<select id="selectAllSellBoard" resultMap="SellBoardMap">
 		SELECT SELL_SEQ, SELLER, TRADE_LAT, TRADE_LON, SELL_CONTENT, STATUS, TITLE, REG_DATE, CATEGORY, TAG
 		FROM SELL_BOARD_TB
 		ORDER BY SELL_SEQ DESC
 	</select>
+	
+	<select id="selectOneSellBoard" resultMap="SellBoardMap" parameterType="int">
+      SELECT SELL_SEQ, SELLER, TRADE_LAT, TRADE_LON, SELL_CONTENT, STATUS, TITLE, REG_DATE, CATEGORY, TAG FROM SELL_BOARD_TB WHERE SELL_SEQ = #{sellSeq}
+   </select>
+
+   <insert id="insertSellBoard" parameterType="SellBoard">
+      INSERT INTO SELL_BOARD_TB
+      VALUES(SELL_BOARD_TB_SEQ.NEXTVAL,#{seller},#{tradeLat},#{tradeLon},#{sellContent},#{status},#{title},SYSDATE,#{category},#{tag})
+   </insert>
+
+  <!--  <update id="updateSellBoard" parameterType="SellBoard">
+      UPDATE SELL_BOARD_TB SET TITLE = #{title}, TRADE_LATSELL_CONTENT = #{sellContent}, WHERE SELL_SEQ =
+      #{sellSeq}
+   </update> -->
+
+   <delete id="deleteSellBoard" parameterType="SellBoard">
+     DELETE FROM SELL_BOARD_TB WHERE SELL_SEQ = #{sellSeq}
+   </delete>
+
+
+<!-- 민엽끝 -->
 
 <!--<select id="selectOne" parameterType="int" resultType="Usr">
 		SELECT *

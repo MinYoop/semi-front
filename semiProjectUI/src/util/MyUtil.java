@@ -34,9 +34,7 @@ public class MyUtil {
 			list.set(i,list.get(minIndex));
 			list.set(minIndex,tmp);	
 		}	
-		for(int i = 0; i < list.size() ; i++) {
-			System.out.println(list.get(i).getTitle()+"=" +list.get(i).getDistance());
-		}
+		
 	}
 
 }

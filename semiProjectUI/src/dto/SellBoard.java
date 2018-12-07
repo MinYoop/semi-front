@@ -36,8 +36,58 @@ public class SellBoard {
     private String tag;
     
     private double distance;
+    
+    
+    
+    
+    
+    
 
-    public int getSellSeq() {
+    public SellBoard() {
+		super();
+	}
+    
+    
+    
+    
+    
+
+	public SellBoard(int seller, String tradeLat, String tradeLon, String sellContent, String status,
+			String title, String category, String tag) {
+		super();
+		this.seller = seller;
+		this.tradeLat = tradeLat;
+		this.tradeLon = tradeLon;
+		this.sellContent = sellContent;
+		this.status = status;
+		this.title = title;
+		this.category = category;
+		this.tag = tag;
+	}
+
+	
+
+	public SellBoard(int sellSeq, int seller, String tradeLat, String tradeLon, String sellContent, String status,
+			String title, Date regDate, String category, String tag) {
+		super();
+		this.sellSeq = sellSeq;
+		this.seller = seller;
+		this.tradeLat = tradeLat;
+		this.tradeLon = tradeLon;
+		this.sellContent = sellContent;
+		this.status = status;
+		this.title = title;
+		this.regDate = regDate;
+		this.category = category;
+		this.tag = tag;
+	}
+
+
+
+
+
+
+	public int getSellSeq() {
         return sellSeq;
     }
 
