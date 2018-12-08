@@ -7,15 +7,17 @@ public class Message {
 
  // 글번호 
  private Integer msgSeq;
+ 
+ private String msgTitle;
 
- // 내용 
+// 내용 
  private String msgContent;
 
  // 보내는사람 
- private Integer sender;
+ private String sender;
 
  // 받는사람 
- private Integer receiver;
+ private String receiver;
 
  // 받는사람조회여부 
  private Integer recieverChk;
@@ -37,6 +39,16 @@ public class Message {
      this.msgSeq = msgSeq;
  }
 
+ 
+ public String getMsgTitle() {
+		return msgTitle;
+	}
+
+	public void setMsgTitle(String msgTitle) {
+		this.msgTitle = msgTitle;
+	}
+	
+	
  public String getMsgContent() {
      return msgContent;
  }
@@ -45,19 +57,19 @@ public class Message {
      this.msgContent = msgContent;
  }
 
- public Integer getSender() {
+ public String getSender() {
      return sender;
  }
 
- public void setSender(Integer sender) {
+ public void setSender(String sender) {
      this.sender = sender;
  }
 
- public Integer getReceiver() {
+ public String getReceiver() {
      return receiver;
  }
 
- public void setReceiver(Integer receiver) {
+ public void setReceiver(String receiver) {
      this.receiver = receiver;
  }
 
@@ -93,16 +105,24 @@ public class Message {
      this.sendDate = sendDate;
  }
 
- // MessageTb 모델 복사
- public void CopyData(Message param)
- {
-     this.msgSeq = param.getMsgSeq();
-     this.msgContent = param.getMsgContent();
-     this.sender = param.getSender();
-     this.receiver = param.getReceiver();
-     this.recieverChk = param.getRecieverChk();
-     this.senderDelChk = param.getSenderDelChk();
-     this.receiverDelChk = param.getReceiverDelChk();
-     this.sendDate = param.getSendDate();
- }
+ 
+ 
+
+
+public Message() {
+	super();
+}
+
+public Message(String msgTitle, String msgContent, String sender, String receiver) {
+	super();
+	this.msgTitle = msgTitle;
+	this.msgContent = msgContent;
+	this.sender = sender;
+	this.receiver = receiver;
+	
+}
+ 
+ 
+ 
+
 }

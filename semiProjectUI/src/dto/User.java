@@ -3,134 +3,170 @@ package dto;
 //회원가입정보 
 public class User {
 
-	// 유저번호
-	private Integer usrSeq;
+ // 유저닉네임 
+ private String nickName;
 
-	// 유저닉네임
-	private String nickName;
+ // 이메일 
+ private String email;
 
-	// 이메일
-	private String email;
+ // 상위주소 
+ private String address1;
 
-	// 유저의 sns
-	private String sns;
+ // 하위주소 
+ private String address2;
+ private Integer zipCode;
 
-	// 유저의 sns id
-	private String snsId;
+ // 유저의 sns id 
+ private String snsId;
+ 
+ private String sns;
 
-	// 상위주소
-	private String address1;
+ 
 
-	// 하위주소
-	private String address2;
+// 집위도 
+ private String homeLat;
 
-	// 집위도
-	private String homeLat;
+ // 집경도 
+ private String homeLon;
 
-	// 집경도
-	private String homeLon;
+ // 구매평가 
+ private String fromBuyer;
 
-	//우편번호 
-	private Integer zipCode;
+ // 판매평가 
+ private String fromSeller;
 
-	public Integer getUsrSeq() {
-		return usrSeq;
-	}
+ // 구매횟수 
+ private int buyCnt;
 
-	public void setUsrSeq(Integer usrSeq) {
-		this.usrSeq = usrSeq;
-	}
+ // 판매횟수 
+ private int sellCnt;
+ 
+ 
 
-	public String getNickName() {
-		return nickName;
-	}
+ public Integer getZipCode() {
+	return zipCode;
+}
 
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
-	}
+public void setZipCode(Integer zipCode) {
+	this.zipCode = zipCode;
+}
 
-	public String getEmail() {
-		return email;
-	}
+public String getNickName() {
+     return nickName;
+ }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+ public void setNickName(String nickName) {
+     this.nickName = nickName;
+ }
 
-	public String getSns() {
+ public String getEmail() {
+     return email;
+ }
+
+ public void setEmail(String email) {
+     this.email = email;
+ }
+
+ public String getAddress1() {
+     return address1;
+ }
+
+ public void setAddress1(String address1) {
+     this.address1 = address1;
+ }
+
+ public String getAddress2() {
+     return address2;
+ }
+
+ public void setAddress2(String address2) {
+     this.address2 = address2;
+ }
+
+ public String getSnsId() {
+     return snsId;
+ }
+
+ public void setSnsId(String snsId) {
+     this.snsId = snsId;
+ }
+ 
+ public String getSns() {
 		return sns;
 	}
 
-	public void setSns(String sns) {
+ public void setSns(String sns) {
 		this.sns = sns;
 	}
-	
-	public String getSnsId() {
-		return snsId;
-	}
 
-	public void setSnsId(String snsId) {
-		this.snsId = snsId;
-	}
+ public String getHomeLat() {
+     return homeLat;
+ }
 
-	public String getAddress1() {
-		return address1;
-	}
+ public void setHomeLat(String homeLat) {
+     this.homeLat = homeLat;
+ }
 
-	public void setAddress1(String address1) {
-		this.address1 = address1;
-	}
+ public String getHomeLon() {
+     return homeLon;
+ }
 
-	public String getAddress2() {
-		return address2;
-	}
+ public void setHomeLon(String homeLon) {
+     this.homeLon = homeLon;
+ }
 
-	public void setAddress2(String address2) {
-		this.address2 = address2;
-	}
+ public String getFromBuyer() {
+     return fromBuyer;
+ }
 
-	public String getHomeLat() {
-		return homeLat;
-	}
+ public void setFromBuyer(String fromBuyer) {
+     this.fromBuyer = fromBuyer;
+ }
 
-	public void setHomeLat(String homeLat) {
-		this.homeLat = homeLat;
-	}
+ public String getFromSeller() {
+     return fromSeller;
+ }
 
-	public String getHomeLon() {
-		return homeLon;
-	}
+ public void setFromSeller(String fromSeller) {
+     this.fromSeller = fromSeller;
+ }
 
-	public void setHomeLon(String homeLon) {
-		this.homeLon = homeLon;
-	}
+ public int getBuyCnt() {
+     return buyCnt;
+ }
 
-	public Integer getZipCode() {
-		return zipCode;
-	}
+ public void setBuyCnt(int buyCnt) {
+     this.buyCnt = buyCnt;
+ }
 
-	public void setZipCode(Integer zipCode) {
-		this.zipCode = zipCode;
-	}
+ public int getSellCnt() {
+     return sellCnt;
+ }
 
-	public User(Integer usrSeq, String nickName, String email, String sns, String snsId, String address1,
-			String address2, String homeLat, String homeLon, Integer zipCode) {
-		super();
-		this.usrSeq = usrSeq;
-		this.nickName = nickName;
-		this.email = email;
-		this.sns = sns;
-		this.snsId = snsId;
-		this.address1 = address1;
-		this.address2 = address2;
-		this.homeLat = homeLat;
-		this.homeLon = homeLon;
-		this.zipCode = zipCode;
-	}
+ public void setSellCnt(int sellCnt) {
+     this.sellCnt = sellCnt;
+ }
 
-	public User() {
-		// TODO Auto-generated constructor stub
-	}
+public User() {
+	super();
+	// TODO Auto-generated constructor stub
+}
 
-	
+public User(String nickName, String email, String address1,
+		String address2, Integer zipCode,  String sns, 
+		String snsId,String homeLat, String homeLon) {
+	super();
+	this.nickName = nickName;
+	this.email = email;
+	this.address1 = address1;
+	this.address2 = address2;
+	this.zipCode = zipCode;
+	this.sns=sns;
+	this.snsId = snsId;
+	this.homeLat = homeLat;
+	this.homeLon = homeLon;
+}
+
+
+ 
 }

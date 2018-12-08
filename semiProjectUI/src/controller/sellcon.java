@@ -15,6 +15,7 @@ import com.google.gson.JsonParser;
 
 import dao.SellBoardDao;
 import dto.SellBoard;
+import dto.User;
 
 /**
  * Servlet implementation class sellcon
@@ -52,6 +53,8 @@ public class sellcon extends HttpServlet {
 			
 			
 		} else if(command=="favsAndBasket") {
+			
+			String user = ((User)session.getAttribute("User")).getNickName();
 			
 		}
 		

@@ -6,12 +6,10 @@
 		
 	<typeAliases>
 		<typeAlias type = "dto.User" alias="User"/>
-		<typeAlias type = "dto.UsrLocation" alias="UserLocation"/>
 		<typeAlias type = "dto.Message" alias="Message"/>
 		<typeAlias type = "dto.SellBoard" alias="SellBoard"/>
 		<typeAlias type = "dto.SellBoardReply" alias="SellBoardReply"/>
 		<typeAlias type = "dto.Deal" alias="Deal"/>
-		<typeAlias type = "dto.File" alias="File"/>
 		<typeAlias type = "dto.Admin" alias="Admin"/>
 		<typeAlias type = "dto.NoticeBoard" alias="NoticeBoard"/>
 		<typeAlias type = "dto.FreeBoard" alias="FreeBoard"/>

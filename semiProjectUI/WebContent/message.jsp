@@ -9,7 +9,7 @@
  
 
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="ko">
 
 
 <head>
@@ -38,7 +38,69 @@
 <!-- preloader start -->
 <body>
 
+<script type="text/javascript">
+	/*
+MSG_SEQ             NUMBER            NOT NULL, 
+MSG_CONTENT         VARCHAR2(2000)    NOT NULL, 
+SENDER              NUMBER            NOT NULL, 
+RECEIVER            NUMBER            NOT NULL, 
+RECIEVER_CHK        NUMBER            NOT NULL, 
+SENDER_DEL_CHK      NUMBER            NOT NULL, 
+RECEIVER_DEL_CHK    NUMBER            NOT NULL, 
+SEND_DATE           DATE              NOT NULL, 
+	*/
+	
+	
+let sendmsg = () => {
+	$.ajax({
+		url : 'Message.do',
+		dataType: 'text',
+		data : { 
+			command : "sendMessage",
+			msgTitle : $("#msgTitle").val(),
+			msgContent : $("#msgContent").val(),
+			receiver : $("#sendToWho").val()
+				//센더에서 
+				
+		},
+		success: function(msg){
+			//리프레시된 보낸 쪽지 리스트를 출력.
+		//	var msglists = msg.split("cutlineforreceivedandsent");
+		//	$(".receivedtable").html(msglists[0]);
+		//	$(".senttable").html(msglists[1]);
+		}
+	})
+	
+}
+	
+	
+	
+	
+let sendmsgPopup = (sender=0) => {
+if(sender!=0){
+	$(".whowouldreceive").html(sender);
+	$(".SendToWho").attr("type","hidden");
+	$(".SendToWho").val(sender);
+}else{
+	$(".sendToWho").val("");
+	$(".SendToWho").attr("type","text");
+}
+$('#sendform').modal('show');
+} 
+	 
+let viewMsg = (seq) =>{
+	$("#msgChkModalTitle").html($("#msgTitle"+seq).text());
+	$("#msgChkModalContent").html($("#msgContent"+seq).val());
+	$("#msgChkModalFrom").html($("#msgFrom"+seq).text());
+	$("#msgChkModalDate").html($("#msgDate"+seq).text());
+	$("#msgChkModal").modal('show');
 
+}//모달 만들어서 내용 집어넣고 .modal('show');
+//let getPage = (page = 1) ={//페이지 눌렀을 때 실행 
+	
+//}
+	</script>
+	
 <div id="header"></div>
 
 	<div class="preloader">
@@ -47,7 +109,45 @@
 	
 	
 	
-	
+	<div class="modal fade subscription-modal" id="sendform"
+			tabindex="-1">
+			<div class="modal-dialog modal-s">
+				<!-- modal content start -->
+				<div class="modal-content">
+					<!-- container start -->
+					<div class="container-fluid">
+						<div class="row">
+							<!-- close button -->
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							
+							<div class="col-lg-11 align-self-center p-5">
+								<!-- Content start -->
+								<div class="text-center align-self-center">
+									<form>
+									<h3 class="mb-2">쪽지 보내기</h3>
+									<h4 class="mb-1" style="text-align:center">Title 
+									<input type="text" size="20" id="msgTitle"name="msgTitle"></h4>
+									<h5 class="mb-1" style="text-align:right">To. 
+									<input type="text" size="8" id="sendToWho"name="sendToWho">
+									<b class="whowouldreceive"></b>&nbsp;</h5>
+									<input type='hidden' 
+									name="nickName" id="receiverNickname"value="">
+									<textarea class="mb-20"name="msgContent" id="msgContent"cols="40" rows="10"></textarea>
+									<button class="btn btn-secondary w-50" type="button" onclick="sendmsg()">Send</button></form>
+									</div>
+								</div>
+								<!-- Content end -->
+							</div>
+						</div>
+					</div>
+					<!-- container end -->
+				</div>
+				<!-- modal content end -->
+			</div>
+		
 	
 	
 	<!-- 메세지 리스트  -->
@@ -55,64 +155,74 @@
 		<script src="js/pasing2.js"></script>
 	
 	
+	
 <div style="display:flex; align-items: center;
   justify-content: center;" class="my-80">
 <div class="received mx-3 my-10"style ="width:400px;height:500px; margin:auto;">
 <div style="text-align:center"><h3>받은 쪽지</h3></div>
-
-<table>
-		<col width="50">
-		<col width="100">
-		<col width="300">
-		<col width="100">
-		<col width="80">
+<div class="receivedTable">
+<table >
+		<col width="2%">
+		<col width="4%">
+		<col width="6%">
+		<col width="4%">
+		<col width="2%">
+		<col width="2%">
 		
 		<tr>
 			<th>확인</th>
-			<th>보낸</th>
+			<th>보낸이</th>
 			<th>내용</th>
 			<th>작성일</th>
+			<th>답장</th>
 			<th>삭제</th>
 		</tr>	
 		
 		<c:choose>
 			<c:when test="${empty rclist }">
 				<tr>
-					<td colspan="5">----작성된 글이 존재하지 않습니다.------</td>
+					<td colspan="6" style="text-align:center">----받은 쪽지가 없습니다.----</td>
 				</tr>		
 			</c:when>
 			<c:otherwise>
 				<c:forEach var="dto" items="${rclist }">
 					<tr>
-						<td>${dto.receiverChk }</td>
-						<td>${dto.sender }</td>
-						<td>${dto.msgContent }</td>
-						<td>${dto.sendDate }</td>
-						<td><a href="controller.do?command=delete&msgSeq=${dto.msgSeq }">${dto.sendDate }</a></td>
-						
+					<c:choose>
+					<c:when test="${dto.receiverChk>0 }">
+					<td>확인</td>
+					</c:when>
+					<c:otherwise>
+						<td><b>미확인</b></td>
+					</c:otherwise>
+					</c:choose>
+						<td id="msgFrom${dto.sender }">${dto.sender }</td>
+						<td id="msgTitle${dto.title }"><a onclick="viewMsg(${dto.msgSeq })">${dto.title }</a></td>
+					<td id="msgDate${dto.msgSeq }">${dto.sendDate }</td> 
+				<td><button class="btn btn-primary w-10" onclick="sendmsgPopup(${dto.sender })">클릭</button>\n" + 
+				<td><a href="Message.do?command=delete&msgSeq=${dto.msgSeq }">삭제</a></td>
 					</tr>
+				<div style="display:none" id="msgContent${dto.msgContent }">${dto.msgContent }</div> 
 				</c:forEach>	
 			</c:otherwise>		
 		</c:choose>
 		
 		<tr>
-			<td colspan="5">
+			<td colspan="6">
 			</td>
 		</tr>
 	</table>
+	
 	<input type="hidden" id="totalCount" value="100">
 <input type="hidden" id="page" value="1">
 <input type="hidden" id="boardName" value="messageboard">
 <div id="pasing"></div>
 </div>
-
-
-
-
+</div>
 
 <div class="sent mx-3 my-10"style ="width:400px;height:500px; margin:auto;">
 
 <div style="text-align:center"><h3>보낸 쪽지</h3></div>
+<div class="sentTable">
 <table>
 		<col width="2%">
 		<col width="4%">
@@ -123,7 +233,7 @@
 		<tr>
 			<th>확인</th>
 			<th>받은이</th>
-			<th>내용</th>
+			<th>제목</th>
 			<th>작성일</th>
 			<th>삭제</th> 
 		</tr>	
@@ -131,32 +241,42 @@
 		<c:choose>
 			<c:when test="${empty sdlist }">
 				<tr>
-					<td colspan="5">----작성된 글이 존재하지 않습니다.----</td>
+					<td colspan="5" style="text-align:center">----보낸 쪽지가 없습니다.----</td>
 				</tr>		
 			</c:when>
 			<c:otherwise>
 				<c:forEach var="dto" items="${sdlist }">
-					<tr>
-						<td>${dto.msgSeq }</td>
-						<td>${dto.receiver }</td>
-						<td>${dto.msgContent }</td>
-						<td>${dto.sendDate }</td>
-						<td><a href="Messagecon.do?command=delete&seq=${dto.msgSeq }">삭제</a></td>
+				<tr>
+					<c:choose>
+					<c:when test="${dto.receiverChk>0 }">
+					<td>확인</td>
+					</c:when>
+					<c:otherwise>
+						<td><b>미확인</b></td>
+					</c:otherwise>
+					</c:choose>
+				<td id="msgReceiver${dto.msgSeq }">${dto.receiver }</td>
+				<td id="msgTitle${dto.msgSeq }"><a onclick="viewMsg(${dto.msgSeq })">${dto.title }</a></td>
+				<td id="msgDate${dto.msgSeq }">${dto.sendDate }</td> 
+				<td><a href="Message.do?command=delete&msgSeq=${dto.msgSeq }">삭제</a></td>
 					</tr>
+				<div style="display:none" id="msgContent${dto.msgSeq }">${dto.msgContent }</div> 
 				</c:forEach>	
 			</c:otherwise>		
 		</c:choose>
 		
 		<tr>
 			<td colspan="5">
-				<input type="button" value="글쓰기" onclick="location.href = 'controller.do?command=insertform'">
+				<input type="button" value="쪽지 보내기" onclick="sendmsgPopup()">
 			</td>
 		</tr>
+		
 	</table>
 	<input type="hidden" id="totalCount2" value="1000">
 <input type="hidden" id="page2" value="23">
-<input type="hidden" id="boardName2" value="messageboardreceived">
+<input type="hidden" id="boardName2" value="messageBoardReceived">
 <div id="pasing2"></div>
+</div>
 </div>
 
 
@@ -164,14 +284,7 @@
 
 
 
-<script type="text/javascript">
-/*$.ajax({
-	url:"Message.do",
-	method:"post",
-	data: 
-})
-*/
-</script>
+
 
 </div>
 <!-- footer -->

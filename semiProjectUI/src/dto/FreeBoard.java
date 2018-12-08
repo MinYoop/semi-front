@@ -30,7 +30,7 @@ public class FreeBoard {
  private Integer titleTab;
 
  // 게시자 
- private Integer writer;
+ private String writer;
 
  // 등록일 
  private Date regDate;
@@ -99,11 +99,11 @@ public class FreeBoard {
      this.titleTab = titleTab;
  }
 
- public Integer getWriter() {
+ public String getWriter() {
      return writer;
  }
 
- public void setWriter(Integer writer) {
+ public void setWriter(String writer) {
      this.writer = writer;
  }
 

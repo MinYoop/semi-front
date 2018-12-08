@@ -6,73 +6,52 @@
 
 
 	<resultMap type="dto.User" id="UsrMap">
-		<result property="usrSeq" column="USR_SEQ" />
 		<result property="nickName" column="NICKNAME" />
 		<result property="email" column="EMAIL" />
-		<result property="sns" column="SNS" />
-		<result property="snsId" column="SNS_ID" />
 		<result property="address1" column="ADDRESS1" />
 		<result property="address2" column="ADDRESS2" />
+		<result property="zipCode" column="ZIPCODE" />
+		<result property="sns" column="SNS" />
+		<result property="snsId" column="SNS_ID" />
 		<result property="homeLat" column="HOME_LAT" />
 		<result property="homeLon" column="HOME_LON" />
-		<result property="zipCode" column="ZIPCODE" />
+		<result property="fromBuyer" column="FROMBUYER" />
+		<result property="fromSeller" column="FROMSELLER" />
+		<result property="buyCnt" column="BUYCNT" />
+		<result property="sellCnt" column="SELLCNT" />
+
 	</resultMap>
-
-
-	
-	<resultMap type="dto.Message" id="MessageMap">
-		<result property="msgSeq" column="MSG_SEQ" />
-		<result property="msgContent" column="MSG_CONTENT" />
-		<result property="sender" column="SENDER" />
-		<result property="receiver" column="RECEIVER" />
-		<result property="receiverChk" column="RECEIVER_CHK" />
-		<result property="senderDelDhk" column="SENDER_DEL_CHK" />
-		<result property="receiverDelChk" column="RECEIVER_DEL_CHK" />
-		<result property="sendDate" column="SEND_DATE" />
-	</resultMap>
-
-
-	
-	<resultMap type="dto.UsrLocation" id="UsrLocationMap">
-		<result property="locSeq" column="LOC_SEQ" />
-		<result property="usrSeq" column="USR_SEQ" />
-		<result property="dealLat" column="DEAL_LAT" />
-		<result property="dealLon" column="DEAL_LON" />
-		<result property="locationName" column="LOCATION_NAME" />
-	</resultMap>
-
-
 
 	<select id="selectAll" resultMap="UsrMap">
-		SELECT usr_seq, nickname, email, sns, sns_id, address1, address2, home_lat, home_lon
+		SELECT nickname, email,  address1, address2, zipcode, sns, sns_id,home_lat, home_lon,
+		frombuyer,fromseller,buycnt,sellcnt
 		FROM USER_TB
 		ORDER BY
 		USR_SEQ
 		DESC
 	</select>
 
-	<select id="selectOneBySeq" parameterType="int" resultMap="UsrMap">
-		SELECT usr_seq, nickname, email, sns, sns_id, address1, address2, home_lat, home_lon
+	<select id="selectOneByNick" parameterType="String" resultType="User">
+		SELECT nickname, email, address1, address2, zipcode,  sns, sns_id, home_lat, home_lon,
+		frombuyer,fromseller,buycnt,sellcnt
 		FROM USER_TB
-		WHERE USR_SEQ = #{usrSeq}
+		WHERE USR_SEQ = #{nickname}
 	</select>
 	
 	<select id="selectOne" parameterType="User" resultMap="UsrMap">
 	<!-- resultmap이 아닌 resulttype 으로 (dto로)쓰면 list로 받아올 필요 없이 객체로 받을 수 있다. -->
-		SELECT usr_seq, nickname, email, sns, sns_id, address1, address2, home_lat, home_lon
+		SELECT nickname, email,address1, address2, zipcode, sns, sns_id,  home_lat, home_lon,
+		 frombuyer,fromseller,buycnt,sellcnt
 		FROM USER_TB
 		WHERE SNS = #{sns}
 		and SNS_ID = #{snsId}
 	</select>
 
 	<insert id="insertUsr" parameterType="User">
-	<selectKey keyProperty="usrSeq" resultType="int" order="BEFORE">
-	select USER_TB_SEQ.nextval from dual
-	</selectKey>
 		insert into USER_TB
 		values (
-		#{usrSeq}, #{nickName}, #{email}, #{sns}, #{snsId}, #{address1}, #{address2},
-		#{homeLat}, #{homeLon}, #{zipCode})
+		#{nickName}, #{email},  #{address1}, #{address2},#{zipCode},#{sns}, #{snsId},
+		#{homeLat}, #{homeLon},TO_CHAR(0),TO_CHAR(0),0,0)
 	</insert>
 
 

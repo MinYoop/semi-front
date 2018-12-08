@@ -28,12 +28,6 @@
 		<result property="endDate" column="END_DATE" />
 	</resultMap>
 
-	<resultMap type="dto.File" id="FileMap">
-		<result property="fileSeq" column="FILE_SEQ" />
-		<result property="sellNum" column="SELL_NUM" />
-		<result property="filePath" column="FILE_PATH" />
-		<result property="fileName" column="FILE_NAME" />
-	</resultMap>
 
 	<resultMap type="dto.SellBoardReply" id="SellBoard_ReplyMap">
 		<result property="sbReply_seq" column="SB_REPLY_SEQ" />
@@ -98,21 +92,12 @@
 		DESC
 	</select>
 
-	<select id="selectOne" parameterType="int" resultType="User">
-		SELECT *
-		FROM USR
-		WHERE ID = #{id}
-	</select>
+<select id="countAll" parameterType="PageSelector">
 
-	<insert id="insertUsr" parameterType="User">
-		insert into USR
-		values (
-		#{seq_id}, #{nickname}, #{email}, #{password}, #{address1},
-		#{address2},
-		#{home_latitude}, #{home_longitude}, #{sns_id},
-		#{session_id}, #{online} )
-	</insert>
-	
+SELECT COUNT(*) FROM #{boardName}
+</select>
+
+	<!--유저 관련 셀렉트문 등은 usrmapper를 찾아보고 사용할 것.  -->
 	<select id="selectAll_admin" resultMap="DealMap">
 		SELECT *
 		FROM NOTICE

@@ -25,11 +25,5 @@ public class Admin {
         this.adminPw = adminPw;
     }
 
-
-    // AdminTb 모델 복사
-    public void CopyData(Admin param)
-    {
-        this.adminId = param.getAdminId();
-        this.adminPw = param.getAdminPw();
-    }
+    
 }

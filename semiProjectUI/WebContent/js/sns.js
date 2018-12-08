@@ -95,7 +95,7 @@ const isSessionHasUsr = () =>{
 				{
 					clientId: "AIOJsfO8McQfNj7Mv65y",
 					callbackUrl: "http://localhost:8787/semiProjectUI/signin.jsp",
-					isPopup: false, /* 팝업을 통한 연동처리 여부 */
+					isPopup: true, /* 팝업을 통한 연동처리 여부 */
 					loginButton: {color: "green", type: 3, height: 60} /*
 																		 * 로그인
 																		 * 버튼의

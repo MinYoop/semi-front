@@ -28,7 +28,9 @@
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<style>
 
+</style>
 </head>
 
 <body>
@@ -45,45 +47,102 @@
       <div class="col-md-6 mx-auto">
         <div class="block text-center">
           <a class="logo" href="index.html">
-            <img src="images/logo.png" alt="logo" width="100px" height="100px">
+            <img src="images/logo.png" width="100px" height="50px"alt="logo">
           </a>
-          <h2 class="text-center">Welcome Back</h2>
-          <form class="text-left clearfix" action="http://demo.themefisher.com/themefisher/elite-shop/index.html" >
+          <h2 class="text-center">Come in here!</h2>
             <div class="form-group">
-              <input type="email" class="form-control"  placeholder="Email">
+              <input type="hidden" class="form-control"  placeholder="Email">
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Password">
+              <input type="hidden" class="form-control" placeholder="Password">
             </div>
-            <div class="text-center">
-              <button type="submit" class="btn btn-primary" >Login</button>
+         <a id="custom-login-btn" href="javascript:loginWithKakao()">
+<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="300"/></a>
+                 <div id="naverIdLogin" class="my-3"></div>
+                 <div id="fb-root"></div> 
+										<script type="text/javascript"
+											src="//connect.facebook.net/ko_KR/all.js#xfbml=1&appId=416848035516774"
+											id="facebook-jssdk"></script>
+										<script src="js/sns.js"></script>
+											 <div class="fb-login-button" data-width="277" 
+											data-max-rows="1" data-size="large"
+											data-button-type="login_with" data-show-faces="false"
+											data-auto-logout-link="true" data-use-continue-as="false" ></div> 
+											
             </div>
-            <div id="naverIdLogin"></div>
+         <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
-  $("document").ready(function() {
+
+
+Kakao.init('9cf5622e3400d24c091a552cd507d917');
+let loginWithKakao = () =>{
+	Kakao.Auth.login({
+        success: function(authObj) {
+          alert(JSON.stringify(authObj));
+          
+    Kakao.API.request({
+      url: '/v2/user/me',
+      success: function(res) {
+        alert(JSON.stringify(res));
+        
+        
+            
+            $.ajax({
+               url:"servlet.do?command=kakaologin",
+               method:"post",
+               data:{"obj":JSON.stringify(res)},
+               
+               success:function(msg){//여기에 insert 한 result가 옴
+              	                	   
+               console.log(msg);   
+               
+               },
+               error:function(){
+                  alert("실패");
+               }
+            });
+         
+      },
+      fail: function(error) {
+        alert(JSON.stringify(error));
+      }
+    });
+  },
+  fail: function(err) {
+    alert(JSON.stringify(err));
+  }
+});}
+
+//]]>
+
+</script>
+
+<script>
+
+
 var naverLogin = new naver.LoginWithNaverId(
 		{
 			clientId: "AIOJsfO8McQfNj7Mv65y",
-			callbackUrl: "http://localhost:8787/semiProjectUI/signin.html",
-			isPopup: false, 
-			olor: "green", type: 3, height: 60} 
+			callbackUrl: "http://localhost:8787/semiProjectUI/signin.jsp",
+			isPopup: false,
+			loginButton: {color: "green", type: 3, height: 60} 
+													
+		}
 	);
 	
-	
 	naverLogin.init();
-  })
+	
+	
 
 </script>
-            
-          </form>
-          <p class="mt-3">New in this site ?<a href="signin.html"> Create New Account</a></p>
+          
         </div>
       </div>
     </div>
-  </div>
+
 </section>
 
-</div>
+
 <!-- /main wrapper -->
 
 <!-- jQuery -->

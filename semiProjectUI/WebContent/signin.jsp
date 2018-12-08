@@ -61,9 +61,10 @@
 	  naver_id_login.get_naver_userprofile("naverSignInCallback()");
 	  // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
 	  function naverSignInCallback() {
-	   alert(naver_id_login.getProfileData('id')+naver_id_login.getProfileData('nickname')+naver_id_login.getProfileData('email')+naver_id_login.getProfileData('age'));
-	   $(".email").val(naver_id_login.getProfileData('email'));
+		
+		$(".email").val(naver_id_login.getProfileData('email'));
 	   $(".snsId").val(naver_id_login.getProfileData('id'));
+	   $(".sns").val('NV');
 	   $.ajax({
 	      url : "../../nvlogin",
 	      
@@ -115,20 +116,20 @@
 									placeholder="NickName">
 							</div>
 							<div class="form-group">
-								<input type="email" class="form-control" name="email"
+								<input class = "email" type="email" class="form-control" name="email"
 									placeholder="Email">
 							</div>
 							<div class="form-group">
 								<input type="text" class="form-control" name="address1" id="address1"
 									placeholder="Address" readonly="readonly" onclick="goPopup()" value="">
-							<b> 우편번호 </b><input style="align-item:center;color:grey" id="zipNo" name="zipNo" class="mt-2" type="text" size="10" readonly="readonly"></div>
+							<b> 우편번호 </b><input style="align-item:center;color:grey" id="zipCode" name="zipCode" class="mt-2" type="text" size="10" readonly="readonly"></div>
 							<div class="form-group">
 								<input type="text" class="form-control" name="address2" id="addrDetail"
 									placeholder="Address detail">
 							</div>
 
 							<div class="form-group">
-								<input type="hidden" class="form-control" name="snsId"
+								<input type="hidden" class="form-control snsId" name="snsId"
 									value=${param.snsId }>
 							</div>
 							<div class="form-group">
@@ -190,7 +191,7 @@
 		function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn , detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo){
 		$("#address1").val(roadAddrPart1); 
 		$("#addrDetail").val(addrDetail); 
-		$("#zipNo").val(zipNo);
+		$("#zipCode").val(zipNo);
 		
 		var geocoder = new daum.maps.services.Geocoder();
 		var callback = function(result, status) {

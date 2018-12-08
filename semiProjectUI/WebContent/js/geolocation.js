@@ -17,8 +17,8 @@ function geoFindMe() {
   function success(position) {  
 	  
 	  
-	  var latitude  = position.coords.latitude;
-	  var longitude = position.coords.longitude;
+	  var latitude  = position.coords.latitude!=null?position.coords.latitude:37.4989972;
+	  var longitude = position.coords.longitude!=null?position.coords.longitude:127.030715;
 
 	  output.innerHTML = '<p>위도 : ' + latitude + '° <br>경도 : ' + longitude + '°</p>';
 	  ajaxDo(latitude,longitude);
@@ -29,11 +29,8 @@ function geoFindMe() {
 			url:"servlet.do?command=geolocation&latitude="+latitude+"&longitude="+longitude,
 			dataType:"text",
 			success:function(msg){ 
-				alert(msg + "성공");			
-				
 			},
 			error:function(){
-				alert("실패염");
 			}
 		});	  
   }  

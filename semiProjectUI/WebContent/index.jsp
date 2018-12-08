@@ -808,18 +808,18 @@
 									<h2 class="mb-lg-5 mb-4">이 곳에 있습니다.</h2>
 									<!-- newsletter form -->
 									<div class="form">
-									<form method="post" action="signin.jsp">
-									<button class="btn btn-primary w-100" type="submit">Join Us</button></form>
-										<div id="naverIdLogin" class="my-3"></div>
+									<form method="post" action="login.jsp">
+									<button class="btn btn-primary w-100" onclick="submit">SNS로그인</button></form>
 										<div id="fb-root"></div> 
 										<script type="text/javascript"
 											src="//connect.facebook.net/en_US/all.js#xfbml=1&appId=416848035516774"
 											id="facebook-jssdk"></script>
 										<script src="js/sns.js"></script>
-							 <div class="fb-login-button" data-width="277" 
+							 <div style="display:none" class="fb-login-button" data-width="277" 
 											data-max-rows="1" data-size="large"
 											data-button-type="login_with" data-show-faces="false"
 											data-auto-logout-link="true" data-use-continue-as="false" ></div> 
+											
 									</div>
 								</div>
 								<!-- Content end -->

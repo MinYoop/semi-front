@@ -28,6 +28,33 @@
 
 <script src="js/geolocation.js"></script>
 
+<script type="text/javascript">
+
+$.ajax({
+	url:"usr.do",
+	data:{
+		command:"isSessionHasUsr"
+	},
+	success:function(res){
+		if(res>0){
+			$.ajax({
+				url:"message.do",
+				data:{
+					command:"chkMessage"
+				},
+				success:function(res){
+					$(".chkmsg").html("<a href='message.jsp'>새 메세지<span class='badge badge-pill badge-danger'>"+res+"</span></a>");
+				}
+			})
+		}else{
+			$(".myinfo").html(" ");
+			$(".loginout").html("<a href='usr.do?command=loginPage'>로그인</a>");
+		}
+	}
+})
+
+</script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
@@ -35,8 +62,10 @@
 </head>
 <body>
 
+<script type="text/javascript">
 
 
+</script>
 	<!-- header -->
 	<header>
 		<!-- top header -->
@@ -47,17 +76,19 @@
 				</div>
 				<div class="col-lg-6 text-center text-lg-right">
 					<ul class="list-inline">
-						<li class="list-inline-item"><a href="usr.do?command=logout"><img src="images/flag.jpg"
-							alt="flag" ></a></li>
-						<li class="list-inline-item"><a href="dashboard.jsp">My
-								Accounts</a></li>
+						<li class="loginout list-inline-item"><a href="usr.do?command=logout">
+						로그아웃</a></li>
+						<li class="myinfo list-inline-item"><a href="dashboard.jsp">내 정보</a>
+							</li>
+							<li class="list-inline-item"><div class="chkmsg">
+								</div></li>
 						<li class="list-inline-item">
 							<form action="#">
 								<select class="country" name="country">
 									<option value="presentloc">현위치</option>
 									<option value="registeredloc">등록위치</option>
 								</select>
-							</form>
+							</form></li>
 					</ul>
 				</div>
 			</div>
@@ -68,7 +99,7 @@
 		<!-- navigation -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-white w-100"
 		id="navbar">
-		<a class="navbar-brand order-2 order-lg-1" href="index.html"><img
+		<a class="navbar-brand order-2 order-lg-1" href="index.jsp"><img
 			class="img-fluid" src="images/logo.png" alt="logo" width="100px"
 			height="50px"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"

@@ -321,7 +321,7 @@
 													</c:choose>
 												</div>
 												<!-- product label badge -->
-												<div class="product-label sale">fuck</div>
+												<div class="product-label sale">헌거</div>
 											</div>
 										</div>
 										<!-- //end of product -->

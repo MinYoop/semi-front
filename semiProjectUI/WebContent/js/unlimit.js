@@ -8,7 +8,6 @@ $(document).ready(function () {
 
 	    if(maxHeight <= currentScroll + 50) {	
 	    	
-	    	
 	    	$('html, body').animate({scrollTop : currentScroll-1000});				
 			
 	    	infiniteScroll();

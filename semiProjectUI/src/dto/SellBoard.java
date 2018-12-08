@@ -9,7 +9,7 @@ public class SellBoard {
     private int sellSeq;
 
     // 판매자 
-    private int seller;
+    private String seller;
 
     // 매매위치위도 
     private String tradeLat;
@@ -45,11 +45,11 @@ public class SellBoard {
         this.sellSeq = sellSeq;
     }
 
-    public int getSeller() {
+    public String getSeller() {
         return seller;
     }
 
-    public void setSeller(int seller) {
+    public void setSeller(String seller) {
         this.seller = seller;
     }
 

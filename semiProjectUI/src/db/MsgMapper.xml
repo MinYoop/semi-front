@@ -2,76 +2,67 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="MsgSQL">
-	
-	
-	
+<mapper namespace="MsgSql">
+
+
+
 
 	<resultMap type="dto.Message" id="MessageMap">
 		<result property="msgSeq" column="MSG_SEQ" />
+		<result property="msgTitle" column="MSG_TITLE" />
 		<result property="msgContent" column="MSG_CONTENT" />
 		<result property="sender" column="SENDER" />
 		<result property="receiver" column="RECEIVER" />
 		<result property="receiverChk" column="RECEIVER_CHK" />
-		<result property="senderDelDhk" column="SENDER_DEL_CHK" />
+		<result property="senderDelChk" column="SENDER_DEL_CHK" />
 		<result property="receiverDelChk" column="RECEIVER_DEL_CHK" />
 		<result property="sendDate" column="SEND_DATE" />
 	</resultMap>
 
 
-	<insert id="sendMsg" parameterType="Message">
+	<insert id="sendMsg" parameterType="Map">
+	<selectKey keyProperty="id" resultType="int" order="BEFORE">
+		select MESSAGE_TB_SEQ.NEXTVAL from dual
+	</selectKey>
 		insert into MESSAGE_TB
-		values (
-		#{msgSeq}, #{msgContent}, #{sender}, #{receiver}, #{senderChk}, 
-		#{senderDelDhk}, #{receiverDelChk}, #{sendDate} )
+		values
+		( #{id}, #{msgTitle}, #{msgContent}, #{sender}, #{receiver}, 0,
+		0, 0, SYSDATE )
 	</insert>
-
-	<select id="selectSent" parameterType="PageSelector" resultMap="MessageMap" >
-		
-		<!-- [CDATA[ 
-		select B.rnum, B.msg_seq, B.msg_content, B.sender,
-		B.receiver,B.receiver_chk,B.sender_del_chk,
-		B.receiver_del_chk,B.send_date
-		FROM(
-		SELECT ROWNUM as rnum, A.msg_seq, A.msg_content, A.sender,
-		A.receiver, A.receiver_chk,
-		A.sender_del_chk,A.receiver_del_chk,A.send_date
-		FROM (
-		select msg_seq, msg_content,sender,receiver,receiver_chk,
-		sender_del_chk,receiver_del_chk,send_date 
-		from MESSAGE_TB
-		WHERE SENDER = #{sender} 
-		ORDER BY
-		SEND_DATE ) A
-		where ROWNUM
-		  <=  #{endNum} ) B
-		where B.rnum  >=  #{startNum} ]]-->
-	</select>
-
-	<select id="selectReceived" parameterType="PageSelector" resultMap="MessageMap">
-			<!-- [CDATA[ 
-		select B.rnum, B.msg_seq, B.msg_content, B.sender,
-		B.receiver,B.receiver_chk,B.sender_del_chk,
-		B.receiver_del_chk,B.send_date
-		FROM(
-		SELECT ROWNUM as rnum, A.msg_seq, A.msg_content, A.sender,
-		A.receiver, A.receiver_chk,
-		A.sender_del_chk,A.receiver_del_chk,A.send_date
-		FROM (
-		select msg_seq, msg_content,sender,receiver,receiver_chk,
-		sender_del_chk,receiver_del_chk,send_date 
-		from MESSAGE_TB
-		WHERE receiver = #{receiver} 
-		ORDER BY
-		SEND_DATE ) A
-		where ROWNUM
-		  <=  #{endNum} ) B
-		where B.rnum  >=  #{startNum} ]]-->
-	</select>
-
-
-
 	
+	<select id="countAllMessages" parameterType="map">
+		SELECT COUNT(*) FROM MESSAGE_TB where #{side} = #{nickName} RECEIVER_DEL_CHK = 0
+	</select>
+	
+	
+
+	<select id="selectSent" parameterType="PageSelector"
+		resultMap="MessageMap">
+
+		<!-- [CDATA[ select B.rnum, B.msg_seq, B.msg_content, B.sender, B.receiver,B.receiver_chk,B.sender_del_chk, 
+			B.receiver_del_chk,B.send_date FROM( SELECT ROWNUM as rnum, A.msg_seq, A.msg_content, 
+			A.sender, A.receiver, A.receiver_chk, A.sender_del_chk,A.receiver_del_chk,A.send_date 
+			FROM ( select msg_seq, msg_content,sender,receiver,receiver_chk, sender_del_chk,receiver_del_chk,send_date 
+			from MESSAGE_TB WHERE SENDER = #{sender} ORDER BY SEND_DATE ) A where ROWNUM 
+			<= #{endNum} ) B where B.rnum >= #{startNum} ]] -->
+	</select>
+
+	<select id="selectReceived" parameterType="PageSelector"
+		resultMap="MessageMap">
+		<!-- [CDATA[ select B.rnum, B.msg_seq, B.msg_content, B.sender, B.receiver,B.receiver_chk,B.sender_del_chk, 
+			B.receiver_del_chk,B.send_date FROM( SELECT ROWNUM as rnum, A.msg_seq, A.msg_content, 
+			A.sender, A.receiver, A.receiver_chk, A.sender_del_chk,A.receiver_del_chk,A.send_date 
+			FROM ( select msg_seq, msg_content,sender,receiver,receiver_chk, sender_del_chk,receiver_del_chk,send_date 
+			from MESSAGE_TB WHERE receiver = #{receiver} ORDER BY SEND_DATE ) A where 
+			ROWNUM <= #{endNum} ) B where B.rnum >= #{startNum} ]] -->
+	</select>
+
+
+	<select id="selectNeverChk" parameterType="map" resultType="int">
+		select count(*) from MESSAGE_TB where NICKNAME =#{nickname} and
+		RECEIVER_CHK = 0
+	</select>
+
 
 
 </mapper>

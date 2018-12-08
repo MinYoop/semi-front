@@ -12,10 +12,10 @@ public class Deal {
  private Integer selnum;
 
  // 판매자 
- private Integer seller;
+ private String seller;
 
  // 구매자 
- private Integer buyer;
+ private String buyer;
 
  // 거래시작일시 
  private Date startDate;
@@ -41,19 +41,19 @@ public class Deal {
      this.selnum = selnum;
  }
 
- public Integer getSeller() {
+ public String getSeller() {
      return seller;
  }
 
- public void setSeller(Integer seller) {
+ public void setSeller(String seller) {
      this.seller = seller;
  }
 
- public Integer getBuyer() {
+ public String getBuyer() {
      return buyer;
  }
 
- public void setBuyer(Integer buyer) {
+ public void setBuyer(String buyer) {
      this.buyer = buyer;
  }
 
@@ -74,13 +74,5 @@ public class Deal {
  }
 
  // DealTb 모델 복사
- public void CopyData(Deal param)
- {
-     this.dealSeq = param.getDealSeq();
-     this.selnum = param.getSelnum();
-     this.seller = param.getSeller();
-     this.buyer = param.getBuyer();
-     this.startDate = param.getStartDate();
-     this.endDate = param.getEndDate();
- }
+ 
 }

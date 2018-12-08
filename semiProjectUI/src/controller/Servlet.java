@@ -45,7 +45,6 @@ public class Servlet extends HttpServlet {
 		HttpSession session = request.getSession();///세션 얻기
 		
 		
-		
 		if(command.equals("kakaologin")) {
 			
 			String obj = request.getParameter("obj");
@@ -63,8 +62,7 @@ public class Servlet extends HttpServlet {
 			System.out.println("카톡 닉네임은 : " + nickname);
 					
 			
-			PrintWriter out = response.getWriter();			
-			out.println("ok");				
+			response.sendRedirect("");		
 		}else if(command.equals("geolocation")) {
 			String latitude = request.getParameter("latitude");
 			String longitude = request.getParameter("longitude");
@@ -84,8 +82,12 @@ public class Servlet extends HttpServlet {
 			List<SellBoard> list = dao.selectAll();
 			
 			//내위치 KH정보교육원 // 웹에서는 세션에서 불러옴
-					
+				
+			//사진 뽑아보는 중
 			
+			
+			
+			//여기까지가 실험
 			for(int i=0; i<list.size(); i++){
 				System.out.println(list.get(i).getTitle()+"/"+list.get(i).getSellSeq());				
 			}
