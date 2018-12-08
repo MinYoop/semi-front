@@ -30,7 +30,7 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	
-<!-- 무한스크롤 --> 	<script type="text/javascript" src="js/unlimit.js"></script>
+<!-- 무한스크롤 --> 	<script type="text/javascript" src="js/unlimit.js?ver=5"></script>
 
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
@@ -261,12 +261,8 @@
 					<div class="col-lg-9">
 						<div class="row" id="limit">
 							<!-- 코어 반복 -->
-							<c:choose>
-								<%-- <c:when test="${empty list }">
-					<tr>
-						<td colspan="4">===========작성된 글이 없습니다============
-					</tr>
-				</c:when> --%>
+							<%-- <c:choose>
+								
 								<c:when test="${empty list }">
 				
 				======================판매글 없음======================
@@ -321,7 +317,7 @@
 													</c:choose>
 												</div>
 												<!-- product label badge -->
-												<div class="product-label sale">헌거</div>
+												<div class="product-label sale">${dto.status }</div>
 											</div>
 										</div>
 										<!-- //end of product -->
@@ -333,7 +329,7 @@
 									</c:forEach>
 								</c:otherwise>
 
-							</c:choose>
+							</c:choose> --%>
 
 
 
@@ -361,11 +357,13 @@
 								<nav>
 									<ul class="pagination justify-content-center">
 										
-										<li>더 많은 매물을 보려면 스크롤을 내려주세요</li>										
+										<li id="nomoreitem">더 많은 매물을 보려면 스크롤을 내려주세요</li>										
 										
 									</ul>
 								</nav>
 					    </div>
+					    <input type="button" value="글쓰기" onclick="location.href='servlet.do?command=writeform'"/>
+					    
 					</div>
 				</div>
 			</div>

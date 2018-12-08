@@ -1,6 +1,29 @@
-   // 무한스크롤 인식
+window.onload = function(){
+	
+$.ajax({
+		
+		url: "servlet.do?command=settingItem",
+		cache: false,
+		async:false,
+		success: function(html){
+			
+			
+				
+				$('#limit').append(html);				
+		},
+		error:function(){
+			alert("초기매물받기 실패");
+			
+		}
+    })
+    return false;
+}   
 
-var count = 2;
+
+
+// 무한스크롤 인식
+
+var count = 5;
 $(document).ready(function () {
 	  $(document).scroll(function() {
 		var maxHeight = $(document).height();
@@ -20,11 +43,19 @@ $(document).ready(function () {
 
 
 //스크롤 감지 및 호출
-function infiniteScroll(){	
-		
-		loadArticle(count);
+function infiniteScroll(){
 		count++;	
+		loadArticle(count);
+		
 }
+
+String.prototype.trim = function () { //trim
+	
+    return this.replace(/^\s+|\s+$/g, "");
+
+}
+
+
 
 // ajax 로드
 function loadArticle(pageNumber){	
@@ -34,13 +65,21 @@ function loadArticle(pageNumber){
 		url: "servlet.do?command=limit&page="+pageNumber,
 		cache: false,
 		success: function(html){
-			setTimeout(function(){ // 시간 지연
-				$('#limit').append(html);
+			
+			if(html.trim()=="nomoreitem"){
+				document.getElementById("nomoreitem").innerHTML="더 이상 등록된 매물이 없습니다."
+
+			}else{
+				/*setTimeout(function(){ // 시간 지연
+					$('#limit').append(html);					
+				}, 300);*/
 				
-			}, 1000);
+				$('#limit').append(html);	
+			}
+			
 		},
 		error:function(){
-			alert("실패");
+			
 		}
     });
 	return false;
