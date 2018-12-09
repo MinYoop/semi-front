@@ -79,11 +79,11 @@ let sendmsg = () => {
 let sendmsgPopup = (sender=0) => {
 if(sender!=0){
 	$(".whowouldreceive").html(sender);
-	$(".SendToWho").attr("type","hidden");
-	$(".SendToWho").val(sender);
+	$("#SendToWho").attr("type","hidden");
+	$("#SendToWho").val(sender);
 }else{
-	$(".sendToWho").val("");
-	$(".SendToWho").attr("type","text");
+	$("#sendToWho").val("");
+	$("#SendToWho").attr("type","text");
 }
 $('#sendform').modal('show');
 } 
@@ -201,10 +201,10 @@ let viewMsg = (seq) =>{
 						<td><b>미확인</b></td>
 					</c:otherwise>
 					</c:choose>
-						<td id="msgFrom${dto.sender }">${dto.sender }</td>
-						<td id="msgTitle${dto.title }"><a onclick="viewMsg(${dto.msgSeq })">${dto.title }</a></td>
+						<td id="msgFrom${dto.msgSeq }">${dto.sender }</td>
+						<td id="msgTitle${dto.msgSeq }"><a onclick="viewMsg(${dto.msgSeq })">${dto.msgTitle }</a></td>
 					<td id="msgDate${dto.msgSeq }">${dto.sendDate }</td> 
-				<td><button class="btn btn-primary w-10" onclick="sendmsgPopup(${dto.sender })">클릭</button>\n" + 
+				<td><button class="btn-secondary" onclick="sendmsgPopup('${dto.sender }')">클릭</button>
 				<td><a href="Message.do?command=delete&msgSeq=${dto.msgSeq }">삭제</a></td>
 					</tr>
 				<div style="display:none" id="msgContent${dto.msgContent }">${dto.msgContent }</div> 
@@ -262,7 +262,7 @@ let viewMsg = (seq) =>{
 					</c:otherwise>
 					</c:choose>
 				<td id="msgReceiver${dto.msgSeq }">${dto.receiver }</td>
-				<td id="msgTitle${dto.msgSeq }"><a onclick="viewMsg(${dto.msgSeq })">${dto.title }</a></td>
+				<td id="msgTitle${dto.msgSeq }"><a onclick="viewMsg(${dto.msgSeq })">${dto.msgTitle }</a></td>
 				<td id="msgDate${dto.msgSeq }">${dto.sendDate }</td> 
 				<td><a href="Message.do?command=delete&msgSeq=${dto.msgSeq }">삭제</a></td>
 					</tr>

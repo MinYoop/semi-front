@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -110,6 +111,9 @@ public class Messagecon extends HttpServlet {
 			request.setAttribute("rclist", rclist);
 			request.setAttribute("sdlist", sdlist);
 			
+			RequestDispatcher a = request.getRequestDispatcher("message.jsp");
+			
+			a.forward(request, response);
 		}
 				
 		
