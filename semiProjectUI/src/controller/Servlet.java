@@ -88,8 +88,10 @@ public class Servlet extends HttpServlet {
 			
 		}else if(command.equals("settingItem")){
 			
-			List<SellBoard> list = getAll(request).subList(0, 6);
-		
+			List<SellBoard> list = getAll(request);
+			if(list.size()>=6) {
+				list=list.subList(0, 6);
+			}
 			String outHtml = "";
 			
 			for(int i = 0 ; i < list.size(); i++) {
@@ -210,7 +212,7 @@ public class Servlet extends HttpServlet {
 	      }
 	      
 	      else if(command.equals("boardwrite")){
-	         int seller = Integer.parseInt(request.getParameter("seller"));
+	         String seller = request.getParameter("seller");
 	         String tradeLat = request.getParameter("tradeLat");
 	         String tradeLon = request.getParameter("tradeLon");
 	         String sellContent = request.getParameter("sellContent");

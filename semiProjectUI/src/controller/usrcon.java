@@ -133,7 +133,7 @@ public class usrcon extends HttpServlet {
 
 		}
 
-		else if (command.equals( "loginchk")) { // 페이지마다 확인하는 부분
+		/*else if (command.equals( "loginchk")) { // 페이지마다 확인하는 부분
 			System.out.println("유저컨트롤러 로긴첵 진입  ");
 
 			if (session.getAttribute("User") != null) {
@@ -152,7 +152,7 @@ public class usrcon extends HttpServlet {
 			
 			//로그인 
 
-		} else if (command.equals("login")) {
+		} */else if (command.equals("login")) {
 			System.out.println("jajajaa");
 			System.out.println(request.getParameter("sns")+request.getParameter("snsId"));
 

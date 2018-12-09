@@ -83,16 +83,14 @@ $(function(){
 				</td>
 					
 				<td align="right">
-					<input type="text" name="tradeLat" id="tradeLat"/>
+				
+					<input type="text" name="tradeLat" id="tradeLat"/>  
 					<input type="text" name="tradeLon" id="tradeLon"/>	
-					<input type="button" value="등록" id="save" />
-					<input type="button" value="취소" 
-					onclick="location.href='servlet.do?command=sellboardlist'" />
+					<input type="button" value="등록" id="save" />  
+					<input type="button" value="취소" onclick="location.href='servlet.do?command=sellboardlist'" />  
 					
 				</td>
-			</tr>
-			
-			
+			</tr>		
 		
 		</table>
 	
