@@ -37,6 +37,9 @@ $.ajax({
 	},
 	success:function(res){
 		if(res>0){
+			$(".whenlogin").html("<h4 style='color:red'>로그인 상태입니다.</h4>");
+			  setTimeout(function(){$("#subscriptionModal").modal('hide');},4000);
+
 			$.ajax({
 				url:"message.do",
 				data:{

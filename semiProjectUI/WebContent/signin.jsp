@@ -55,43 +55,26 @@
 	<script type="text/javascript">
 	
 	var naver_id_login = new naver_id_login("AIOJsfO8McQfNj7Mv65y", "http://localhost:8787/semiProjectUI/signin.jsp");
-	  // 접근 토큰 값 출력
 	  
-	  // 네이버 사용자 프로필 조회
 	  naver_id_login.get_naver_userprofile("naverSignInCallback()");
-	  // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
 	  function naverSignInCallback() {
-		
+		  var id = naver_id_login.getProfileData('id');
 		$(".email").val(naver_id_login.getProfileData('email'));
-	   $(".snsId").val(naver_id_login.getProfileData('id'));
-	   $(".sns").val('NV');
-	   $.ajax({
-	      url : "../../nvlogin",
-	      
-	      method : "post",
-	      data : {"data" : JSON.stringify(
-	      { 
-	      	id : naver_id_login.getProfileData('id'),
-	      	nickname : naver_id_login.getProfileData('nickname'),
-	     	email : naver_id_login.getProfileData('email'),
-	     	age : naver_id_login.getProfileData('age')
-	      }) },
-	      success : function(data){
-	    	  $(".joinus").append("<b>"+naver_id_login.getProfileData('nickname')+"님 환영합니다.</b><br/><br/>"+
-	    			  "가입을 완료하시려면 추가 정보가 필요합니다.<br/>");
-	    	  
-	    	  $(".wait").css("display","none");
-	    	  $(".nvform").css("display","block");
-	    	  
-	        
-	      },
-	      error : function(request,status, error){
-	        alert(request.status+" : " +error);
-	        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	        alert("실패! 다음 기회에...") 
-	      }
+	   $(".snsId").val(id);
+	   $(".sns").val("NV");
+	   
+			$.post("usr.do?command=isUs&sns=NV&snsId="+id,function(res){
+				console.log(res);
+		    	  console.log("회원체크, 로긴체크");
+				if(res>0){ 
+					location.href="usr.do?command=login&sns=NV&snsId="+ id;
+			    	  console.log("로긴시도");
 
-	    })
+				} 
+			});
+		
+	    
+
 	  }
 	  
 	  </script>
@@ -133,7 +116,7 @@
 									value=${param.snsId }>
 							</div>
 							<div class="form-group">
-								<input type="hidden" class="form-control" name="sns"
+								<input type="hidden" class="form-control sns" name="sns"
 									value=${param.sns }>
 							</div>
 							<div class="text-center">
@@ -199,7 +182,7 @@
 		    	console.log(result);
 		    	$("#homeLat").val(result[0].y);
 		    	$("#homeLon").val(result[0].x);
-
+				console.log($("#homeLat").val());
 		    } else{alert("에라...");}
 		}
 

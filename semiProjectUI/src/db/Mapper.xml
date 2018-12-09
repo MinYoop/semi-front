@@ -29,16 +29,7 @@
 	</resultMap>
 
 
-	<resultMap type="dto.SellBoardReply" id="SellBoard_ReplyMap">
-		<result property="sbReply_seq" column="SB_REPLY_SEQ" />
-		<result property="sbGroupnum" column="SB_GROUPNUM" />
-		<result property="sbGroupSeq" column="SB_GROUP_SEQ" />
-		<result property="sbTitletab" column="SB_TITLETAB" />
-		<result property="sbContent" column="SB_CONTENT" />
-		<result property="sbWriter" column="SB_WRITER" />
-		<result property="regDate" column="REG_DATE" />
-		<result property="sellNum" column="SELL_NUM" />
-	</resultMap>
+	
 
 	<resultMap type="dto.FreeBoard" id="FreeBoardMap">
 		<result property="freeSeq" column="FREE_SEQ" />
@@ -139,6 +130,12 @@ SELECT COUNT(*) FROM #{boardName}
 
 
 <!-- 민엽끝 -->
+
+
+
+
+
+
 
 <!--<select id="selectOne" parameterType="int" resultType="Usr">
 		SELECT *

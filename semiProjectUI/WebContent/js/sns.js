@@ -27,7 +27,6 @@ let fbstate = function(){ FB.getLoginStatus(function(response){
   }
   
   
-// Promise.resolve().then(fbgogo(fbstate));
 
       function statusChangeCallback(response){
     	
@@ -44,6 +43,7 @@ let fbstate = function(){ FB.getLoginStatus(function(response){
 
 		
 const isSessionHasUsr = () =>{
+	
 	$.post("usr.do?command=isSessionHasUsr",function(data){
 		console.log("세션이 유저를 가지고 있을까? "+data)
 		if(data>0){
@@ -89,25 +89,8 @@ const isSessionHasUsr = () =>{
 		}
 			
 		
-		
-		// 네이버
-		var naverLogin = new naver.LoginWithNaverId(
-				{
-					clientId: "AIOJsfO8McQfNj7Mv65y",
-					callbackUrl: "http://localhost:8787/semiProjectUI/signin.jsp",
-					isPopup: true, /* 팝업을 통한 연동처리 여부 */
-					loginButton: {color: "green", type: 3, height: 60} /*
-																		 * 로그인
-																		 * 버튼의
-																		 * 타입을
-																		 * 지정
-																		 */
-				}
-			);
 			
-			/* 설정정보를 초기화하고 연동을 준비 */
-			naverLogin.init();
-			
+			isSessionHasUsr();
 			lochkforindex();
 			
 			FB.Event.subscribe('auth.statusChange', function(response) {

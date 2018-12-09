@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SellBoardReplySql">
+
+
+	<resultMap type="dto.SellBoardReply" id="SellBoard_ReplyMap">
+		<result property="sbReplySeq" column="SB_REPLY_SEQ" />
+		<result property="sbGroupnum" column="SB_GROUP_NUM" />
+		<result property="sbGroupSeq" column="SB_GROUP_SEQ" />
+		<result property="sbTitletab" column="SB_TITLETAB" />
+		<result property="sbContent" column="SB_CONTENT" />
+		<result property="sbWriter" column="SB_WRITER" />
+		<result property="regDate" column="REG_DATE" />
+		<result property="sellNum" column="SELL_NUM"/>
+	</resultMap>
+	
+	
+	<update id="createReplyBoard" parameterType="HashMap">
+		#{sql}
+	</update>
+	
+	
+	<insert id="insertSellBoardReply" parameterType="SellBoardReply">
+	INSERT INTO SELL_BOARD_REPLY_TB#{sellNum} VALUES (
+	#{sbReplySeq},#{sbGroupNum},#{},#{},#{},#{},#{},#{}
+	
+	
+	)
+	</insert>
+	
+</mapper>

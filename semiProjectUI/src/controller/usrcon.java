@@ -52,6 +52,7 @@ public class usrcon extends HttpServlet {
 		System.out.println(command);
 
 		if(command.equals("isUs")) {
+			System.out.println(request.getParameter("sns")+request.getParameter("snsId"));
 			User usr = dao.selectOne(request.getParameter("sns"), request.getParameter("snsId"));
 			if(usr==null) {
 				out.print(0);
@@ -65,8 +66,17 @@ public class usrcon extends HttpServlet {
 			response.sendRedirect("login.jsp");
 			
 		}else if (command.equals( "signin")) {
+			
+			System.out.println(request.getParameter("nickName"));
+			System.out.println(request.getParameter("email"));
+			System.out.println(request.getParameter("address1"));
+			System.out.println(request.getParameter("address2"));
+			System.out.println(request.getParameter("zipCode"));
+			System.out.println(request.getParameter("sns"));
+			System.out.println(request.getParameter("snsId"));
+			System.out.println(request.getParameter("homeLat"));
+			System.out.println(request.getParameter("homeLon"));
 
-			// User newser = new Gson().fromJson(request.getParameter("data"), User.class);
 			User newser = new User(request.getParameter("nickName"), request.getParameter("email"),
 					request.getParameter("address1"), request.getParameter("address2"),Integer.parseInt(request.getParameter("zipCode")), 
 					request.getParameter("sns"),request.getParameter("snsId"),  request.getParameter("homeLat"), request.getParameter("homeLon")
@@ -137,18 +147,24 @@ public class usrcon extends HttpServlet {
 			} else {
 				out.print(false);// 비로그인중.
 			}
+			
+			
+			
+			//로그인 
 
 		} else if (command.equals("login")) {
 			System.out.println("jajajaa");
+			System.out.println(request.getParameter("sns")+request.getParameter("snsId"));
+
 			User usr = dao.selectOne(request.getParameter("sns"), request.getParameter("snsId"));
 			System.out.println(usr.getSns()+usr.getSnsId()+usr.getNickName());
 
-			if (usr.getSnsId() != null) {
+			if (usr.getSns() != null) {
 				session.setAttribute("User", usr);// 유저 세션에 저장 
 				session.setMaxInactiveInterval(60*60);
 				System.out.println("유저가 널이 아님 ");
 				System.out.println(((User)session.getAttribute("User")).getNickName());
-
+				System.out.println(((User)session.getAttribute("User")).getSnsId());
 				// 물품비교객체 생성
 				if(session.getAttribute("favs")!=null) {
 				List<Integer> favs = null;

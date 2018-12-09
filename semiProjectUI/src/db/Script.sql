@@ -232,9 +232,9 @@ ALTER TABLE FILE_TB
 CREATE TABLE SELL_BOARD_REPLY_TB
 (
     SB_REPLY_SEQ    NUMBER            NOT NULL, 
-    SB_GROUPNUM     NUMBER            NOT NULL, 
-    SB_GROUPSQ      NUMBER            NOT NULL, 
-    SB_TITLETAB     NUMBER            NOT NULL, 
+    SB_GROUP_NUM     NUMBER            NOT NULL, 
+    SB_GROUP_SEQ      NUMBER            NOT NULL, 
+    SB_TITLE_TAB     NUMBER            NOT NULL, 
     SB_CONTENT      VARCHAR2(4000)    NOT NULL, 
     SB_WRITER       VARCHAR2(1000)    NOT NULL, 
     REG_DATE        DATE              NOT NULL, 

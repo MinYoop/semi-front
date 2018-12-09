@@ -31,15 +31,14 @@
 		DESC
 	</select>
 
-	<select id="selectOneByNick" parameterType="String" resultType="User">
+	<select id="selectOneByNick" parameterType="String" resultMap="UsrMap">
 		SELECT nickname, email, address1, address2, zipcode,  sns, sns_id, home_lat, home_lon,
 		frombuyer,fromseller,buycnt,sellcnt
 		FROM USER_TB
-		WHERE USR_SEQ = #{nickname}
+		WHERE USR_SEQ = #{nickName}
 	</select>
 	
-	<select id="selectOne" parameterType="User" resultMap="UsrMap">
-	<!-- resultmap이 아닌 resulttype 으로 (dto로)쓰면 list로 받아올 필요 없이 객체로 받을 수 있다. -->
+	<select id="selectOneUsr" parameterType="map" resultMap="UsrMap">
 		SELECT nickname, email,address1, address2, zipcode, sns, sns_id,  home_lat, home_lon,
 		 frombuyer,fromseller,buycnt,sellcnt
 		FROM USER_TB

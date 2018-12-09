@@ -59,26 +59,24 @@
 								class="col-lg-6 align-self-center text-center text-md-left mb-4 mb-lg-0">
 								<h3 data-duration-in=".5" data-animation-in="fadeInLeft"
 									data-delay-in="0" data-animation-out="fadeOutLeft"
-									data-delay-out="5" data-duration-out=".3">For Menâs</h3>
+									data-delay-out="5" data-duration-out=".3">남성을 위한</h3>
 								<!-- Start Title -->
 								<h1 data-duration-in=".5" data-animation-in="fadeInLeft"
 									data-delay-in=".2" data-animation-out="fadeOutLeft"
-									data-delay-out="5" data-duration-out=".3">High Quality
-									Converse</h1>
+									data-delay-out="5" data-duration-out=".3">고품격 정품 컨버스</h1>
 								<!-- end title -->
 								<!-- Start Subtitle -->
 								<h3 class="mb-4" data-duration-in=".5"
 									data-animation-in="fadeInLeft" data-delay-in=".4"
 									data-animation-out="fadeOutLeft" data-delay-out="5"
-									data-duration-out=".3">for only $59.00</h3>
+									data-duration-out=".3">강남역에서 단 돈 5만원에 모십니다.</h3>
 								<!-- end subtitle -->
 								<!-- Start description -->
 								<p class="mb-4" data-duration-in=".5"
 									data-animation-in="fadeInLeft" data-delay-in=".6"
 									data-animation-out="fadeOutLeft" data-delay-out="5"
-									data-duration-out=".3">Lorem ipsum dolor sit amet
-									consectetur adipisicing elit sed do eiusmod tempor incididunt
-									ut labore et dolore magna aliqua.</p>
+									data-duration-out=".3">엄마한테 새학기 문제집 많이 사야 한다고 뻥치고 산 건데... 
+									신발장에서 숨기는거 까먹었다가 걸려서 팝니다. 딱 3일 신고 걸려서 파는거라 엄청 깨끗하구요. 하루에 한 번씩 컨버스 전용 세정제로 닦아줬습니다.</p>
 								<!-- end description -->
 								<!-- Start button -->
 								<a href="shop.html" class="btn btn-primary"
@@ -115,21 +113,19 @@
 								class="col-lg-6 align-self-center text-center text-md-left mb-4 mb-lg-0">
 								<h3 data-duration-in=".5" data-animation-in="fadeInDown"
 									data-delay-in="0" data-animation-out="fadeOutDown"
-									data-delay-out="5.8" data-duration-out=".3">For Womenâs</h3>
+									data-delay-out="5.8" data-duration-out=".3">여성을 위한</h3>
 								<h1 data-duration-in=".5" data-animation-in="fadeInDown"
 									data-delay-in=".2" data-animation-out="fadeOutDown"
-									data-delay-out="5.4" data-duration-out=".3">High Quality
-									Bag</h1>
+									data-delay-out="5.4" data-duration-out=".3">유행을 타지 않는 명품 브랜드백</h1>
 								<h3 class="mb-4" data-duration-in=".5"
 									data-animation-in="fadeInDown" data-delay-in=".4"
 									data-animation-out="fadeOutDown" data-delay-out="5"
-									data-duration-out=".3">for only $37.00</h3>
+									data-duration-out=".3">수유역에서 40 만원 </h3>
 								<p class="mb-4" data-duration-in=".5"
 									data-animation-in="fadeInDown" data-delay-in=".6"
 									data-animation-out="fadeOutDown" data-delay-out="4.6"
-									data-duration-out=".3">Lorem ipsum dolor sit amet
-									consectetur adipisicing elit sed do eiusmod tempor incididunt
-									ut labore et dolore magna aliqua.</p>
+									data-duration-out=".3">작년 말에 친구가 해외여행 갈 때 부탁해서 받아서 이쁘게 잘 썼어요. 정이 많이 들었는데 요번 엑소 월드투어 때문에 
+									어쩔 수 없이 팔아요. 정품 새제품 가격 아시죠?</p>
 								<a href="shop.html" class="btn btn-primary"
 									data-duration-in=".5" data-animation-in="fadeInDown"
 									data-delay-in=".8" data-animation-out="fadeOutDown"
@@ -807,15 +803,13 @@
 									<h4>가장 가까운 곳의 가장 좋은 물건</h4>
 									<h2 class="mb-lg-5 mb-4">이 곳에 있습니다.</h2>
 									<!-- newsletter form -->
-									<div class="form">
+									<div class="form whenlogin">
 									<form method="post" action="login.jsp">
 									<button class="btn btn-primary w-100" onclick="submit">SNS로그인</button></form>
-										<div id="fb-root"></div> 
 										<script type="text/javascript"
 											src="//connect.facebook.net/en_US/all.js#xfbml=1&appId=416848035516774"
 											id="facebook-jssdk"></script>
-										<script src="js/sns.js"></script>
-							 <div style="display:none" class="fb-login-button" data-width="277" 
+							 <div class="fb-login-button" style="display:none" data-width="277" 
 											data-max-rows="1" data-size="large"
 											data-button-type="login_with" data-show-faces="false"
 											data-auto-logout-link="true" data-use-continue-as="false" ></div> 
@@ -855,6 +849,8 @@
 	<script src="plugins/google-map/gmap.js"></script>
 	<!-- Main Script -->
 	<script src="js/script.js"></script>
+	
+										<script src="js/sns.js"></script>
 
 </body>
 

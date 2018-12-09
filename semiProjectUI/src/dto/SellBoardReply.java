@@ -8,13 +8,13 @@ public class SellBoardReply {
     private Integer sbReplySeq;
 
     // 그룹넘버 
-    private Integer sbGroupnum;
+    private Integer sbGroupNum;
 
     // 그룹시퀀스 
-    private Integer sbGroupsq;
+    private Integer sbGroupSeq;
 
     // 칸띄움 
-    private Integer sbTitletab;
+    private Integer sbTitleTab;
 
     // 댓글내용 
     private String sbContent;
@@ -36,28 +36,28 @@ public class SellBoardReply {
         this.sbReplySeq = sbReplySeq;
     }
 
-    public Integer getSbGroupnum() {
-        return sbGroupnum;
+    public Integer getSbGroupNum() {
+        return sbGroupNum;
     }
 
-    public void setSbGroupnum(Integer sbGroupnum) {
-        this.sbGroupnum = sbGroupnum;
+    public void setSbGroupNum(Integer sbGroupNum) {
+        this.sbGroupNum = sbGroupNum;
     }
 
-    public Integer getSbGroupsq() {
-        return sbGroupsq;
+    public Integer getSbGroupSeq() {
+        return sbGroupSeq;
     }
 
-    public void setSbGroupsq(Integer sbGroupsq) {
-        this.sbGroupsq = sbGroupsq;
+    public void setSbGroupSeq(Integer sbGroupSeq) {
+        this.sbGroupSeq = sbGroupSeq;
     }
 
-    public Integer getSbTitletab() {
-        return sbTitletab;
+    public Integer getSbTitleTab() {
+        return sbTitleTab;
     }
 
-    public void setSbTitletab(Integer sbTitletab) {
-        this.sbTitletab = sbTitletab;
+    public void setSbTitleTab(Integer sbTitleTab) {
+        this.sbTitleTab = sbTitleTab;
     }
 
     public String getSbContent() {
@@ -92,16 +92,10 @@ public class SellBoardReply {
         this.sellNum = sellNum;
     }
 
-    // SellBoardReplyTb 모델 복사
-    public void CopyData(SellBoardReply param)
-    {
-        this.sbReplySeq = param.getSbReplySeq();
-        this.sbGroupnum = param.getSbGroupnum();
-        this.sbGroupsq = param.getSbGroupsq();
-        this.sbTitletab = param.getSbTitletab();
-        this.sbContent = param.getSbContent();
-        this.sbWriter = param.getSbWriter();
-        this.regDate = param.getRegDate();
-        this.sellNum = param.getSellNum();
-    }
+	public SellBoardReply() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+    
 }

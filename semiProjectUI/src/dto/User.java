@@ -16,12 +16,9 @@ public class User {
  private String address2;
  private Integer zipCode;
 
- // 유저의 sns id 
- private String snsId;
- 
  private String sns;
 
- 
+  private String snsId;
 
 // 집위도 
  private String homeLat;
@@ -43,13 +40,6 @@ public class User {
  
  
 
- public Integer getZipCode() {
-	return zipCode;
-}
-
-public void setZipCode(Integer zipCode) {
-	this.zipCode = zipCode;
-}
 
 public String getNickName() {
      return nickName;
@@ -82,14 +72,15 @@ public String getNickName() {
  public void setAddress2(String address2) {
      this.address2 = address2;
  }
-
- public String getSnsId() {
-     return snsId;
+ public Integer getZipCode() {
+	 return zipCode;
+ }
+ 
+ public void setZipCode(Integer zipCode) {
+	 this.zipCode = zipCode;
  }
 
- public void setSnsId(String snsId) {
-     this.snsId = snsId;
- }
+
  
  public String getSns() {
 		return sns;
@@ -99,6 +90,14 @@ public String getNickName() {
 		this.sns = sns;
 	}
 
+ public String getSnsId() {
+     return snsId;
+ }
+
+ public void setSnsId(String snsId) {
+     this.snsId = snsId;
+ }
+ 
  public String getHomeLat() {
      return homeLat;
  }
@@ -149,7 +148,6 @@ public String getNickName() {
 
 public User() {
 	super();
-	// TODO Auto-generated constructor stub
 }
 
 public User(String nickName, String email, String address1,
@@ -165,6 +163,24 @@ public User(String nickName, String email, String address1,
 	this.snsId = snsId;
 	this.homeLat = homeLat;
 	this.homeLon = homeLon;
+}
+
+public User(String nickName, String email, String address1, String address2, Integer zipCode, String sns, String snsId,
+		String homeLat, String homeLon, String fromBuyer, String fromSeller, int buyCnt, int sellCnt) {
+	super();
+	this.nickName = nickName;
+	this.email = email;
+	this.address1 = address1;
+	this.address2 = address2;
+	this.zipCode = zipCode;
+	this.sns = sns;
+	this.snsId = snsId;
+	this.homeLat = homeLat;
+	this.homeLon = homeLon;
+	this.fromBuyer = fromBuyer;
+	this.fromSeller = fromSeller;
+	this.buyCnt = buyCnt;
+	this.sellCnt = sellCnt;
 }
 
 

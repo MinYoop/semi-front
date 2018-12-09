@@ -1,8 +1,8 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -43,16 +43,16 @@ public class UsrDao extends SqlMapConfig {
 		return res;
 	}
 	
-	public User selectOneBySeq(int usr_seq) {			//개인정보 조회시, 유저 평가 확인시 사용 
+	public User selectOneByNickName(String nickName) {			//개인정보 조회시, 유저 평가 확인시 사용 
 
 		
-		User res =null;
+		List<User> res =new ArrayList<User>();
 		
 		SqlSession dbsession = null;
 		
 		try {
 			dbsession=getSqlSessionFactory().openSession(true);
-		res = (User) dbsession.selectList(namespace+"selectOne",usr_seq);
+		res =  dbsession.selectList(namespace+"selectOneByNick",nickName);
 			
 		} catch(Exception e) {
 			
@@ -60,8 +60,9 @@ public class UsrDao extends SqlMapConfig {
 			dbsession.close();
 		}
 
-		return res;		
-	}
+		return res.get(0) != null?res.get(0):null;
+		}
+	
 	
 	public int delete(String nickname) {
 		int res = 0;
@@ -94,21 +95,20 @@ public class UsrDao extends SqlMapConfig {
 
 	public User selectOne(String sns,String snsId) {
 		// SELECT * FROM USER_TB WHERE SNS = ? AND SNSID = ?
-		List<User> res = new ArrayList<User>();
-		User param = new User();
-		param.setSns(sns);
-		param.setSnsId(snsId);
+		HashMap<String,String> param = new HashMap<String,String>();
+		User res = new User();
+		param.put("sns",sns);
+		param.put("snsId",snsId);
 		SqlSession dbsession = null;
 		
 		
 			dbsession=getSqlSessionFactory().openSession(true);
-		res = dbsession.selectList(namespace+"selectOne",param);
+		res = dbsession.selectOne(namespace+"selectOneUsr",param);
 			
 
 			dbsession.close();
-		
+			return res != null?res:null;
 
-		return res.size()>0?res.get(0):null;		
 	}
 	
 	
