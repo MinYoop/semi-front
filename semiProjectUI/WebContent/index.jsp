@@ -830,8 +830,6 @@
 	<div id="footer"></div>
 	 
 	</div>
-	<!-- /main wrapper -->
-	<!-- jQuery -->
 
 	<!-- Bootstrap JS -->
 	<script src="plugins/bootstrap/bootstrap.min.js"></script>

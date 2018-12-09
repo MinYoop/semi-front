@@ -91,3 +91,82 @@ $(function(){
 						
 })
 
+
+
+
+
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+$(function(){
+	
+	var totalCount = $("#totalCount").val();
+	var page = $("#page").val();
+	var boardName = $("#boardName").val();
+	
+	var listSize = 10; 
+	var totalPage = parseInt(totalCount / listSize); //총 페이지 수
+	
+	if(totalCount % listSize > 0){
+		totalPage++;
+	}
+	
+	if(totalPage < page){
+		page = totalPage;
+	}
+	
+	var startPage = parseInt((page - 1) / 10) * 10 + 1;
+	var endPage = startPage + listSize - 1;
+	
+	if (endPage > totalPage) {
+	    endPage = totalPage;
+	}
+	
+	//-----------------------실제 하단에 페이징 표시되기 위한 코드----------------------------
+	
+	if(startPage > 1){
+		$("#pasing").append("<a href='controller.do?command="+boardName+"&page=1'>처음</a>");
+	}else{
+		$("#pasing").append("처음");
+	}
+	
+	$("#pasing").append(" ");
+	
+	if(page > 1){
+		$("#pasing").append("<a href='controller.do?command="+boardName+"&page="+(page-1)+"'>이전</a>");
+	}else{
+		$("#pasing").append("이전");
+	}
+	
+	
+	for(var iCount = startPage; iCount <= endPage; iCount++) {
+	    if (iCount == page) {
+	       $("#pasing").append("<b> <a href='controller.do?command="+boardName+"&page="+iCount+"'>" + iCount + "</a> </b>");
+	    } else {
+	    	$("#pasing").append("<a href='controller.do?command="+boardName+"&page="+iCount+"'>" + iCount + " </a>");
+	    }
+	}
+	
+	
+	if(page < totalPage){
+		$("#pasing").append("<a href='controller.do?command="+boardName+"&page="+(Number(page)+1)+"'>다음</a>");
+	}else{
+		$("#pasing").append("다음");
+	}
+	
+	$("#pasing").append(" ");
+	
+	if(endPage < totalPage){
+		$("#pasing").append("<a href='controller.do?command="+boardName+"&page="+totalPage+"'>끝</a>");
+	}else{
+		$("#pasing").append("끝");
+	}
+	$("#pasing").append("<br>");
+	
+	
+						
+})
+
