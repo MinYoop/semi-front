@@ -22,6 +22,7 @@ import com.google.gson.JsonParser;
 
 import dao.SellBoardDao;
 import dto.SellBoard;
+import dto.User;
 import util.MyUtil;
 
 
@@ -210,7 +211,7 @@ public class Servlet extends HttpServlet {
 	      }
 	      
 	      else if(command.equals("boardwrite")){
-	         int seller = Integer.parseInt(request.getParameter("seller"));
+	         String seller = ((User)session.getAttribute("nickName")).getNickName();
 	         String tradeLat = request.getParameter("tradeLat");
 	         String tradeLon = request.getParameter("tradeLon");
 	         String sellContent = request.getParameter("sellContent");

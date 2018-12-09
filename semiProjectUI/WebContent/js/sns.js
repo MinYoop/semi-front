@@ -47,16 +47,25 @@ const isSessionHasUsr = () =>{
 	$.post("usr.do?command=isSessionHasUsr",function(data){
 		console.log("세션이 유저를 가지고 있을까? "+data)
 		if(data>0){
-			$.post("Message.do?command=unchked", function(data){
-				$(".msgchkarea").html(data);
-				},"text");// 메세지 체크 안 한 개수 확인
-			console.log("세션에 유저가 있습니다.")
-		} else{
-			console.log("세션에 유저가 없어요.")
-			 isUs();
-		}
-	});
+			$.ajax({
+				url:"Message.do",
+				data:{
+					command:"chkMessage"
+				},
+				success: function(data){
+					/*if(data>0){*/
+					$(".badge-danger").html("<button style='background-color"
+							+":black;color:white' type='button' onClick='Message.do?command=msgFirstPage'class='btn-xs'>" 
+							+"새 메세지 <span class='badge badge-danger badge-pill'>"+data+"</span>");
+				//	}
+				},
+					error : function(e){
+						console.log(e);
+					}
+
+			})}
  }
+)}
 		
 		
 		function getFBIdAndLogin(){ FB.api('/me?fields=id',function(response){
@@ -85,7 +94,8 @@ const isSessionHasUsr = () =>{
 					}
 				});
 			}
-		})     
+		})
+		
 		}
 			
 		

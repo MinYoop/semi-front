@@ -52,7 +52,7 @@ public class SellBoard {
     
     
 
-	public SellBoard(int seller, String tradeLat, String tradeLon, String sellContent, String status,
+	public SellBoard(String seller, String tradeLat, String tradeLon, String sellContent, String status,
 			String title, String category, String tag) {
 		super();
 		this.seller = seller;
@@ -67,7 +67,7 @@ public class SellBoard {
 
 	
 
-	public SellBoard(int sellSeq, int seller, String tradeLat, String tradeLon, String sellContent, String status,
+	public SellBoard(int sellSeq, String seller, String tradeLat, String tradeLon, String sellContent, String status,
 			String title, Date regDate, String category, String tag) {
 		super();
 		this.sellSeq = sellSeq;
