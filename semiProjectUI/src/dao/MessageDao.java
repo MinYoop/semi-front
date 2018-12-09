@@ -244,7 +244,7 @@ if(rclist ==null) {
 	received +=
 
 				"					<tr>\n" + 
-				"						<td>"+(i.getRecieverChk()>0?"확인":"<b>미확인</b>")+"</td>\n" + 
+				"						<td>"+(i.getReceiverChk()>0?"확인":"<b>미확인</b>")+"</td>\n" + 
 				"						<td id=\"msgFrom"+i.getMsgSeq()+">"+i.getSender()+"</td>\n" + 
 				"						<td id=\"msgTitle"+i.getMsgSeq()+"\"><a onclick=\"viewMsg("+i.getMsgSeq()+"\")>"+i.getMsgTitle()+"</a></td>\n" + 
 				"						<td id=\"msgDate"+i.getMsgSeq()+"\">"+i.getSendDate()+"</td>\n" + 
@@ -292,7 +292,7 @@ if(sdlist ==null) {
 	received +=
 
 				"					<tr>\n" + 
-				"						<td>"+(i.getRecieverChk()>0?"확인":"<b>미확인</b>")+"</td>\n" + 
+				"						<td>"+(i.getReceiverChk()>0?"확인":"<b>미확인</b>")+"</td>\n" + 
 				"						<td id=\"msgReceiver"+i.getMsgSeq()+">"+i.getReceiver()+"</td>\n" + 
 				"						<td id=\"msgTitle"+i.getMsgSeq()+"\"><a onclick=\"viewMsg("+i.getMsgSeq()+"\")>"+i.getMsgTitle()+"</a></td>\n" + 
 				"						<td id=\"msgDate"+i.getMsgSeq()+"\">"+i.getSendDate()+"</td>\n" + 
@@ -310,4 +310,14 @@ if(sdlist ==null) {
 		return received;
 
 }
+
+	public int msgChked(HashMap<String, String> msgChked) {
+		int res = 0;
+
+		SqlSession session = getSqlSessionFactory().openSession(true);
+		res = session.update(namespace + "msgChked", msgChked);
+		session.close();
+		return res;
+
+	}
 }

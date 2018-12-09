@@ -63,7 +63,12 @@ public class Messagecon extends HttpServlet {
 			}
 			
 
-		} else if(command.equals("chkMessage")) {
+		}  else if(command.equals("msgChked")) {
+			HashMap<String,String> msgChked = new HashMap<String,String>();
+			msgChked.put("msgSeq", request.getParameter("msgSeq"));
+			out.println(dao.msgChked(msgChked));
+			
+		}else if(command.equals("chkMessage")) {
 			//사용자의 신규메세지 chk(페이지 이동시마다 체크하므로, 헤더나 푸터에 chk.js파일을 만들어 거기서 불러 사용.)
 			System.out.println("체크메세지 진입");
 			System.out.println(((User)session.getAttribute("User")).getNickName());
