@@ -442,7 +442,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-5 text-center text-md-left mb-4 mb-md-0 align-self-center">
-          <p class="text-white mb-0">Logo &copy; 2018 all right reserved</p>
+          <p class="text-white mb-0">IUJO &copy; 2018 all right reserved</p>
         </div>
         <div class="col-md-2 text-center text-md-left mb-4 mb-md-0">
           <img src="images/logo-alt.png" alt="logo">

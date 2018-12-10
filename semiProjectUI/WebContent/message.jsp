@@ -31,9 +31,7 @@
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script type="text/javascript"
-	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
-	charset="utf-8"></script>
+	<script src="js/msg.js"></script>
 
 
 
@@ -53,129 +51,7 @@ th{
 <!-- preloader start -->
 <body>
 
-	<script type="text/javascript">
-	/*
-MSG_SEQ             NUMBER            NOT NULL, 
-MSG_CONTENT         VARCHAR2(2000)    NOT NULL, 
-SENDER              NUMBER            NOT NULL, 
-RECEIVER            NUMBER            NOT NULL, 
-RECIEVER_CHK        NUMBER            NOT NULL, 
-SENDER_DEL_CHK      NUMBER            NOT NULL, 
-RECEIVER_DEL_CHK    NUMBER            NOT NULL, 
-SEND_DATE           DATE              NOT NULL, 
-	*/
-	
-	
-let sendmsg = () => {
-	$.ajax({
-		url : 'Message.do',
-		dataType: 'text',
-		data : { 
-			command : "sendMessage",
-			msgTitle : $("#msgTitle").val(),
-			msgContent : $("#msgContent").val(),
-			receiver : $("#sendToWho").val()
-				//센더에서 
 
-		},
-		success: function(msg){
-			$("#msgTitle").val("");
-			$("#msgContent").val("");
-			$('#sendform').modal('hide');
-
-			//리프레시된 보낸 쪽지 리스트를 출력.
-		//	var msglists = msg.split("cutlineforreceivedandsent");
-		//	$(".receivedtable").html(msglists[0]);
-		//	$(".senttable").html(msglists[1]);
-		}
-	})
-	
-}
-	
-	
-	
-	
-let sendmsgPopup = (sender='아이디음슴') => {
-if(sender==="아이디음슴"){
-	console.log("상대 미지정시"+sender)
-		$(".whowouldreceive").html("");
-	$("#sendToWho").val("");
-	$("#sendToWho").attr("type","text");
-}else{
-	console.log("상대지정시"+sender)
-	$(".whowouldreceive").html(sender);
-	$("#sendToWho").attr("type","hidden");
-	$("#sendToWho").val(sender);
-}
-$('#sendform').modal('show');
-} 
-
-let viewReceivedMsg = (seq) =>{
-	$.ajax({
-		url:"Message.do",
-		method:"post",
-		data:{
-			command : "msgChked",
-			msgSeq : seq
-		},success:function(res){
-			if(res>0){
-				viewWithModal(seq,"받은 쪽지");
-		}}})}
-	 
-let viewSentMsg = (seq) =>{
-				viewWithModal(seq,"보낸 쪽지");
-		}
-
-
-
-
-let	viewWithModal =(seq,sentOrReceived)=>{
-	$(".sentOrReceived").html(sentOrReceived);
-	$(".msgChkModalTitle").html($("#msgTitle"+seq).text());
-	
-	if(sentOrReceived==="보낸 쪽지"){
-	$(".msgChkModalFromOrTo").html("To. "+$("#msgReceiver"+seq).text());				
-	} else{
-	$(".msgChkModalFromOrTo").html("From. "+$("#msgSender"+seq).text());				
-	}
-	
-	$("#msgChkModalContent").html($("#msgContent"+seq).text());
-	$(".msgChkModalDate").html($("#msgDate"+seq).text());
-	$("#msgChkModal").modal('show');
-	}
-//let getPage = (page = 1) ={//페이지 눌렀을 때 실행 
-	
-//}
-
-
-let getPage = (boardName, pg) => {
-	console.log(boardName);
-	console.log(pg);
-	$.ajax({
-		url:"Message.do",
-		method:'post',
-		data: {
-			command:boardName,
-			page:pg
-		
-		},success:function(resp){
-			console.log(resp);
-			if(boardName==="receivedMsgPage"){
-				$(".receivedTable").html(resp);
-			} else{
-				console.log(resp);
-
-				$(".sentTable").html(resp);
-			} 
-		}
-		
-
-	})
-}
-
-
-
-	</script>
 
 	<div id="header"></div>
 
