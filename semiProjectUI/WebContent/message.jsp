@@ -148,7 +148,30 @@ let	viewWithModal =(seq,sentOrReceived)=>{
 //}
 
 
+let getPage = (boardName, pg) => {
+	console.log(boardName);
+	console.log(pg);
+	$.ajax({
+		url:"Message.do",
+		method:'post',
+		data: {
+			command:boardName,
+			page:pg
+		
+		},success:function(resp){
+			console.log(resp);
+			if(boardName==="receivedMsgPage"){
+				$(".receivedTable").html(resp);
+			} else{
+				console.log(resp);
 
+				$(".sentTable").html(resp);
+			} 
+		}
+		
+
+	})
+}
 
 
 
@@ -160,7 +183,7 @@ let	viewWithModal =(seq,sentOrReceived)=>{
 		<img src="images/preloader.gif" alt="preloader">
 	</div>
 
-
+<div class="main-wrapper" >
 
 	<div class="modal fade subscription-modal" id="msgChkModal" tabindex="-1">
 		<div class="modal-dialog modal-s">
@@ -249,24 +272,22 @@ let	viewWithModal =(seq,sentOrReceived)=>{
 	<!-- 메세지 리스트  -->
 	<script src="js/pasing2.js"></script>
 
-
-
 	<div
-		style="display: flex; align-items: center; justify-content: center; overflow:auto"
+		style="display: flex; align-items: center; justify-content: center; overflow:auto;flex-wrap: wrap"
 		class="my-80">
 		<div class="received mx-3 my-10"
-			style="width: 400px; height: 500px; margin: auto;">
+			style="flex-shrink:0;width: 400px; height: 800px; margin: auto;">
 			<div style="text-align: center">
 				<h3>받은 쪽지</h3>
 			</div>
 			<div style ="text-align:center"class="receivedTable">
 				<table  >
-					<col width="3%">
-					<col width="4%">
-					<col width="8%">
-					<col width="4%">
-					<col width="2%">
-					<col width="2%">
+					<col width="100px">
+					<col width="100px">
+					<col width="200px">
+					<col width="120px">
+					<col width="80px">
+					<col width="80px">
 
 					<tr>
 						<th>확인</th>
@@ -299,10 +320,8 @@ let	viewWithModal =(seq,sentOrReceived)=>{
 									<td id="msgTitle${dto.msgSeq }"><a
 										onclick="viewReceivedMsg(${dto.msgSeq });">${dto.msgTitle }</a></td>
 									<td id="msgDate${dto.msgSeq }"><h6>${dto.sendDate }</h6></td>
-									<td><button class="btn-light"
-											onclick='sendmsgPopup("${dto.sender }")'>클릭</button>
-									<td><a
-										href="Message.do?command=delete&msgSeq=${dto.msgSeq }">삭제</a></td>
+									<td><button class="btn-light" onclick='sendmsgPopup("${dto.sender }")'>클릭</button>
+									<td><a href="Message.do?command=delete&msgSeq=${dto.msgSeq }">삭제</a></td>
 								</tr>
 								<div style="display: none" id="msgContent${dto.msgSeq}">${dto.msgContent }</div>
 							</c:forEach>
@@ -314,26 +333,29 @@ let	viewWithModal =(seq,sentOrReceived)=>{
 					</tr>
 				</table>
 
-				<input type="hidden" id="totalCount" value="100"> <input
+				<input type="hidden" id="totalCount" value=""> <input
 					type="hidden" id="page" value="1"> <input type="hidden"
-					id="boardName" value="messageboard">
+					id="boardName" value="receivedMsgPage">
 				<div id="pasing"></div>
 			</div>
 		</div>
 
+
+
 		<div class="sent mx-3 my-10"
-			style="width: 400px; height: 500px; margin: auto; overflow:auto">
+			style="flex-shrink:0; width: 400px; height: 800px; margin: auto; overflow:auto">
 
 			<div style="text-align: center">
 				<h3>보낸 쪽지</h3>
 			</div>
 			<div style="text-align:center"class="sentTable">
 				<table>
-					<col width="3%">
-					<col width="4%">
-					<col width="8%">
-					<col width="4%">
-					<col width="2%">
+				
+					<col width="100px">
+					<col width="100px">
+					<col width="200px">
+					<col width="120px">
+					<col width="80px">
 
 					<tr>
 						<th>확인</th>
@@ -362,8 +384,7 @@ let	viewWithModal =(seq,sentOrReceived)=>{
 										</c:otherwise>
 									</c:choose>
 									<td id="msgReceiver${dto.msgSeq }">${dto.receiver }</td>
-									<td id="msgTitle${dto.msgSeq }"><a
-										onclick="viewSentMsg(${dto.msgSeq });">${dto.msgTitle }</a></td>
+									<td id="msgTitle${dto.msgSeq }"><a onclick="viewSentMsg(${dto.msgSeq });">${dto.msgTitle }</a></td>
 									<td id="msgDate${dto.msgSeq }"><h6>${dto.sendDate }</h6></td>
 									<td><a
 										href="Message.do?command=delete&msgSeq=${dto.msgSeq }">삭제</a></td>
@@ -373,16 +394,15 @@ let	viewWithModal =(seq,sentOrReceived)=>{
 						</c:otherwise>
 					</c:choose>
 
-					<tr>
-						<td colspan="5"><input type="button" value="쪽지 보내기"
-							onclick="sendmsgPopup()"></td>
-					</tr>
+				
 
 				</table>
-				<input type="hidden" id="totalCount2" value="1000"> <input
-					type="hidden" id="page2" value="23"> <input type="hidden"
-					id="boardName2" value="messageBoardReceived">
+				<input type="hidden" id="totalCount2" value=""> <input
+					type="hidden" id="page2" value="1"> <input type="hidden"
+					id="boardName2" value="sentMsgPage">
 				<div id="pasing2"></div>
+		<input type="button" value="쪽지 보내기"
+							onclick="sendmsgPopup()">
 			</div>
 		</div>
 
@@ -390,14 +410,15 @@ let	viewWithModal =(seq,sentOrReceived)=>{
 
 
 
-<div id="footer"></div>
+
 
 
 	
 	
 	 
 	</div>
-
+	<div id="footer"></div>
+</div>
 	<!-- Bootstrap JS -->
 	<script src="plugins/bootstrap/bootstrap.min.js"></script>
 	<script src="plugins/slick/slick.min.js"></script>
@@ -414,7 +435,5 @@ let	viewWithModal =(seq,sentOrReceived)=>{
 	<script src="plugins/google-map/gmap.js"></script>
 	<!-- Main Script -->
 	<script src="js/script.js"></script>
-	
-										<script src="js/sns.js"></script>
 
 </body></html>

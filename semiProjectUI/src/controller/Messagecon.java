@@ -63,7 +63,19 @@ public class Messagecon extends HttpServlet {
 			}
 			
 
-		}  else if(command.equals("msgChked")) {
+		}  else if ( command.equals("countAllMessages")) {
+			
+			int res = 0;
+			HashMap<String,String> pageinfo = new HashMap<String,String>();
+			pageinfo.put("side", request.getParameter("side").equals("sentMsgPage")?"sender":"receiver");
+			System.out.println(pageinfo.get("side"));
+			pageinfo.put("nickName",((User)session.getAttribute("User")).getNickName());
+			System.out.println("conuntallmessages에서 "+pageinfo.get("nickName"));
+
+			res= pageinfo.get("side").equals("sender")?dao.countAllMessagesSent(pageinfo):dao.countAllMessagesReceived(pageinfo);
+			out.print(res);
+		
+	}else if(command.equals("msgChked")) {
 			HashMap<String,String> msgChked = new HashMap<String,String>();
 			msgChked.put("msgSeq", request.getParameter("msgSeq"));
 			out.println(dao.msgChked(msgChked));
@@ -78,30 +90,43 @@ public class Messagecon extends HttpServlet {
 			//프론트엔드에서 페이지 로딩시 셋타임아웃 등으로(마이크로테스크로 프로미스 예약하면 너무 빠를 수도... 시간 좀 넘겨서! unchkedMsg의 세션어트리뷰트 체크해야 함.
 		
 		
-		} else if(command.equals("recevedMsgPage")) {
+		} else if(command.equals("receivedMsgPage")) {
 			PageSelector pageinfo = dao.PgsMaker(Integer.parseInt(request.getParameter("page")),((User)session.getAttribute("User")).getNickName());
-			String res = " ";
+			String res =  " ";
 			HashMap<String,String> page = new HashMap<String,String>();
 			page.put("page", request.getParameter("page"));
-			page.put("sender", ((User)session.getAttribute("User")).getNickName());
+			page.put("receiver", ((User)session.getAttribute("User")).getNickName());
+			page.put("side","receiver");//비효율적인거 알지만 정리할 시간이 없음.
+			page.put("nickName", ((User)session.getAttribute("User")).getNickName());//비효울적인거 알지만 정리시간 없음. 
 			List<Message> rclist = new ArrayList<Message>();
 			rclist = dao.selectReceived(pageinfo);
-			res.concat(dao.makeReceived(rclist));
-			res.concat(dao.pagingInfo(page));
+			res += dao.makeReceived(rclist);
+			res += dao.pagingInfo(page);
+			System.out.println(res);
 			out.print(res);
+
 		 
 		
 		} else if(command.equals("sentMsgPage")) {
 			PageSelector pageinfo = dao.PgsMaker(Integer.parseInt(request.getParameter("page")),((User)session.getAttribute("User")).getNickName());
-			String res = " ";
+			String res = "";
 			HashMap<String,String> page = new HashMap<String,String>();
 			page.put("page", request.getParameter("page"));
 			page.put("sender", ((User)session.getAttribute("User")).getNickName());
+			page.put("side","sender");//
+			page.put("nickName", ((User)session.getAttribute("User")).getNickName());
 			List<Message> sdlist = new ArrayList<Message>();
+
 			sdlist = dao.selectSent(pageinfo);
-			res.concat(dao.makeSent(sdlist));
-			res.concat(dao.pagingInfo(page));
-			out.print(res);
+			//System.out.println(sdlist.get(0).getReceiver());
+			res +=dao.makeSent(sdlist);
+			//System.out.println(res);
+
+			res+=dao.pagingInfo(page);
+			res+="<input type=\"button\" value=\"쪽지 보내기\" onclick=\"sendmsgPopup()\">";
+
+			//System.out.println("++++++++++\n"+res);
+			out.println(res);
 		 
 		
 		}else if(command.equals("msgFirstPage")) {
