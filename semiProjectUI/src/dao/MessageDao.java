@@ -274,7 +274,7 @@ if(rclist ==null) {
 	received +=
 				"						<td>"+(i.getReceiverChk()>0?"확인":"<b>미확인</b>")+"</td>\n" + 
 				"						<td id=\"msgSender"+i.getMsgSeq()+"\">"+i.getSender()+"</td>\n" + 
-				"						<td id=\"msgTitle"+i.getMsgSeq()+"\"><a onclick=\"viewReceivedMsg(\""+i.getMsgSeq()+"\")>"+i.getMsgTitle()+"</a></td>\n" + 
+				"						<td id=\"msgTitle"+i.getMsgSeq()+"\"><a onclick=\"viewReceivedMsg("+i.getMsgSeq()+")\">"+i.getMsgTitle()+"</a></td>\n" + 
 				"						<td id=\"msgDate"+i.getMsgSeq()+"\"><h6>"+i.getSendDate()+"</h6></td>\n" + 
 				"						<td><button class=\"btn-light\" onclick='sendmsgPopup(\""+i.getSender()+"\")\'>클릭</button>\n" + 
 				"						<td><a href=\"Message.do?command=delete&msgSeq="+i.getMsgSeq()+"\">삭제</a></td>\n\n" + 
@@ -323,7 +323,7 @@ if(sdlist ==null) {
 				"					<tr>\n" + 
 				"						<td>"+(i.getReceiverChk()>0?"확인":"<b>미확인</b>")+"</td>\n" + 
 				"						<td id=\"msgReceiver"+i.getMsgSeq()+"\">"+i.getReceiver()+"</td>\n" + 
-				"						<td id=\"msgTitle"+i.getMsgSeq()+"\"><a onclick=\"viewSentMsg("+i.getMsgSeq()+"\")>"+i.getMsgTitle()+"</a></td>\n" + 
+				"						<td id=\"msgTitle"+i.getMsgSeq()+"\"><a onclick=\"viewSentMsg("+i.getMsgSeq()+")\">"+i.getMsgTitle()+"</a></td>\n" + 
 				"						<td id=\"msgDate"+i.getMsgSeq()+"\"><h6>"+i.getSendDate()+"</h6></td>\n" + 
 				"						<td><a href=\"Message.do?command=delete&msgSeq="+i.getMsgSeq()+"\">삭제</a></td>\n\n" + 
 				"					</tr>\n"+
