@@ -28,34 +28,7 @@
 
 <script src="js/geolocation.js"></script>
 
-<script type="text/javascript">
-
-$.ajax({
-	url:"usr.do",
-	data:{
-		command:"isSessionHasUsr"
-	},
-	success:function(res){
-		if(res>0){
-			$(".whenlogin").html("<h4 style='color:red'>로그인 상태입니다.</h4>");
-			  setTimeout(function(){$("#subscriptionModal").modal('hide');},4000);
-
-			$.ajax({
-				url:"message.do",
-				data:{
-					command:"chkMessage"
-				},
-				success:function(res){
-					$(".chkmsg").html("<a href='message.jsp'>새 메세지<span class='badge badge-pill badge-danger'>"+res+"</span></a>");
-				}
-			})
-		}else{
-			$(".myinfo").html(" ");
-			$(".loginout").html("<a href='usr.do?command=loginPage'>로그인</a>");
-		}
-	}
-})
-
+<script src="js/msgchk.js">
 </script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -123,7 +96,7 @@ $.ajax({
 						shop </a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="servlet.do?command=sellboardlist">Shop</a> <a
-							class="dropdown-item" href="shop-list.html">Shop List</a> <a
+							class="dropdown-item" href="servlet.do?command=map2">지도로 매물보기</a> <a
 							class="dropdown-item" href="product-single.html">Product
 							Single</a> <a class="dropdown-item" href="checkout.html">Checkout</a>
 						<a class="dropdown-item" href="cart.jsp">Cart</a> <a

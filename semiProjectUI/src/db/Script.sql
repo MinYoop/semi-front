@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 drop table user_tb;
 drop sequence MESSAGE_TB_SEQ;
 
@@ -22,6 +23,7 @@ CREATE TABLE USER_TB (
 	); 
 	
 CREATE SEQUENCE USER_TB_SEQ START WITH 1 INCREMENT BY 1;
+
 
 
 
@@ -51,7 +53,7 @@ CREATE TABLE MESSAGE_TB
     MSG_CONTENT         VARCHAR2(2000)    NOT NULL, 
     SENDER              VARCHAR2(50)      NOT NULL, 
     RECEIVER            VARCHAR2(50)      NOT NULL, 
-    RECIEVER_CHK        NUMBER            NOT NULL, 
+    RECEIVER_CHK        NUMBER            NOT NULL, 
     SENDER_DEL_CHK      NUMBER            NOT NULL, 
     RECEIVER_DEL_CHK    NUMBER            NOT NULL, 
     SEND_DATE           DATE              NOT NULL, 

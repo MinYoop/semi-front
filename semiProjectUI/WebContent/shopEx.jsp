@@ -29,8 +29,14 @@
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script src="js/script.js"></script>
+
+<script type="text/javascript" src="js/unlimit.js"></script>
+
+
 	
-<!-- 무한스크롤 --> 	<script type="text/javascript" src="js/unlimit.js?ver=5"></script>
+<!-- 무한스크롤 --> 	
 
 <script type="text/javascript"
 	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
@@ -362,8 +368,18 @@
 									</ul>
 								</nav>
 					    </div>
-					    <input type="button" value="글쓰기" onclick="location.href='servlet.do?command=writeform'"/>
 					    
+					    
+					    <c:choose>								
+							<c:when test="${User ne null}">
+											
+								<input type="button" value="판매글쓰기" onclick="location.href='servlet.do?command=writeform'"/>
+					
+							</c:when>
+								<c:otherwise>
+					    		<p>로그인 하시면 판매글 작성하실 수 있습니다. </p>
+					    		</c:otherwise>
+					    </c:choose>
 					</div>
 				</div>
 			</div>
@@ -371,100 +387,7 @@
 		<!-- /shop -->
 		
 
-		<!-- footer -->
-		<footer class="bg-light">
-			<div class="section">
-				<div class="container">
-					<div class="row">
-						<div
-							class="col-md-3 col-sm-6 mb-5 mb-md-0 text-center text-sm-left">
-							<h3 class="mb-4">Contact</h3>
-							<p>20464 Hirthe Curve Suite, Emardton, CT 12471-4107</p>
-							<p>+5(305) 785-0437</p>
-							<p>info@example.com</p>
-							<ul class="list-inline social-icons">
-								<li class="list-inline-item"><a href="#"><i
-										class="ti-facebook"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i
-										class="ti-twitter-alt"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i
-										class="ti-vimeo-alt"></i></a></li>
-								<li class="list-inline-item"><a href="#"><i
-										class="ti-google"></i></a></li>
-							</ul>
-						</div>
-						<div
-							class="col-md-3 col-sm-6 mb-5 mb-md-0 text-center text-sm-left">
-							<h3 class="mb-4">Category</h3>
-							<ul class="pl-0 list-unstyled">
-								<li class="mb-2"><a class="text-color" href="shop.html">Men</a></li>
-								<li class="mb-2"><a class="text-color" href="shop.html">Women</a></li>
-								<li class="mb-2"><a class="text-color" href="shop.html">Kids</a></li>
-								<li class="mb-2"><a class="text-color" href="shop.html">Accessories</a></li>
-								<li class="mb-2"><a class="text-color" href="shop.html">Shoe</a></li>
-							</ul>
-						</div>
-						<div
-							class="col-md-3 col-sm-6 mb-5 mb-md-0 text-center text-sm-left">
-							<h3 class="mb-4">Useful Link</h3>
-							<ul class="pl-0 list-unstyled">
-								<li class="mb-2"><a class="text-color" href="about.html">News
-										& Tips</a></li>
-								<li class="mb-2"><a class="text-color" href="about.html">About
-										Us</a></li>
-								<li class="mb-2"><a class="text-color" href="address.html">Support</a></li>
-								<li class="mb-2"><a class="text-color" href="shop.html">Our
-										Shop</a></li>
-								<li class="mb-2"><a class="text-color" href="contact.html">Contact
-										Us</a></li>
-							</ul>
-						</div>
-						<div class="col-md-3 col-sm-6 text-center text-sm-left">
-							<h3 class="mb-4">Our Policies</h3>
-							<ul class="pl-0 list-unstyled">
-								<li class="mb-2"><a class="text-color" href="404.html">Privacy
-										Policy</a></li>
-								<li class="mb-2"><a class="text-color" href="404.html">Terms
-										& Conditions</a></li>
-								<li class="mb-2"><a class="text-color" href="404.html">Cookie
-										Policy</a></li>
-								<li class="mb-2"><a class="text-color" href="404.html">Terms
-										of Sale</a></li>
-								<li class="mb-2"><a class="text-color"
-									href="dashboard.html">Free Shipping & Returns</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="bg-dark py-4">
-				<div class="container">
-					<div class="row">
-						<div
-							class="col-md-5 text-center text-md-left mb-4 mb-md-0 align-self-center">
-							<p class="text-white mb-0">Logo &copy; 2018 all right
-								reserved</p>
-						</div>
-						<div class="col-md-2 text-center text-md-left mb-4 mb-md-0">
-							<img src="images/logo-alt.png" alt="logo">
-						</div>
-						<div class="col-md-5 text-center text-md-right mb-4 mb-md-0">
-							<ul class="list-inline">
-								<li class="list-inline-item"><img
-									src="images/payment-card/card-1.jpg" alt="card"></li>
-								<li class="list-inline-item"><img
-									src="images/payment-card/card-2.jpg" alt="card"></li>
-								<li class="list-inline-item"><img
-									src="images/payment-card/card-3.jpg" alt="card"></li>
-								<li class="list-inline-item"><img
-									src="images/payment-card/card-4.jpg" alt="card"></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!-- /footer -->
+		<div id="footer"></div>
 
 	</div>
 	<!-- /main wrapper -->
@@ -488,7 +411,7 @@
 		src="../../../maps.googleapis.com/maps/api/js7402?key=AIzaSyBI14J_PNWVd-m0gnUBkjmhoQyNyd7nllA"></script>
 	<script src="plugins/google-map/gmap.js"></script>
 	<!-- Main Script -->
-	<script src="js/script.js"></script>
+	
 </body>
 
 <!-- Mirrored from demo.themefisher.com/themefisher/elite-shop/shop.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 Nov 2018 12:09:04 GMT -->

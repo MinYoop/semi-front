@@ -37,6 +37,10 @@
          <td><jsp:getProperty property="seller" name="dto"/></td>
       </tr>
       <tr>
+         <th>카테고리</th>
+         <td><jsp:getProperty property="category" name="dto"/></td>
+      </tr>
+      <tr>
          <th>제  목</th>
          <td><jsp:getProperty property="title" name="dto"/></td>
       </tr>

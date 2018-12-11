@@ -99,6 +99,12 @@ let viewMsg = (seq) =>{
 //let getPage = (page = 1) ={//페이지 눌렀을 때 실행 
 	
 //}
+
+
+
+
+
+
 	</script>
 	
 <div id="header"></div>

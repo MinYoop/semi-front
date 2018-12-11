@@ -48,7 +48,7 @@ public class MessageDao extends SqlMapConfig {
 
 		SqlSession session = null;
 		session = getSqlSessionFactory().openSession(true); // openSession(true) : autoCommit
-		res = session.selectList(namespace + "selectRecieved", pgs);
+		res = session.selectList(namespace + "selectReceived", pgs);
 
 		session.close();
 
@@ -111,12 +111,14 @@ public class MessageDao extends SqlMapConfig {
 
 	}
 
-	public int selectNeverChk(String nickname) {
+	public int selectNeverChk(String nickName) {
 		// 받은 사람이 usrSeq인 메세지들의 receiverchk가 0인 메세지의 개수 리턴
 		int res = 0;
-
+		System.out.println("메세지 체크 닉네임 : "+nickName);
+		HashMap<String,String> nick = new HashMap<String,String>();
+		nick.put("nickName", nickName);
 		SqlSession dbsession = getSqlSessionFactory().openSession(true);
-		res = dbsession.insert(namespace + "selectNeverChk", nickname);
+		res = dbsession.selectOne(namespace + "selectNeverChk", nickName);
 		dbsession.close();
 		return res;
 	}

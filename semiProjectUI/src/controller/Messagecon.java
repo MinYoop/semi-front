@@ -40,8 +40,6 @@ public class Messagecon extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
@@ -66,7 +64,10 @@ public class Messagecon extends HttpServlet {
 
 		} else if(command.equals("chkMessage")) {
 			//사용자의 신규메세지 chk(페이지 이동시마다 체크하므로, 헤더나 푸터에 chk.js파일을 만들어 거기서 불러 사용.)
+			System.out.println("체크메세지 진입");
+			System.out.println(((User)session.getAttribute("User")).getNickName());
 			int unchkedMsg =dao.selectNeverChk(((User)session.getAttribute("User")).getNickName());
+			System.out.print(unchkedMsg);
 			response.getWriter().print(unchkedMsg);
 			//프론트엔드에서 페이지 로딩시 셋타임아웃 등으로(마이크로테스크로 프로미스 예약하면 너무 빠를 수도... 시간 좀 넘겨서! unchkedMsg의 세션어트리뷰트 체크해야 함.
 		
