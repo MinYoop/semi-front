@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 
 import dao.MessageDao;
 import dto.Message;
+import dto.NoticeBoardDto;
 import dto.PageSelector;
 import dto.User;
 
@@ -61,10 +62,29 @@ public class Messagecon extends HttpServlet {
 			response.getWriter().print("쪽지 발신 성공");
 			} else { response.getWriter().print("쪽지 실패 아오 ");
 			}
+		}else if(command.equals("greenMarket")) {
 			
-
+			response.sendRedirect("greenmarket.jsp");
+			
+		} else if(command.equals("getPage")) {
+			HashMap<String,String> pager = new HashMap<String,String>();
+			PageSelector pageselector = new PageSelector();
+			List<NoticeBoardDto> list = new ArrayList<NoticeBoardDto>();
+			pager.put("boardName", request.getParameter("boardName"));
+			if(request.getParameter("page")==null) {
+				pager.put("page", "1");
+			} else {
+				pager.put("page", request.getParameter("page"));
+			}
+			pager.put("totalCount", Integer.toString(dao.countAll(pager)));
+			pageselector=dao.PgsMaker(Integer.parseInt(pager.get("page")), pager.get("boardName"));
+			list = dao.selectNotice(pageselector);
+			request.setAttribute("list", list);
+			request.setAttribute("paging", dao.pagingInfo2(pager));
+			RequestDispatcher dispatcher = request.getRequestDispatcher(request.getParameter("where"));
+			dispatcher.forward(request, response);
+			
 		}  else if ( command.equals("countAllMessages")) {
-			
 			int res = 0;
 			HashMap<String,String> pageinfo = new HashMap<String,String>();
 			pageinfo.put("side", request.getParameter("side").equals("sentMsgPage")?"sender":"receiver");

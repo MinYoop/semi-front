@@ -15,7 +15,7 @@
 <body>
 
 <!-- footer -->
-
+<footer>
 		<div class="bg-dark py-4">
     <div class="container">
       <div class="row">
@@ -28,7 +28,7 @@
         <div class="col-md-5 text-center text-md-right mb-4 mb-md-0">
           <ul class="list-inline">
             <li class="list-inline-item"><img class="tools" src="images/usedtools/java.png" alt="java"></li>
-            <li class="list-inline-item"><img class="tools" src="images/usedtools/tomcat.png" alt="tomcat"></li>
+            <li class="list-inline-item"><a onclick="adminlogin()"><img class="tools" src="images/usedtools/tomcat.png" alt="tomcat"></a></li>
             <li class="list-inline-item"><img class="tools" src="images/usedtools/oracle.png" alt="oracle"></li>
             <li class="list-inline-item"><img class="tools" src="images/usedtools/javascript.png" alt="javascript"></li>
             <li class="list-inline-item"><img class="tools" src="images/usedtools/jquerylogo.png" alt="jquery"></li>
@@ -39,6 +39,23 @@
     </div>
   </div>
 </footer>
+<script type="text/javascript">
+let adminlogin = () => {
+	$.ajax({
+		url : "NoticeBoard.do",
+		data:{
+			command:"isAdminLogedIn"
+		}, success:function(res){
+			if(res>0){
+				location.href="NoticeBoard.do?command=logOut";
+
+			} else{
+				location.href="NoticeBoard.do?command=loginform";
+			}
+		}
+	})
+}
+</script>
 		<!-- /footer -->
 
 </body>

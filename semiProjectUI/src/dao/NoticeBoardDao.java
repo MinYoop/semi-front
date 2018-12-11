@@ -5,21 +5,22 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
 
-import dto.NoticeBoard;
+import dto.Admin;
+import dto.NoticeBoardDto;
 
 public class NoticeBoardDao extends SqlMapConfig {
 	
-	private String namespace = "IUSQL.";
+	private String namespace = "NoticeBoard.";
 	
 
-			public List<NoticeBoard> selectAll() {
+			public List<NoticeBoardDto> selectAll() {
 
-				List<NoticeBoard> res = new ArrayList<NoticeBoard>();
+				List<NoticeBoardDto> res = new ArrayList<NoticeBoardDto>();
 				SqlSession session = null;
 
 				// openSession(true) = autoCommit;
 				session = getSqlSessionFactory().openSession(true);
-				res = session.selectList(namespace + "selectAll");
+				res = session.selectList(namespace + "selectAllNotice");
 
 				session.close();
 
@@ -28,15 +29,15 @@ public class NoticeBoardDao extends SqlMapConfig {
 			}
 		
 	
-	public int insertNotice(NoticeBoard dto) {			//������ ���� ����
+		public int insertNotice(NoticeBoardDto dto) {		
 		
 		SqlSession session = null;
 		int res = 0;
 		
 			
-			try {// openSession(true) = autoCommit;
+			try {
 				session = getSqlSessionFactory().openSession(true);
-				res = session.insert(namespace + "insert", dto);
+				res = session.insert(namespace + "insertNotice", dto);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
@@ -50,14 +51,14 @@ public class NoticeBoardDao extends SqlMapConfig {
 		}
 	
 	
-	public int updateNotice(NoticeBoard dto) {			//������ ���� ����
+	public int updateNotice(NoticeBoardDto dto) {			
 		
 			SqlSession session = null;
 			int res = 0;
 			
 			try {// openSession(true) = autoCommit;
 				session = getSqlSessionFactory().openSession(true);
-				res = session.update(namespace + "update", dto);
+				res = session.update(namespace + "updateNotice", dto);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
@@ -67,14 +68,14 @@ public class NoticeBoardDao extends SqlMapConfig {
 			return res;
 		}
 		
-	public NoticeBoard selectOne(int noticeSeq) {	
+	public NoticeBoardDto selectOne(int notice_seq) {	
 		
-		NoticeBoard res = null;
+		NoticeBoardDto res = null;
 		SqlSession session = null;
 
 		try {// openSession(true) = autoCommit;
 				session = getSqlSessionFactory().openSession(true);
-				res = session.selectOne(namespace + "selectOne", noticeSeq);
+				res = session.selectOne(namespace + "selectOneNotice", notice_seq);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -84,13 +85,30 @@ public class NoticeBoardDao extends SqlMapConfig {
 	}
 	
 	
-	public int DeleteNotice(int noticeSeq) {			//������ ���� ����
+public Admin selectOneAdmin(String adminId) {	
+		
+		Admin res = new Admin();
+		SqlSession session = null;
+
+		try {// openSession(true) = autoCommit;
+				session = getSqlSessionFactory().openSession(true);
+				res = session.selectOne(namespace + "selectOneAdmin", adminId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();			
+	    }	
+		return res;
+	}
+	
+	
+	public int DeleteNotice(int notice_seq) {			
 		SqlSession session = null;
 		int res = 0;
 
 		try {// openSession(true) = autoCommit;
 			session = getSqlSessionFactory().openSession(true);
-			res = session.delete(namespace + "delete", noticeSeq);
+			res = session.delete(namespace + "deleteNotice", notice_seq);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -99,6 +117,6 @@ public class NoticeBoardDao extends SqlMapConfig {
 
 		return res;
 	}
-	
+
 	
 }

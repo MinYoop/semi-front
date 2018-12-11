@@ -260,6 +260,7 @@
 					<!-- product-list -->
 					<div class="col-lg-9">
 						<div class="row" id="limit">
+							
 							<!-- 코어 반복 -->
 							<%-- <c:choose>
 								
@@ -389,5 +390,32 @@
 	<script src="plugins/google-map/gmap.js"></script>
 	<!-- Main Script -->
 	<script src="js/script.js"></script>
+
+<!-- 아래 div 부분을 카트 버튼에 붙인다.
+	 <div class="btn-cart">
+	<a href='javascript:void(0);' onclick="favAdd(${dto.seq})"class="btn btn-primary btn-sm">Add To Cart</a>
+							</div>
+	 
+	<script type="text/javascript">
+							let favAdd = (seq) => {
+								$.ajax({
+									url:"FavAndCompare.do",
+									data:{
+										command:"addFav",
+										sellNum : seq
+									}, success:function(res){
+										if(res >0){
+											alert("찜바구니에 등록되었습니다.");
+										} else{
+											alert("로그인시 이용 가능한 기능입니다.");
+										}
+									}
+								})
+							}
+							
+							</script> 
+
+-->
+
 
 </body></html>

@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import dao.SqlMapConfig;
 import dto.Message;
+import dto.NoticeBoardDto;
 import dto.PageSelector;
 
 public class MessageDao extends SqlMapConfig {
@@ -18,6 +19,25 @@ public class MessageDao extends SqlMapConfig {
 		super();
 	}
 
+	
+	public int countAll(HashMap<String,String> pageinfo) {  
+		int totalCount = 0;
+		SqlSession session = null;
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			totalCount = session.selectOne( namespace + "countAll", pageinfo);
+
+		} catch (Exception e) {
+
+		} finally {
+			session.close();
+		}
+		System.out.print(pageinfo.get("BoardName")+"토탈카운트 "+ 
+		totalCount + pageinfo.get("nickName"));
+		return totalCount; 
+		
+	}
 	public int sendMessage(HashMap<String, String> newMsg) { // -----작업완료
 
 		int res = 0;
@@ -177,7 +197,15 @@ public class MessageDao extends SqlMapConfig {
 		int startPage = Integer.parseInt(pageinfo.get("startPage"));
 		int endPage = Integer.parseInt(pageinfo.get("endPage"));
 		int page = Integer.parseInt(pageinfo.get("page"));
-		String boardName=pageinfo.get("side").equals("receiver")?"receivedMsgPage":"sentMsgPage";
+		String boardName=new String();
+		if(pageinfo.get("boardName")!=null) {
+		if(pageinfo.get("boardName").equals("NOTICE_BOARD_TB")) {
+			boardName=pageinfo.get("boardName");
+		}}
+
+		else{
+			boardName=pageinfo.get("side").equals("receiver")?"receivedMsgPage":"sentMsgPage";
+		}
 		
 		if(startPage > 1){
 			pageLine +="<a onclick='getPage(\""+boardName+"\",1)'>처음</a>";
@@ -224,6 +252,13 @@ public class MessageDao extends SqlMapConfig {
 	public String pagingInfo(HashMap<String,String> pageinfo) {//side(=receiver or sender) 와 nickname과 page를 들고 있음.
 
 		int totalCount =pageinfo.get("side").equals("sender")?countAllMessagesSent(pageinfo):countAllMessagesReceived(pageinfo);
+		pageinfo.put("totalCount",Integer.toString(totalCount));
+		return pagingInfo2(pageinfo);
+	}
+	
+	
+	public String pagingInfo2(HashMap<String,String> pageinfo) {
+		int totalCount = Integer.parseInt(pageinfo.get("totalCount"));
 		int listSize = 10;
 		int totalPage = totalCount%10>0?((int)(totalCount/10)+1):((int)(totalCount/10));
 		int page = Integer.parseInt(pageinfo.get("page"))>totalPage?totalPage:Integer.parseInt(pageinfo.get("page"));
@@ -232,9 +267,7 @@ public class MessageDao extends SqlMapConfig {
 		if(endPage>totalPage) {
 			endPage =totalPage;
 		}
-		
 		pageinfo.put("totalPage", Integer.toString(totalPage));
-		pageinfo.put("totalCount",Integer.toString(totalCount));
 		pageinfo.put("startPage",Integer.toString(startPage));
 		pageinfo.put("endPage",Integer.toString(endPage));
 		pageinfo.put("page",Integer.toString(page));
@@ -346,5 +379,18 @@ System.out.println(received);
 		session.close();
 		return res;
 
+	}
+
+
+	public List<NoticeBoardDto> selectNotice(PageSelector pageselector) {
+		List<NoticeBoardDto> res = new ArrayList<NoticeBoardDto>();
+
+		SqlSession session = null;
+		session = getSqlSessionFactory().openSession(true); // openSession(true) : autoCommit
+		res = session.selectList(namespace + "selectNotice", pageselector);
+
+		session.close();
+
+		return res;
 	}
 }
