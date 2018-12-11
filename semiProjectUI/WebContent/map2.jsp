@@ -16,7 +16,7 @@
 <%
 	response.setContentType("text/html; charset=UTF-8");
 %>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="utf-8">
@@ -24,14 +24,19 @@
 
 </head>
 <body>
-
-	<div id="map" style="width: 70%; height: 350px;"></div>
+	<div id="header"></div>
+   <center>
+   <div>
+	<div id="map" style="width: 70%; height: 700px;"></div>
 
 
 	<script type="text/javascript" src="JSON/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fcce2df2939bca5734fd756caf9ea252&libraries=clusterer"></script>
+	
+<script src="js/script.js"></script>
 	<script>
+	
 
     var map = new daum.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
         center : new daum.maps.LatLng(36.2683, 127.6358), // 지도의 중심좌표
@@ -275,5 +280,8 @@ $.ajax({
     
 
 </script>
+</div>
+   </center>
+   <div id="footer"></div>
 </body>
 </html>

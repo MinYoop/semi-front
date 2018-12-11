@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="NoticeBoard">
+
+	<resultMap type="dto.NoticeBoardDto" id="NoticeBoardMap">
+		<result property="notice_seq" column="NOTICE_SEQ" />
+		<result property="admin_id" column="ADMIN_ID" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="saw" column="SAW" />
+		<result property="reg_date" column="REG_DATE" />
+	</resultMap>
+
+	<resultMap type="dto.Admin" id="AdminMap">
+		<result property="adminId" column="ADMIN_ID" />
+		<result property="adminPw" column="ADMIN_PW" />
+	</resultMap>
+
+
+	<select id="selectOneAdmin" parameterType="String" resultMap="AdminMap">
+		SELECT *
+		FROM ADMIN_TB
+		WHERE ADMIN_ID = #{adminId}
+	</select>
+	
+	
+	<select id="selectAllNotice" resultMap="NoticeBoardMap">
+		SELECT NOTICE_SEQ, ADMIN_ID, TITLE, CONTENT, SAW, REG_DATE
+		FROM NOTICE_BOARD_TB
+		ORDER BY NOTICE_SEQ
+		DESC
+	</select>
+	
+	<insert id="insertNotice" parameterType="NoticeBoardDto" statementType="PREPARED">
+		INSERT INTO NOTICE_BOARD_TB
+		VALUES(NOTICE_BOARD_TB_SEQ.NEXTVAL,#{admin_id},#{title},#{content},'1',SYSDATE)
+	</insert>
+
+	<select id="selectOneNotice" parameterType="int" resultType="NoticeBoardDto">
+		SELECT NOTICE_SEQ, ADMIN_ID, TITLE, CONTENT, SAW, REG_DATE
+		FROM NOTICE_BOARD_TB
+		WHERE NOTICE_SEQ = #{notice_seq}
+	</select>
+	
+	<delete id="deleteNotice" parameterType="int" >
+		DELETE
+		FROM NOTICE_BOARD_TB
+		WHERE NOTICE_SEQ = #{notice_seq}
+	</delete>
+
+	<update id="updateNotice" parameterType="NoticeBoardDto" statementType="PREPARED">
+		UPDATE NOTICE_BOARD_TB
+		SET TITLE = #{title}, CONTENT = #{content}
+		WHERE NOTICE_SEQ = #{notice_seq}
+	</update>
+
+
+</mapper>

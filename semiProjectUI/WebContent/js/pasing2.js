@@ -8,10 +8,24 @@ $(function(){
 	//totalPage = 총 페이지 수
 	
 	//var totalCount = document.getElementById("totalCount").value;
-	var totalCount = $("#totalCount2").val();
+	//var totalCount = 
 	var page = $("#page2").val();
 	var boardName = $("#boardName2").val();
+		console.log(boardName);
+	$.ajax({
+		url:"Message.do",
+		data:{
+			command: "countAllMessages",
+			side: boardName
+		}, success:function(resp){
+			pgns(resp)
+		}
+	})
 	
+	var pgns = (resp)=>{
+		
+	console.log(resp);
+	var totalCount = resp;
 	var listSize = 10; 
 	var totalPage = parseInt(totalCount / listSize); //총 페이지 수
 	
@@ -42,7 +56,7 @@ $(function(){
 	//부트스트랩이나, css를 만들어서 처리한다면 저런것들은 지우면됨.
 	//.append 해주는 코드 안에 <a>태그 말고 <li>로 해도됨 (원하는 형식대로 출력하게하면됨)
 	if(startPage > 1){
-		$("#pasing2").append("<a href='controller.do?command="+boardName+"&page=1'>처음</a>");
+		$("#pasing2").append("<a onclick='getPage(\""+boardName+"\","+1+")'>처음</a>");
 	}else{
 		$("#pasing2").append("처음");
 	}
@@ -50,25 +64,23 @@ $(function(){
 	$("#pasing2").append(" ");
 	
 	if(page > 1){
-		$("#pasing2").append("<a href='controller.do?command="+boardName+"&page="+(page-1)+"'>이전</a>");
+		$("#pasing2").append("<a onclick='getPage(\""+boardName+"\","+(Number(page)-1)+")'>이전</a>");
 	}else{
 		$("#pasing2").append("이전");
 	}
 	
-	$("#pasing2").append(" [ ");
 	
 	for(var iCount = startPage; iCount <= endPage; iCount++) {
 	    if (iCount == page) {
-	       $("#pasing2").append("<b> <a href='controller.do?command="+boardName+"&page="+iCount+"'>" + iCount + "</a> </b>");
+	       $("#pasing2").append("<b> <a onclick='getPage(\""+boardName+"\","+iCount+")'>" + iCount + "</a> </b>");
 	    } else {
-	    	$("#pasing2").append("<a href='controller.do?command="+boardName+"&page="+iCount+"'>" + iCount + " </a>");
+	    	$("#pasing2").append("<a onclick='getPage(\""+boardName+"\","+iCount+")'>" + iCount + " </a>");
 	    }
 	}
 	
-	$("#pasing2").append(" ] ");
 	
 	if(page < totalPage){
-		$("#pasing2").append("<a href='controller.do?command="+boardName+"&page="+(Number(page)+1)+"'>다음</a>");
+		$("#pasing2").append("<a onclick='getPage(\""+boardName+"\","+(Number(page)+1)+")'>다음</a>");
 	}else{
 		$("#pasing2").append("다음");
 	}
@@ -76,7 +88,7 @@ $(function(){
 	$("#pasing2").append(" ");
 	
 	if(endPage < totalPage){
-		$("#pasing2").append("<a href='controller.do?command="+boardName+"&page="+totalPage+"'>끝</a>");
+		$("#pasing2").append("<a onclick='getPage(\""+boardName+"\","+totalPage+")'>끝</a>");
 	}else{
 		$("#pasing2").append("끝");
 	}
@@ -89,5 +101,100 @@ $(function(){
 						"엔드페이지 : "+endPage+" <br>" +
 						"내가 보고있는 게시판 이름 : "+boardName+"<br>");*/
 						
-})
+
+	}
+	})
+
+
+
+
+
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+
+$(function(){
+	
+	
+	var page = $("#page").val();
+	var boardName1 = $("#boardName").val();
+	console.log(boardName1);
+
+	$.ajax({
+		url:"Message.do",
+		data:{
+			command: "countAllMessages",
+			side: boardName1
+		}, success:function(resp){
+			pgns(resp)
+		}
+	})
+	
+	var pgns = (resp)=>{
+		console.log(resp);
+ var totalCount = resp;
+	var listSize = 10; 
+	var totalPage = parseInt(totalCount / listSize); //총 페이지 수
+	
+	if(totalCount % listSize > 0){
+		totalPage++;
+	}
+	
+	if(totalPage < page){
+		page = totalPage;
+	}
+	
+	var startPage = parseInt((page - 1) / 10) * 10 + 1;
+	var endPage = startPage + listSize - 1;
+	
+	if (endPage > totalPage) {
+	    endPage = totalPage;
+	}
+	
+	//-----------------------실제 하단에 페이징 표시되기 위한 코드----------------------------
+	
+	if(startPage > 1){
+		$("#pasing").append("<a onclick='getPage(\""+boardName1+"\","+1+")'>처음</a>");
+	}else{
+		$("#pasing").append("처음");
+	}
+	
+	$("#pasing").append(" ");
+	
+	if(page > 1){
+		$("#pasing").append("<a onclick='getPage(\""+boardName1+"\","+(Number(page)-1)+")'>이전</a>");
+	}else{
+		$("#pasing").append("이전");
+	}
+	
+	
+	for(var iCount = startPage; iCount <= endPage; iCount++) {
+	    if (iCount == page) {
+	       $("#pasing").append("<b> <a onclick='getPage(\""+boardName1+"\","+iCount+")'>" + iCount + "</a> </b>");
+	    } else {
+	    	$("#pasing").append("<a onclick='getPage(\""+boardName1+"\","+iCount+")'>" + iCount + " </a>");
+	    }
+	}
+	
+	
+	if(page < totalPage){
+		$("#pasing").append("<a onclick='getPage(\""+boardName1+"\","+(Number(page)+1)+")'>다음</a>");
+	}else{
+		$("#pasing").append("다음");
+	}
+	
+	$("#pasing").append(" ");
+	
+	if(endPage < totalPage){
+		$("#pasing").append("<a onclick='getPage(\""+boardName1+"\","+totalPage+")'>끝</a>");
+	}else{
+		$("#pasing").append("끝");
+	}
+	$("#pasing").append("<br>");
+	
+	}
+						
+});
 

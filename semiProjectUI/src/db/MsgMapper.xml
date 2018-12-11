@@ -18,7 +18,31 @@
 		<result property="receiverDelChk" column="RECEIVER_DEL_CHK" />
 		<result property="sendDate" column="SEND_DATE" />
 	</resultMap>
+	
+	
+	<resultMap type="dto.NoticeBoardDto" id="NoticeBoardMap">
+		<result property="notice_seq" column="NOTICE_SEQ" />
+		<result property="admin_id" column="ADMIN_ID" />
+		<result property="title" column="TITLE" />
+		<result property="content" column="CONTENT" />
+		<result property="saw" column="SAW" />
+		<result property="reg_date" column="REG_DATE" />
+	</resultMap>
+	
+	
+<select id="selectNotice" parameterType="PageSelector"
+		resultMap="NoticeBoardMap">
+		<![CDATA[ select B.rnum, B.notice_seq, B.admin_id, B.title, B.content, B.saw,B.reg_date 
+			 FROM( SELECT ROWNUM as rnum, A.notice_seq, A.admin_id, A.title, A.content, 
+			 A.saw, A.reg_date FROM ( select notice_seq,admin_id,title,content,saw,reg_date
+			from NOTICE_BOARD_TB ORDER BY REG_DATE DESC) 
+			A where ROWNUM <= #{endNum} ) B where B.rnum >= #{startNum} ]]>
+	</select>
 
+
+<select id="countAll" parameterType="HashMap" resultType="int">
+		SELECT COUNT(*) FROM ${boardName} 
+	</select>
 
 	<insert id="sendMsg" parameterType="Map">
 	<selectKey keyProperty="id" resultType="int" order="BEFORE">
@@ -30,8 +54,12 @@
 		0, 0, SYSDATE )
 	</insert>
 	
-	<select id="countAllMessages" parameterType="HashMap">
-		SELECT COUNT(*) FROM MESSAGE_TB where #{side} = #{nickName} RECEIVER_DEL_CHK = 0
+	<select id="countAllMessagesReceived" parameterType="HashMap" resultType="int">
+		SELECT COUNT(*) FROM MESSAGE_TB where RECEIVER = #{nickName} AND RECEIVER_DEL_CHK = 0
+	</select>
+	
+	<select id="countAllMessagesSent" parameterType="HashMap" resultType="int">
+		SELECT COUNT(*) FROM MESSAGE_TB where SENDER = #{nickName} AND SENDER_DEL_CHK = 0
 	</select>
 	
 	
@@ -39,21 +67,21 @@
 	<select id="selectSent" parameterType="PageSelector"
 		resultMap="MessageMap">
 
-		<![CDATA[ select B.rnum, B.msg_seq, B.msg_content, B.sender, B.receiver,B.receiver_chk,B.sender_del_chk, 
-			B.receiver_del_chk,B.send_date FROM( SELECT ROWNUM as rnum, A.msg_seq, A.msg_content, 
+		<![CDATA[ select B.rnum, B.msg_seq, B.msg_title, B.msg_content, B.sender, B.receiver,B.receiver_chk,B.sender_del_chk, 
+			B.receiver_del_chk,B.send_date FROM( SELECT ROWNUM as rnum, A.msg_seq, A.msg_title, A.msg_content, 
 			A.sender, A.receiver, A.receiver_chk, A.sender_del_chk,A.receiver_del_chk,A.send_date 
-			FROM ( select msg_seq, msg_content,sender,receiver,receiver_chk, sender_del_chk,receiver_del_chk,send_date 
-			from MESSAGE_TB WHERE SENDER = #{sender} ORDER BY SEND_DATE ) A where ROWNUM 
+			FROM ( select msg_seq, msg_title, msg_content,sender,receiver,receiver_chk, sender_del_chk,receiver_del_chk,send_date 
+			from MESSAGE_TB WHERE SENDER = #{boardName} ORDER BY SEND_DATE DESC) A where ROWNUM 
 			<= #{endNum} ) B where B.rnum >= #{startNum} ]]>
 	</select>
 
 	<select id="selectReceived" parameterType="PageSelector"
 		resultMap="MessageMap">
-		<![CDATA[ select B.rnum, B.msg_seq, B.msg_content, B.sender, B.receiver,B.receiver_chk,B.sender_del_chk, 
-			B.receiver_del_chk,B.send_date FROM( SELECT ROWNUM as rnum, A.msg_seq, A.msg_content, 
+		<![CDATA[ select B.rnum, B.msg_seq, B.msg_title, B.msg_content, B.sender, B.receiver,B.receiver_chk,B.sender_del_chk, 
+			B.receiver_del_chk,B.send_date FROM( SELECT ROWNUM as rnum, A.msg_seq, A.msg_title, A.msg_content, 
 			A.sender, A.receiver, A.receiver_chk, A.sender_del_chk,A.receiver_del_chk,A.send_date 
-			FROM ( select msg_seq, msg_content,sender,receiver,receiver_chk, sender_del_chk,receiver_del_chk,send_date 
-			from MESSAGE_TB WHERE receiver = #{boardName} ORDER BY SEND_DATE ) A where 
+			FROM ( select msg_seq, msg_title, msg_content,sender,receiver,receiver_chk, sender_del_chk,receiver_del_chk,send_date 
+			from MESSAGE_TB WHERE receiver = #{boardName} ORDER BY SEND_DATE DESC) A where 
 			ROWNUM <= #{endNum} ) B where B.rnum >= #{startNum} ]]>
 	</select>
 
@@ -63,6 +91,9 @@
 		
 	</select>
 
+<update id="msgChked" parameterType="HashMap">
+update message_tb set receiver_chk=1 where msg_seq = #{msgSeq}
+</update>
 
 
 </mapper>

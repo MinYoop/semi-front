@@ -2,8 +2,7 @@ package dto;
 
 import java.util.Date;
 
-//怨듭�寃뚯떆�뙋 
-public class NoticeBoard {
+public class NoticeBoardDto {
 	
 	 private int notice_seq;
 	 private String admin_id;
@@ -12,11 +11,11 @@ public class NoticeBoard {
 	 private int saw;
 	 private Date reg_date;
 
-	 public NoticeBoard(){
+	 public NoticeBoardDto(){
 		 
 	 }
 
-	public NoticeBoard(int notice_seq, String admin_id, String title, String content, int saw, Date reg_date) {
+	public NoticeBoardDto(int notice_seq, String admin_id, String title, String content, int saw, Date reg_date) {
 		super();
 		this.notice_seq = notice_seq;
 		this.admin_id = admin_id;
@@ -24,6 +23,22 @@ public class NoticeBoard {
 		this.content = content;
 		this.saw = saw;
 		this.reg_date = reg_date;
+	}
+	
+	
+	public NoticeBoardDto(String admin_id, String title, String content) {
+		super();
+		this.admin_id = admin_id;
+		this.title = title;
+		this.content = content;
+	}
+	
+
+	public NoticeBoardDto(int notice_seq, String title, String content) {
+		super();
+		this.notice_seq = notice_seq;
+		this.title = title;
+		this.content = content;
 	}
 
 	public int getNotice_seq() {

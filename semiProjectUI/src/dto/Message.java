@@ -20,7 +20,7 @@ public class Message {
  private String receiver;
 
  // 받는사람조회여부 
- private Integer recieverChk;
+ private Integer receiverChk;
 
  // 보내는사람삭제여부 
  private Integer senderDelChk;
@@ -73,12 +73,12 @@ public class Message {
      this.receiver = receiver;
  }
 
- public Integer getRecieverChk() {
-     return recieverChk;
+ public Integer getReceiverChk() {
+     return receiverChk;
  }
 
- public void setRecieverChk(Integer recieverChk) {
-     this.recieverChk = recieverChk;
+ public void setReceiverChk(Integer receiverChk) {
+     this.receiverChk = receiverChk;
  }
 
  public Integer getSenderDelChk() {

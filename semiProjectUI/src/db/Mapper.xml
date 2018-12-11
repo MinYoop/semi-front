@@ -57,32 +57,9 @@
 		<result property="freeSeq" column="FREE_SEQ" />
 	</resultMap>
 
-	<resultMap type="dto.NoticeBoard" id="NoticeBoardMap">
-		<result property="noticeSeq" column="NOTICE_SEQ" />
-		<result property="adminId" column="ADMIN_ID" />
-		<result property="title" column="TITLE" />
-		<result property="content" column="CONTENT" />
-		<result property="saw" column="SAW" />
-		<result property="regDate" column="REG_DATE" />
-	</resultMap>
-
-	<resultMap type="dto.Admin" id="AdminMap">
-		<result property="adminId" column="ADMIN_ID" />
-		<result property="adminPw" column="ADMIN_PW" />
-		<result property="sessionId" column="SESSION_ID" />
-		<result property="online" column="ONLINE" />
-	</resultMap>
-
-
 	
 	
 	
-	<select id="selectNoticePage" resultMap="NoticeBoardMap">
-		SELECT notice_seq, admin_id, title, content, saw, reg_date
-		FROM NOTICE_BOARD_TB
-		ORDER BY NOTICE_SEQ
-		DESC
-	</select>
 
 <select id="countAll" parameterType="PageSelector">
 
@@ -90,18 +67,8 @@ SELECT COUNT(*) FROM #{boardName}
 </select>
 
 	<!--유저 관련 셀렉트문 등은 usrmapper를 찾아보고 사용할 것.  -->
-	<select id="selectAll_admin" resultMap="DealMap">
-		SELECT *
-		FROM NOTICE
-		ORDER BY NOTICESEQ
-		DESC
-	</select>
+
 	
-	<insert id="insertAdmin" parameterType="admin">
-		insert into ADMIN_TB
-		values (
-		#{NOTICESEQ}, #{ADMINID}, #{TITLE}, #{CONTENT}, #{SAW},#{REGDATE})
-	</insert>
 	
 <!-- 민엽 -->
 
@@ -133,23 +100,25 @@ SELECT COUNT(*) FROM #{boardName}
 <!-- 민엽끝 -->
 
 
+<!-- dh -->
 
+<select id="getList" parameterType="HashMap" resultMap="SellBoardMap">
 
+select * from ${boardName}
+where ${column}
+ <foreach collection="option" item="a"  open="(" close=")" separator="or">
+            = #{a.option}
+        </foreach>
 
-
-
-<!--<select id="selectOne" parameterType="int" resultType="Usr">
-		SELECT *
-		FROM USR
-		WHERE ID = #{id}
-	</select>
-	<insert id="insertUsr" parameterType="Usr">
-		insert into USR
-		values (
-		#{seq_id}, #{nickname}, #{email}, #{password}, #{address1},
-		#{address2},
-		#{home_latitude}, #{home_longitude}, #{sns_id},
-		#{session_id}, #{online} )
-	</insert> -->
+</select>
 
 </mapper>
+
+
+
+
+
+
+
+
+

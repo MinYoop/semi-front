@@ -79,7 +79,7 @@
 									신발장에서 숨기는거 까먹었다가 걸려서 팝니다. 딱 3일 신고 걸려서 파는거라 엄청 깨끗하구요. 하루에 한 번씩 컨버스 전용 세정제로 닦아줬습니다.</p>
 								<!-- end description -->
 								<!-- Start button -->
-								<a href="shop.html" class="btn btn-primary"
+								<a href="servlet.do?command=sellboardlist" class="btn btn-primary"
 									data-duration-in=".5" data-animation-in="fadeInLeft"
 									data-delay-in=".8" data-animation-out="fadeOutLeft"
 									data-delay-out="5" data-duration-out=".3">shop now</a>
@@ -116,7 +116,7 @@
 									data-delay-out="5.8" data-duration-out=".3">여성을 위한</h3>
 								<h1 data-duration-in=".5" data-animation-in="fadeInDown"
 									data-delay-in=".2" data-animation-out="fadeOutDown"
-									data-delay-out="5.4" data-duration-out=".3">유행을 타지 않는 명품 브랜드백</h1>
+									data-delay-out="5.4" data-duration-out=".3">유행을 타지 않는 명품백</h1>
 								<h3 class="mb-4" data-duration-in=".5"
 									data-animation-in="fadeInDown" data-delay-in=".4"
 									data-animation-out="fadeOutDown" data-delay-out="5"
@@ -126,7 +126,7 @@
 									data-animation-out="fadeOutDown" data-delay-out="4.6"
 									data-duration-out=".3">작년 말에 친구가 해외여행 갈 때 부탁해서 받아서 이쁘게 잘 썼어요. 정이 많이 들었는데 요번 엑소 월드투어 때문에 
 									어쩔 수 없이 팔아요. 정품 새제품 가격 아시죠?</p>
-								<a href="shop.html" class="btn btn-primary"
+								<a href="servlet.do?command=sellboardlist" class="btn btn-primary"
 									data-duration-in=".5" data-animation-in="fadeInDown"
 									data-delay-in=".8" data-animation-out="fadeOutDown"
 									data-delay-out="4.2" data-duration-out=".3">shop now</a>
@@ -151,110 +151,18 @@
 				</div>
 			</div>
 		</section>
-		<!-- /hero area
+		
 
-<!-- categories -->
-		<section class="section">
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-lg-12 text-center">
-						<h2 class="section-title">Top Categories</h2>
-					</div>
-					<!-- categories item -->
-					<div class="col-lg-4 col-md-6 mb-50">
-						<div class="card p-0">
-							<div class="border-bottom text-center hover-zoom-img">
-								<a href="shop.html"><img
-									src="images/categories/product-big-1.jpg"
-									class="rounded-top img-fluid w-100" alt="product-img"></a>
-							</div>
-							<ul class="d-flex list-unstyled pl-0 categories-list">
-								<li class="m-0 hover-zoom-img"><a href="shop.html"><img
-										src="images/categories/product-sm-1.jpg"
-										class="img-fluid w-100" alt="product-img"></a></li>
-								<li class="m-0 hover-zoom-img"><a href="shop.html"><img
-										src="images/categories/product-sm-2.jpg"
-										class="img-fluid w-100" alt="product-img"></a></li>
-								<li class="m-0 hover-zoom-img"><a href="shop.html"><img
-										src="images/categories/product-sm-3.jpg"
-										class="img-fluid w-100" alt="product-img"></a></li>
-							</ul>
-							<div class="px-4 py-3 border-top">
-								<h4 class="d-inline-block mb-0 mt-1">Clothing</h4>
-								<a href="shop.html"
-									class="btn btn-sm btn-outline-primary float-right">view
-									more</a>
-							</div>
-						</div>
-					</div>
-					<!-- categories item -->
-					<div class="col-lg-4 col-md-6 mb-50">
-						<div class="card p-0">
-							<div class="border-bottom text-center hover-zoom-img">
-								<a href="shop.html"><img
-									src="images/categories/product-big-2.jpg"
-									class="rounded-top img-fluid w-100" alt="product-img"></a>
-							</div>
-							<ul class="d-flex list-unstyled pl-0 categories-list">
-								<li class="m-0 hover-zoom-img"><a href="shop.html"><img
-										src="images/categories/product-sm-4.jpg"
-										class="img-fluid w-100" alt="product-img"></a></li>
-								<li class="m-0 hover-zoom-img"><a href="shop.html"><img
-										src="images/categories/product-sm-5.jpg"
-										class="img-fluid w-100" alt="product-img"></a></li>
-								<li class="m-0 hover-zoom-img"><a href="shop.html"><img
-										src="images/categories/product-sm-6.jpg"
-										class="img-fluid w-100" alt="product-img"></a></li>
-							</ul>
-							<div class="px-4 py-3 border-top">
-								<h4 class="d-inline-block mb-0 mt-1">Shoes</h4>
-								<a href="shop.html"
-									class="btn btn-sm btn-outline-primary float-right">view
-									more</a>
-							</div>
-						</div>
-					</div>
-					<!-- categories item -->
-					<div class="col-lg-4 col-md-6 mb-50">
-						<div class="card p-0">
-							<div class="border-bottom text-center hover-zoom-img">
-								<a href="shop.html"><img
-									src="images/categories/product-big-3.jpg"
-									class="rounded-top img-fluid w-100" alt="product-img"></a>
-							</div>
-							<ul class="d-flex list-unstyled pl-0 categories-list">
-								<li class="m-0 hover-zoom-img"><a href="shop.html"><img
-										src="images/categories/product-sm-7.jpg"
-										class="img-fluid w-100" alt="product-img"></a></li>
-								<li class="m-0 hover-zoom-img"><a href="shop.html"><img
-										src="images/categories/product-sm-8.jpg"
-										class="img-fluid w-100" alt="product-img"></a></li>
-								<li class="m-0 hover-zoom-img"><a href="shop.html"><img
-										src="images/categories/product-sm-9.jpg"
-										class="img-fluid w-100" alt="product-img"></a></li>
-							</ul>
-							<div class="px-4 py-3 border-top">
-								<h4 class="d-inline-block mb-0 mt-1">Accessories</h4>
-								<a href="shop.html"
-									class="btn btn-sm btn-outline-primary float-right">view
-									more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- /categories -->
+
 
 		<section class="section overlay cta"
 			style="background-image: url(images/backgrounds/cta.jpg);">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 text-center">
-						<h1 class="text-white mb-2">End of Season Sale</h1>
-						<p class="text-white mb-4">Take 25% off all sweaters and
-							knits. Discount applied at checkout.</p>
-						<a href="shop.html" class="btn btn-light">shop now</a>
+						<h1 class="text-white mb-2">연말연시 기념 폭탄세일</h1>
+						<p class="text-white mb-4">을 좀 부탁드립니다 회원 여러분. 연말연시에 약 30프로 할인하여 중고 매물을 올리면 더욱 잘 팔린다는 사실!!!</p>
+						<a href="shop.html" class="btn btn-light">sell now</a><!-- 여기에 매물 올리기 링크 -->
 					</div>
 				</div>
 			</div>
@@ -611,92 +519,8 @@
 		</section>
 		<!-- /collection -->
 
-		<!-- deal -->
-		<section class="section bg-cover"
-			style="background-image: url(images/backgrounds/deal.jpg);">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
-						<h1>Deal of the day</h1>
-						<h4 class="mb-40">Get at discounted price!</h4>
-						<!-- syo-timer -->
-						<div class="syotimer large">
-							<div id="simple-timer" data-year="2019" data-month="1"
-								data-day="1" data-hour="1"></div>
-						</div>
-						<a href="shop.html" class="btn btn-primary">shop now</a>
-					</div>
-					<div class="col-md-6 text-center text-md-left align-self-center">
-						<img src="images/deal/product.png" alt="product-img"
-							class="img-fluid up-down">
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- /deal -->
 
-		<!-- feature -->
-		<section class="section pb-0">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 col-md-6 mb-5 mb-md-0">
-						<img src="images/feature/product.png" alt="product-img"
-							class="img-fluid">
-					</div>
-					<div
-						class="col-lg-5 col-md-6 text-center text-md-left align-self-center">
-						<h3 class="mb-lg-2 mb-2">Woven Crop Cami</h3>
-						<span class="mb-lg-4 mb-3 h5">$90.00</span>
-						<p class="mb-lg-4 mb-3 text-gray">Excepteur sint occaecat
-							cupidatat non proident, sunt in culpa qui officia deserunt mollit
-							anim id est laborum. sed ut perspic atis unde omnis iste natus</p>
-						<form action="#">
-							<select class="form-control w-100 mb-2" name="color">
-								<option value="brown">Brown Color</option>
-								<option value="gray">Gray Color</option>
-								<option value="black">Black Color</option>
-							</select> <select class="form-control w-100 mb-3" name="size">
-								<option value="small">Small Size</option>
-								<option value="medium">Medium Size</option>
-								<option value="large">Large Size</option>
-							</select>
-							<button class="btn btn-primary w-100 mb-lg-4 mb-3">add
-								to cart</button>
-						</form>
-						<ul class="list-inline social-icon-alt">
-							<li class="list-inline-item"><a href="#"><i
-									class="ti-facebook"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i
-									class="ti-twitter-alt"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i
-									class="ti-vimeo-alt"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i
-									class="ti-google"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- feature -->
-
-		<!-- instagram -->
-		<section class="section">
-			<div class="container">
-				<div class="row">
-					<div class="col-12 text-center">
-						<h2 class="mb-2">Follow Us On Instagram</h2>
-						<p class="mb-5">@ Occaecat Cupidatat</p>
-					</div>
-					<div class="col-12">
-						<!-- instafeed -->
-						<div class="instagram-slider" id="instafeed"
-							data-userId="4044026246"
-							data-accessToken="4044026246.1677ed0.8896752506ed4402a0519d23b8f50a17"></div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- /instagram -->
+		
 
 		<!-- service -->
 		<section class="section-sm border-top">
@@ -708,8 +532,8 @@
 							class="d-flex flex-sm-row flex-column align-items-center align-items-sm-start">
 							<i class="ti-truck service-icon mb-3 mb-sm-0"></i>
 							<div class="text-center text-sm-left">
-								<h4>Free Shipping</h4>
-								<p class="mb-0 text-gray">Free shipping on oder over $70</p>
+								<h4>배달사고 확률 0% 달성</h4>
+								<p class="mb-0 text-gray">배달을 안 하면<br> 배달사고가 안 납니다.</p>
 							</div>
 						</div>
 					</div>
@@ -719,8 +543,8 @@
 							class="d-flex flex-sm-row flex-column align-items-center align-items-sm-start">
 							<i class="ti-shield service-icon mb-3 mb-sm-0"></i>
 							<div class="text-center text-sm-left">
-								<h4>Secure Payment</h4>
-								<p class="mb-0 text-gray">We ensure secure payment with PEV</p>
+								<h4>안전한 지불</h4>
+								<p class="mb-0 text-gray"> 직접 만나 물건을 확인한 뒤<br> 대금을 지불하니 안전합니다.</p>
 							</div>
 						</div>
 					</div>
@@ -730,9 +554,10 @@
 							class="d-flex flex-sm-row flex-column align-items-center align-items-sm-start">
 							<i class="ti-timer service-icon mb-3 mb-sm-0"></i>
 							<div class="text-center text-sm-left">
-								<h4>Support 24/7</h4>
-								<p class="mb-0 text-gray">Contact us 24 hours a day, 7 days
-									a week</p>
+								<h4>24/7 자유로운 거래</h4>
+								<p class="mb-0 text-gray">24시간 중 언제든 물건을 받을 수 있습니다. 
+								판매자와의 약속 시간에 따라.
+									</p>
 							</div>
 						</div>
 					</div>
@@ -742,9 +567,9 @@
 							class="d-flex flex-sm-row flex-column align-items-center align-items-sm-start">
 							<i class="ti-reload service-icon mb-3 mb-sm-0"></i>
 							<div class="text-center text-sm-left">
-								<h4>30 Days Return</h4>
-								<p class="mb-0 text-gray">Simply return it within 30 days
-									for an exchange.</p>
+								<h4>아름다운 재활용</h4>
+								<p class="mb-0 text-gray">중고책을 새책 대신 사면 자르지 않아도 되는 나무가 몇 그루인지 아십니까?
+								저희는 모릅니다.</p>
 							</div>
 						</div>
 					</div>
@@ -753,27 +578,7 @@
 		</section>
 		<!-- /service -->
 
-		<!-- newsletter -->
-		<section class="section bg-gray">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 text-center">
-						<h2 class="section-title">Our Newsletter</h2>
-						<p class="mb-4">Subscribe to our Newsletter to receive early
-							discount offers</p>
-					</div>
-					<div class="col-lg-6 col-md-8 col-sm-9 col-10 mx-auto">
-						<form action="#" class="d-flex flex-column flex-sm-row">
-							<input type="email"
-								class="form-control rounded-0 border-0 mr-3 mb-4 mb-sm-0"
-								id="mail" placeholder="Enter your email">
-							<button type="submit" value="send" class="btn btn-primary">Subscribe</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- /newsletter -->
+		
 
 		<!-- Newsletter Modal ìëê³  ì´ì ë¶í´ ë¡ê·¸ì¸ ëª¨ë¬ -->
 		<div class="modal fade subscription-modal" id="subscriptionModal"
@@ -830,8 +635,6 @@
 	<div id="footer"></div>
 	 
 	</div>
-	<!-- /main wrapper -->
-	<!-- jQuery -->
 
 	<!-- Bootstrap JS -->
 	<script src="plugins/bootstrap/bootstrap.min.js"></script>

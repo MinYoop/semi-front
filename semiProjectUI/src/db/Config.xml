@@ -11,7 +11,7 @@
 		<typeAlias type = "dto.SellBoardReply" alias="SellBoardReply"/>
 		<typeAlias type = "dto.Deal" alias="Deal"/>
 		<typeAlias type = "dto.Admin" alias="Admin"/>
-		<typeAlias type = "dto.NoticeBoard" alias="NoticeBoard"/>
+		<typeAlias type = "dto.NoticeBoardDto" alias="NoticeBoardDto"/>
 		<typeAlias type = "dto.FreeBoard" alias="FreeBoard"/>
 		<typeAlias type = "dto.FreeBoardReply" alias="FreeBoardReply"/>
 		<typeAlias type = "dto.PageSelector" alias="PageSelector"/>
@@ -35,5 +35,7 @@
     	<mapper resource="db/Mapper.xml"/>
     	<mapper resource="db/UsrMapper.xml"/>
     	<mapper resource="db/MsgMapper.xml"/> 
+    	<mapper resource="db/NoticeBoardMapper.xml"/> 
+    	
   	</mappers>
 </configuration>

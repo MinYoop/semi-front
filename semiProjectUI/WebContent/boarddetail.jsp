@@ -4,7 +4,7 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="UTF-8">
@@ -19,11 +19,18 @@
 
 
 </script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="js/script.js"></script>
 
 </head>
 <body>
 
    <jsp:useBean id="dto" class="dto.SellBoard" scope="request"></jsp:useBean>
+   
+   <div id="header"></div>
+   <center>
+   <div>
    
    <h1>상세 글 보기</h1>
    
@@ -65,5 +72,8 @@
          </td>
       </tr>      
    </table>
+   </div>
+   </center>
+   <div id="footer"></div>
 </body>
 </html>
