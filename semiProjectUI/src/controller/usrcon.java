@@ -92,6 +92,9 @@ public class usrcon extends HttpServlet {
 
 				out.print(res);
 			}
+			
+		}else if(command.equals("coming")) {
+			response.sendRedirect("coming-soon.html");
 
 		} else if (command.equals("isNew")) {
 			if(session.isNew()) {

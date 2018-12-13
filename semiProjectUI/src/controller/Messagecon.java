@@ -100,7 +100,7 @@ public class Messagecon extends HttpServlet {
 			msgChked.put("msgSeq", request.getParameter("msgSeq"));
 			out.println(dao.msgChked(msgChked));
 			
-		}else if(command.equals("chkMessage")) {
+	}else if(command.equals("chkMessage")) {
 			//사용자의 신규메세지 chk(페이지 이동시마다 체크하므로, 헤더나 푸터에 chk.js파일을 만들어 거기서 불러 사용.)
 			System.out.println("체크메세지 진입");
 			System.out.println(((User)session.getAttribute("User")).getNickName());
@@ -110,7 +110,7 @@ public class Messagecon extends HttpServlet {
 			//프론트엔드에서 페이지 로딩시 셋타임아웃 등으로(마이크로테스크로 프로미스 예약하면 너무 빠를 수도... 시간 좀 넘겨서! unchkedMsg의 세션어트리뷰트 체크해야 함.
 		
 		
-		} else if(command.equals("receivedMsgPage")) {
+	} else if(command.equals("receivedMsgPage")) {
 			PageSelector pageinfo = dao.PgsMaker(Integer.parseInt(request.getParameter("page")),((User)session.getAttribute("User")).getNickName());
 			String res =  " ";
 			HashMap<String,String> page = new HashMap<String,String>();
@@ -127,7 +127,7 @@ public class Messagecon extends HttpServlet {
 
 		 
 		
-		} else if(command.equals("sentMsgPage")) {
+	} else if(command.equals("sentMsgPage")) {
 			PageSelector pageinfo = dao.PgsMaker(Integer.parseInt(request.getParameter("page")),((User)session.getAttribute("User")).getNickName());
 			String res = "";
 			HashMap<String,String> page = new HashMap<String,String>();
@@ -148,8 +148,11 @@ public class Messagecon extends HttpServlet {
 			//System.out.println("++++++++++\n"+res);
 			out.println(res);
 		 
+	}else if(command.equals("faqs")) {
 		
-		}else if(command.equals("msgFirstPage")) {
+		response.sendRedirect("faq.html");
+		
+	}else if(command.equals("msgFirstPage")) {
 			PageSelector pageinfo = dao.PgsMaker(1,((User)session.getAttribute("User")).getNickName());
 			
 			//쪽지 페이지. 받은 쪽지 보낸 쪽지 각각 리스팅. 개인정보 페이지에서 쪽지페이지로 이동시의 컨트롤 

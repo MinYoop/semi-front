@@ -107,41 +107,41 @@
 						<div class="mx-3 mega-menu-item">
 							<h6>컴퓨터●노트북</h6>
 							<ul class="pl-0">
-								<li><a href="shop.html" id="game_notebook">게이밍 노트북</a></li>
-								<li><a href="shop.html" id="light_notebook">초경량 노트북</a></li>
-								<li><a href="shop.html" id="design_notebook">디자인용 노트북</a></li>
-								<li><a href="shop.html" id="pc_part">PC주요부품</a></li>
-								<li><a href="shop.html" id="monitor">모니터/사운드</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="game_notebook">게이밍 노트북</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="light_notebook">초경량 노트북</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="design_notebook">디자인용 노트북</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="pc_part">PC주요부품</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="monitor">모니터/사운드</a></li>
 							</ul>
 						</div>
 						<div class="mx-3 mega-menu-item">
 							<h6>태블릿●모바일</h6>
 							<ul class="pl-0">
-								<li><a href="shop.html" id="phone">휴대폰/스마트폰</a></li>
-								<li><a href="shop.html" id="tablet">태블릿/전자책</a></li>
-								<li><a href="shop.html" id="smartwatch">스마트워치/VR</a></li>
-								<li><a href="shop.html" id="battery">보조배터리/충전기</a></li>
-								<li><a href="shop.html" id="accessories">휴대폰●태블릿 액세서리</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="phone">휴대폰/스마트폰</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="tablet">태블릿/전자책</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="smartwatch">스마트워치/VR</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="battery">보조배터리/충전기</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="accessories">휴대폰●태블릿 액세서리</a></li>
 							</ul>
 						</div>
 						<div class="mx-3 mega-menu-item">
 							<h6>패션●잡화</h6>
 							<ul class="pl-0">
-								<li><a href="shop.html" id="bag">가방/지갑</a></li>
-								<li><a href="shop.html" id="clock">시계/쥬얼리</a></li>
-								<li><a href="shop.html" id="shoes">신발</a></li>
-								<li><a href="shop.html" id="clothing">의류/언더웨어</a></li>
-								<li><a href="shop.html" id="luxury">명품관</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="bag">가방/지갑</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="clock">시계/쥬얼리</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="shoes">신발</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="clothing">의류/언더웨어</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="luxury">명품관</a></li>
 							</ul>
 						</div>
 						<div class="mx-3 mega-menu-item">
 							<h6>가구●침구</h6>
 							<ul class="pl-0">
-								<li><a href="shop.html" id="bed">침대/침실가구</a></li>
-								<li><a href="shop.html" id="haengge">행거/옷장/수납장</a></li>
-								<li><a href="shop.html" id="sofa">쇼파/거실가구</a></li>
-								<li><a href="shop.html" id="chair">의자/책상/책장</a></li>
-								<li><a href="shop.html" id="table">식탁/주방가구</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="bed">침대/침실가구</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="haengge">행거/옷장/수납장</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="sofa">쇼파/거실가구</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="chair">의자/책상/책장</a></li>
+								<li><a href="servlet.do?command=sellboardlist" id="table">식탁/주방가구</a></li>
 							</ul>
 						</div>
 						<div class="mx-3 mega-megu-image">
@@ -156,37 +156,12 @@
 						게시판 </a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="Message.do?command=getPage&boardName=NOTICE_BOARD_TB&page=1&where=noticelist.jsp">공지사항</a> <a
-							class="dropdown-item" href="freeboard.html">자유게시판</a> <a
-							class="dropdown-item" href="faq.html">자주 묻는 질문</a>							
+							class="dropdown-item" href="usr.do?command=coming">자유게시판</a> <a
+							class="dropdown-item" href="Message.do?command=faqs">자주 묻는 질문</a>							
 					</div></li>
 			</ul>
 		</div>
-		<div class="order-3 navbar-right-elements">
-			<div class="search-cart">
-				<!-- search -->
-				<div class="search">
-					<button id="searchOpen" class="search-btn">
-						<i class="ti-search"></i>
-					</button>
-					<div class="search-wrapper">
-						<form action="#">
-							<input class="search-box" id="search" type="search"
-								placeholder="Enter Keywords...">
-							<button class="search-icon" type="submit">
-								<i class="ti-search"></i>
-							</button>
-						</form>
-					</div>
-				</div>
-				<!-- cart -->
-				<div class="cart">
-					<button id="cartOpen" class="cart-btn" onclick="location.href='cart.jsp'">
-						<i class="ti-bag"></i><span class="d-xs-none" >CART</span> 3
-					</button>
-					
-				</div>
-			</div>
-		</div>
+		
 	</nav>
 	<!-- /navigation -->
 

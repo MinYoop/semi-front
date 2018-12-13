@@ -82,7 +82,7 @@ public class NoticeBoard extends HttpServlet {
 			admin = noticedao.selectOneAdmin(request.getParameter("admin_id"));
 			if(request.getParameter("adminPw").equals(admin.getAdminPw())) {
 				session.setAttribute("admin_id", request.getParameter("admin_id"));
-				response.sendRedirect("noticelist.jsp");
+				response.sendRedirect("Message.do?command=getPage&boardName=NOTICE_BOARD_TB&page=1&where=noticelist.jsp");
 			}else {
 				response.sendRedirect("faq.html");
 			}

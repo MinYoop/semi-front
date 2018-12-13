@@ -31,9 +31,7 @@
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script type="text/javascript"
-	src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
-	charset="utf-8"></script>
+
 </head>
 
 <body>
@@ -56,7 +54,7 @@
 		<nav class="bg-gray py-3">
 			<div class="container">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="index.jsp">Home</a></li>
 					<li class="breadcrumb-item active" aria-current="page">Admin
 						Notices</li>
 				</ol>
