@@ -4,6 +4,12 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
 
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -65,8 +71,15 @@
       
       <tr>
          <td colspan="2">
+         
+         <c:choose>
+				<c:when test="${User.nickName == dto.seller}">
             	<input type="button" value="수정" onclick="location.href='servlet.do?command=boardupdateform&sellSeq=${dto.sellSeq }'">
 				<input type="button" value="삭제" onclick="location.href='servlet.do?command=boarddeleteform&sellSeq=${dto.sellSeq }'">
+				</c:when>
+			</c:choose>		
+							
+				
 				<input type="button" value="목록" onclick="location.href='servlet.do?command=sellboardlist'">
 				<input type="button" value="지도" onclick="map3()">
          </td>
